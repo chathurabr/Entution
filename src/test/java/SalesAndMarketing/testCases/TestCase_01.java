@@ -58,7 +58,7 @@ public class TestCase_01 extends CommonClass {
 		objNewEmployee.openEmpInfoModule();
 		//objNewEmployee.chkEmpInfoPage();
 		objNewEmployee.newEmployeeWindow();
-		objNewEmployee.enterEmpDetails("237", "Fernando", "A.H.Fernando");					// Employee	Code +
+		objNewEmployee.enterEmpDetails("R238", "Fernando", "A.H.Fernando");					// Employee	Code +
 		objNewEmployee.searchUserCode();
 		objNewEmployee.selectUserCode();
 		objNewEmployee.instHomeAddress("25","Nugegoda");
@@ -77,8 +77,8 @@ public class TestCase_01 extends CommonClass {
 		//objSalesAndMktMenu = new _01_02_SalesAndMarketingMenu (driver);
 		objCreateVendor.openPurchaseOrder();
 		objCreateVendor.newPurchaseOrder();
-		objCreateVendor.newVendor("Auto Ven Na 066","AutoVenCo065"); 	//Change +  AutoVenCo +
-		objCreateVendor.searchNSelectVedor("Auto Ven Na 066");			//get the above number
+		objCreateVendor.newVendor("Auto Ven Na R067","AutoVenCoR066"); 	//Change +  AutoVenCo +
+		objCreateVendor.searchNSelectVedor("Auto Ven Na R067");			//get the above number
 		objCreateVendor.choseSearchedVendor();
 		objCreateVendor.compareVendor();
 		driver.close();

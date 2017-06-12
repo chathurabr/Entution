@@ -61,7 +61,7 @@ public class CommonClassMainButtons extends CommonClass {
 			//release Button
 			WebElement releaseB = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[2]")));
-			
+
 			if(releaseB.getText().equals("Release")){
 			
 			action.moveToElement(releaseB).click().build().perform();

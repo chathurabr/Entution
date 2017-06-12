@@ -11,6 +11,7 @@ import org.testng.AssertJUnit;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.NoSuchElementException;
@@ -100,43 +101,28 @@ public class _01_04_NewEmployeeCreate {
 	}
 	
 	public void openOrgMamagamentModule(){
-		try{
+
 			WebDriverWait wait = new WebDriverWait(driver,40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
-			wait.until(ExpectedConditions.presenceOfElementLocated(modOrganizationMng));
-			driver.findElement(modOrganizationMng).click();
-				Reporter.log("Oranization Management module tab opened");
-				
-				String modName = driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/ul/li[2]/a/label")).getText();
-				/*if(modName == "ORGANIZATION MANAGEMENT"){
-					Reporter.log("Correct module name");
-				}
-				else{*/
-				//soft
-				/*SoftAssert softAst = new SoftAssert();
-				
-				softAst.assertEquals(modName,"ORGANIZATION MANAGEMENT","<font color ='red'>Organization Management module tab cannot open</font>");
-				String allertText = driver.switchTo().alert().getText();
-				
-				driver.switchTo().alert().accept();
-				softAst.assertEquals(allertText,"ORGANIZATION MANAGEMENT","<font color ='red'>Organization Management module tab cannot open Allert text</font>");
-				Reporter.log("Test"+ allertText + modName);
-				softAst.fail();
-				softAst.assertAll();*/
-				//Hard
-				AssertJUnit.assertEquals("ORGANIZATION MANAGEMENT", modName);
-				/*another way
-				//Assert.assertEquals("Wrong error message shown", "Please Enter Valid Email", driver.findElement(By.xpath("Your path of element")).getText());*/
-				
+
+			List<WebElement> li = driver.findElements(By.tagName("li"));
+
+			for(int i=0;i<li.size();i++){
+
+				String lala = li.get(i).getText();
+				System.out.print("-----------------------------------"+lala);
+					if(lala.equals("Organization Management")){
+						Actions action = new Actions(driver);
+						action.moveToElement(li.get(i)).click().build().perform();
+						Reporter.log("Organization Management module tab opened");
+				}else{
+					System.out.print("Cannot Found");
+					Reporter.log("Organization Management module cannot find");
+
 			}
-				catch(AssertionError e){
-				Reporter.log("<font color ='red'>Organization Management module Element Incorrect spelings</font>");
-				}
-				catch(TimeoutException tE){
-				Reporter.log("<font color ='red'>Organization Management module tab cannot open -Timeout exception</font>");
-			}
-			
-		finally{}
+
+		}
+
 	}
 	
 	public void openEmpInfoModule(){

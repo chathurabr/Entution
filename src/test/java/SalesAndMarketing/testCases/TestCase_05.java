@@ -70,7 +70,7 @@ public class TestCase_05 {
 		objCampaing.clkSearchIcon();
 		driver = CommonClassMainButtons.createNewItem();
 		driver = CommonClass.moveDriver(1);
-		objCampaing.campaingInfo("AutoCampName0059", "AutoCampName", "Advertisements"); //Code +// Dropdown List = --None--,Advertisements,Email, Telemarketing...
+		objCampaing.campaingInfo("AutoCampName0060", "AutoCampName", "Advertisements"); //Code +// Dropdown List = --None--,Advertisements,Email, Telemarketing...
 		//String campaingCodeStore = objCampaing.campaingCodeCommon;
 		//Draft
 		driver = CommonClassMainButtons.draftBtnClick();
@@ -86,7 +86,7 @@ public class TestCase_05 {
 		//driver.close();														
 		driver = CommonClass.moveDriver(0);	
 			//Search created Campaing
-		objCampaing.searchCreatedCampaing("AutoCampName0058"); // Copy above code
+		objCampaing.searchCreatedCampaing("AutoCampName0060"); // Copy above code
 	}
 	@Test(priority = 5)
 	public void TestCase_5_5(){
