@@ -98,7 +98,7 @@ public class TestCase_05 {
 	public void TestCase_5_6(){
 	
 	objTagASalesInquiryToALead	= new _05_06_TagASalesInquiryToALead(driver);
-	objTagASalesInquiryToALead.selectLead("Inquery About - An Issue", "5000", "Inquery description comes here", "Ramitha");
+	objTagASalesInquiryToALead.selectLead("Inquiry About - An Issue", "5000", "Inquiry description comes here", "Ramitha");
 		driver = CommonClassMainButtons.draftBtnClick();
 		driver = CommonClassMainButtons.releaseBtnClick();
 		driver = CommonClassMainButtons.chkLblStatusReleased();
@@ -114,7 +114,7 @@ public class TestCase_05 {
 		driver = CommonClassMainButtons.createNewItem();
 		
 	objTagSalesInquiryToAccount = new _05_07_TagSalesInquiryToAccount(driver);
-	objTagSalesInquiryToAccount.selectAccount("Inquery About - An Issue", "5000", "Inquery description comes here", "Ramitha");
+	objTagSalesInquiryToAccount.selectAccount("Inquiry About - An Issue", "5000", "Inquiry description comes here", "Ramitha");
 	}
 	
 	@Test(priority = 8)
@@ -128,7 +128,7 @@ public class TestCase_05 {
 	objSalesInquiryModule.goToSSalesInquiryModule();
 	//Insert data
 		driver = CommonClassMainButtons.createNewItem();
-	objTagSalesInquiryToAccount.selectAccount("Inquery About - An Issue", "5000", "Inquery description comes here", "Ramitha");
+	objTagSalesInquiryToAccount.selectAccount("Inquiry About - An Issue", "5000", "Inquiry description comes here", "Ramitha");
 		driver = CommonClass.draftAndNewBtnClick();
 		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 	}
@@ -167,12 +167,12 @@ public class TestCase_05 {
 	public void TestCase_5_11(){
 	objChangeCopyFromDetails = new _05_11_ChangeCopyFromDetails (driver);
 	objChangeCopyFromDetails.changeData();
-	objChangeCopyFromDetails.changeInquryAbout("Inquery About - An Issue(Copied from)");
+	objChangeCopyFromDetails.changeInquryAbout("Inquiry About - An Issue(Copied from)");
 	objChangeCopyFromDetails.changeCategory();
 	objChangeCopyFromDetails.changeInqueryOrigin();
 	objChangeCopyFromDetails.BudgetCurr("LKR");
 	objChangeCopyFromDetails.BudgetCost("6000");
-	objChangeCopyFromDetails.changeDescription(" .Inquery description comes here (Copied from)");
+	objChangeCopyFromDetails.changeDescription(" .Inquiry description comes here (Copied from)");
 	objChangeCopyFromDetails.changeResponsibleEmployee("Ramitha");
 	
 		driver = CommonClassMainButtons.draftBtnClick();
