@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 public class _01_04_NewEmployeeCreate {
 	WebDriver driver;
-	By modOrganizationMng = By.xpath("/html/body/div[1]/div[3]/div/ul/li[2]/a/label");
+	By modOrganizationMng = By.xpath("/html/body/div[1]/div[3]/div/ul/li[2]");
 	By modEmpInfo = By.linkText("Employee Information");//("//*[@id='header0']/li[2]/a[1]");
 	By headPageName = By.id("spPageName");////*[@id='spPageName'] - id - spPageName
 	By btnNewEmployee = By.id("btnUpdate");//("button pull-right margin-0");//("//*[@id='btnUpdate0']]");		//Identification issue				//("btnUpdate");
@@ -103,7 +103,8 @@ public class _01_04_NewEmployeeCreate {
 	public void openOrgMamagamentModule(){
 
 			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+			wait.pollingEvery(10, TimeUnit.SECONDS);
+			wait.until(ExpectedConditions.presenceOfElementLocated(modOrganizationMng));
 
 			List<WebElement> li = driver.findElements(By.tagName("li"));
 
@@ -111,7 +112,7 @@ public class _01_04_NewEmployeeCreate {
 
 				String lala = li.get(i).getText();
 				System.out.print("-----------------------------------"+lala);
-					if(lala.equals("Organization Management")){
+					if(lala.equals("ORGANIZATION MANAGEMENT")){
 						Actions action = new Actions(driver);
 						action.moveToElement(li.get(i)).click().build().perform();
 						Reporter.log("Organization Management module tab opened");

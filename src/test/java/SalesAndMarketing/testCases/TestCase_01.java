@@ -53,6 +53,8 @@ public class TestCase_01 extends CommonClass {
 	
 	@Test (priority = 4)
 	public void TestCase_1_4(){
+		driver.navigate().refresh();
+		driver = CommonClass.MainMenuNav();
 		objNewEmployee = new _01_04_NewEmployeeCreate(driver);
 		objNewEmployee.openOrgMamagamentModule();
 		objNewEmployee.openEmpInfoModule();
