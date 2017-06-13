@@ -20,7 +20,7 @@ public class _02_03_UnitLeaderAndEmpCode {
 	//UnitLead
 	By unitLeader = By.xpath("//*[@id='divGen']/div[2]/table/tbody/tr[6]/td[2]/div/span[2]/span");
 	By unitLeaderName = By.id("txtg1002");
-	By unitLeaderColumnName =By.xpath("//*[@id='g1002-t']/table/tbody/tr[1]/td[7]");
+	By unitLeaderColumnName =By.id("txtUnitLeader");
 	By unitLeaderColumn = By.xpath("//*[@id='g1002-t']/table/tbody/tr[1]");
 	
 	//Employee Code
@@ -62,7 +62,7 @@ public class _02_03_UnitLeaderAndEmpCode {
 		
 	}
 	public void insertUnitLeadName(String unitLeadName){
-				
+		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
@@ -71,13 +71,21 @@ public class _02_03_UnitLeaderAndEmpCode {
 		
 		wait.until(ExpectedConditions.presenceOfElementLocated(unitLeaderName));
 		WebElement ClickIt = driver.findElement(unitLeaderName);
-		Actions action = new Actions(driver);
-		action.click(ClickIt).build().perform();
-		action.sendKeys(unitLeadName).build().perform();
-		action.sendKeys(Keys.ENTER).build().perform();
-		//Select searched Unit Leader
 
-			
+		ClickIt.sendKeys(unitLeadName);
+		ClickIt.sendKeys(Keys.ENTER);
+
+	}
+
+	public void selectUnitLeader(){
+		Actions action = new Actions(driver);
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.pollingEvery(10, TimeUnit.SECONDS);
+
+		//Select searched Unit Leader
+		wait.until(ExpectedConditions.elementToBeClickable(unitLeaderColumn));
+		WebElement columnOne = driver.findElement(unitLeaderColumn);
+		action.moveToElement(columnOne).doubleClick().build().perform();
 	}
 	public void verifyUnitLead(String unitLeaderColName){
 		SoftAssert soAssertion = new SoftAssert();

@@ -111,14 +111,14 @@ public class _01_04_NewEmployeeCreate {
 			for(int i=0;i<li.size();i++){
 
 				String lala = li.get(i).getText();
-				System.out.print("-----------------------------------"+lala);
+		//		System.out.print("-----------------------------------"+lala);
 					if(lala.equals("ORGANIZATION MANAGEMENT")){
 						Actions action = new Actions(driver);
 						action.moveToElement(li.get(i)).click().build().perform();
 						Reporter.log("Organization Management module tab opened");
 				}else{
-					System.out.print("Cannot Found");
-					Reporter.log("Organization Management module cannot find");
+		//			System.out.print("Cannot Found");
+		//			Reporter.log("Organization Management module cannot find");
 
 			}
 

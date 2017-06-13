@@ -217,7 +217,7 @@ public class _01_05_CreateVendorThroughAccLookup {
 	}
 	
 	public void compareVendor(){
-		System.out.println("--------------------------------------------compareVendor executed");
+	//	System.out.println("--------------------------------------------compareVendor executed");
 		WebDriverWait wait = new WebDriverWait(driver,40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
@@ -225,7 +225,7 @@ public class _01_05_CreateVendorThroughAccLookup {
 		
 		 SoftAssert soAssertion = new SoftAssert(); 
 		 soAssertion.assertEquals(stringValue,driver.findElement(txtBoxVendor).getText());
-		 System.out.println("--------------------------------------------compareVendor End");
+	//	 System.out.println("--------------------------------------------compareVendor End");
 		 
 		 //driver.close();
 	}

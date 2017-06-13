@@ -61,6 +61,7 @@ public class TestCase_02 extends CommonClass {
 		objUnitLeaderAndEmpCode = new _02_03_UnitLeaderAndEmpCode(driver);
 		objUnitLeaderAndEmpCode.insertOtherInfo("AutoCodeR0116","AutoName0009","10");		//Change Code+
 		objUnitLeaderAndEmpCode.insertUnitLeadName("P.Perera");
+		objUnitLeaderAndEmpCode.selectUnitLeader();
 		objUnitLeaderAndEmpCode.verifyUnitLead("P.Perera");
 //		objUnitLeaderAndEmpCode.insertUnitLead();
 //		objUnitLeaderAndEmpCode.clkOnEmpCodeIcon();
