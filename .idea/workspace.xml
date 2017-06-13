@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonScreenshot.class" afterPath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonScreenshot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_01.class" afterPath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_01.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_02_CreateNewCollectionUnit.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_02_CreateNewCollectionUnit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_03_ColUniDraftAndNew.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_03_ColUniDraftAndNew.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_04_ColUnitCopyFrom.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_04_ColUnitCopyFrom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/dataProvider/CommonClassMainButtons.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/dataProvider/CommonClassMainButtons.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_03.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_03.java" />
+    <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="testCase3">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Test.properties" afterPath="$PROJECT_DIR$/util/Test.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_01.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="245">
-              <caret line="92" column="8" lean-forward="true" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="48" />
+              <caret line="92" column="8" lean-forward="false" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -65,8 +58,8 @@
       <file leaf-file-name="TestCase_03.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_03.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="95" column="56" lean-forward="false" selection-start-line="95" selection-start-column="56" selection-end-line="95" selection-end-column="56" />
+            <state relative-caret-position="55">
+              <caret line="79" column="43" lean-forward="false" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -86,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_03_ColUniDraftAndNew.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="89">
-              <caret line="61" column="35" lean-forward="true" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+              <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -281,11 +274,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Test Scripts\test11\src\test\java" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -689,9 +677,6 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\ramitha\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="" />
@@ -742,19 +727,24 @@
       <option name="project" value="LOCAL" />
       <updated>1497331700213</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="testCase3">
+      <created>1497347114819</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1497347114819</updated>
+    </task>
+    <task id="LOCAL-00008" summary="testCase3">
+      <created>1497348334582</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1497348334582</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestCase_03 - 2017.06.13 at 14h 42m 58s.xml">
-      <configuration name="TestCase_03" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_03 - 2017.06.13 at 14h 47m 24s.xml">
-      <configuration name="TestCase_03" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_03 - 2017.06.13 at 14h 47m 33s.xml">
-      <configuration name="TestCase_03" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="TestCase_03 - 2017.06.13 at 14h 49m 21s.xml">
       <configuration name="TestCase_03" configurationId="TestNG" />
     </history-entry>
@@ -776,15 +766,15 @@
     <history-entry file="TestCase_03 - 2017.06.13 at 15h 14m 42s.xml">
       <configuration name="TestCase_03" configurationId="TestNG" />
     </history-entry>
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <history-entry file="TestCase_03 - 2017.06.13 at 15h 34m 18s.xml">
+      <configuration name="TestCase_03" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestCase_03 - 2017.06.13 at 15h 36m 57s.xml">
+      <configuration name="TestCase_03" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestCase_03 - 2017.06.13 at 15h 37m 42s.xml">
+      <configuration name="TestCase_03" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -830,7 +820,8 @@
     <MESSAGE value="Organization Management module click method has modified again" />
     <MESSAGE value="Minor code change in Test case 2" />
     <MESSAGE value="Print Line command has removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Print Line command has removed" />
+    <MESSAGE value="testCase3" />
+    <option name="LAST_COMMIT_MESSAGE" value="testCase3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1177,7 +1168,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_01.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
-          <caret line="92" column="8" lean-forward="true" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="48" />
+          <caret line="92" column="8" lean-forward="false" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="48" />
           <folding />
         </state>
       </provider>
@@ -1201,7 +1192,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_03_ColUniDraftAndNew.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="89">
-          <caret line="61" column="35" lean-forward="true" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+          <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -1240,8 +1231,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_03.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="95" column="56" lean-forward="false" selection-start-line="95" selection-start-column="56" selection-end-line="95" selection-end-column="56" />
+        <state relative-caret-position="55">
+          <caret line="79" column="43" lean-forward="false" selection-start-line="79" selection-start-column="43" selection-end-line="79" selection-end-column="43" />
           <folding />
         </state>
       </provider>
