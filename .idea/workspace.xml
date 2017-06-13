@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="testCase3">
+    <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Test.properties" afterPath="$PROJECT_DIR$/util/Test.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_04_NewEmployeeCreate.class" afterPath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_04_NewEmployeeCreate.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_05_CreateVendorThroughAccLookup.class" afterPath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_05_CreateVendorThroughAccLookup.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_03_UnitLeaderAndEmpCode.class" afterPath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_03_UnitLeaderAndEmpCode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_02.class" afterPath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_02.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_04_NewEmployeeCreate.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_04_NewEmployeeCreate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_05_CreateVendorThroughAccLookup.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_05_CreateVendorThroughAccLookup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_02_salesUnits/_02_03_UnitLeaderAndEmpCode.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_02_salesUnits/_02_03_UnitLeaderAndEmpCode.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_02.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_02.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -741,7 +748,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497348334582</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="testCase3">
+      <created>1497348508255</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1497348508255</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -788,8 +802,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16719243" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14984228" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40536278" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14984228" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40536278" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
