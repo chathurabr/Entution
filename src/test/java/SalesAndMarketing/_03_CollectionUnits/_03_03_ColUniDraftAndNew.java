@@ -26,27 +26,27 @@ public class _03_03_ColUniDraftAndNew {
 	}
 	
 	public void ColUniDraftAndNew(){
-		this.draftAndNew();
+
 		this.verifyColUnitExsistingData();
 	}
 	
-	public void draftAndNew(){
+	/*public void draftAndNew(){
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(draftAndNewBtn));
 		driver.findElement(draftAndNewBtn).click();
 		
-	}
+	}*/
 	
 	public void verifyColUnitExsistingData(){
 		
-		try {
+	/*	try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		SoftAssert soAssert = new SoftAssert();
 		WebDriverWait wait = new WebDriverWait(driver, 40);

@@ -6,9 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /***************************************************************************************
@@ -62,14 +64,20 @@ public class CommonClassMainButtons extends CommonClass {
 			WebElement releaseB = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[2]")));
 
-			if(releaseB.getText().equals("Release")){
-			
-			action.moveToElement(releaseB).click().build().perform();
-				Reporter.log("Release button clicked successfully");
-			}else{
-				
-				soAssert.assertEquals(releaseB.getText(), "Release");
+		 List <WebElement> releaseButton = driver.findElements(By.xpath("//*[@id='permissionBar']/a[2]"));
+			for(int i=0;i<releaseButton.size();i++){
+
+				if(releaseButton.get(i).getText().equals("Release")){
+
+					action.moveToElement(releaseButton.get(i)).click().build().perform();
+					Reporter.log("Release button clicked successfully");
+				}else{
+
+					soAssert.assertEquals(releaseButton.get(i).getText(), "Release");
+				}
+
 			}
+
 		 return wdd;
 	 }
 	 
@@ -147,8 +155,9 @@ public class CommonClassMainButtons extends CommonClass {
 				action.moveToElement(drftNew).click().build().perform();
 				Reporter.log("Draft and New button clicked successfully");
 			}else{
-				soAssert.assertEquals(drftNew.getText(), "Draft & New");
-				soAssert.assertAll();
+				//soAssert.assertEquals(drftNew.getText(), "Draft & New");
+				Assert.assertEquals("Draft & New",drftNew.getText());
+				//soAssert.assertAll();
 			}
 		 return wdd;
 	 }
