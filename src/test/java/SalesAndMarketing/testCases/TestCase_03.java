@@ -2,14 +2,17 @@ package SalesAndMarketing.testCases;
 
 import SalesAndMarketing._03_CollectionUnits.*;
 import SalesAndMarketing.dataProvider.CommonClass;
+import SalesAndMarketing.dataProvider.CommonClassMainButtons;
 import SalesAndMarketing.dataProvider.CommonScreenshot;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 public class TestCase_03 extends CommonClass {
 	public WebDriver driver;
@@ -20,6 +23,8 @@ public class TestCase_03 extends CommonClass {
 	_03_05_ModifyCopyFromDate objModifyCopyFromDate;
 	_03_06_DuplicateColUnitData objDuplicateColUnitData;
 	_03_07_ActionDropdown objActionDropdown;
+
+	private int CollectionUnitCode;
 	
 	//@DataProvider
 	/*public Object[] testcred(){ 
@@ -34,21 +39,46 @@ public class TestCase_03 extends CommonClass {
 		return details;
 		}*/
 	
-	@BeforeTest
+/*	@BeforeTest
 	public void beforeTest(){
-		driver = CommonClass.driverInstance();
-		driver = CommonClass.loginMeth();
-		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
-	}
+
+	}*/
 	
 	@AfterMethod
 	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
 		driver = CommonScreenshot.takeSnapshot(testResult);
 	}
+
+	@BeforeMethod
+	public void getEmpID() throws org.apache.commons.configuration.ConfigurationException {
+
+		Properties properties =new Properties();
+		try {
+			String filePath = System.getProperty("user.dir");
+			properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+			int CUCode = Integer.parseInt(properties.getProperty("CUCode"));
+			//int get = Integer.parseInt(getEmpID);
+			CollectionUnitCode= CUCode + 1;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@AfterMethod
+	public void saveNewEmpID() throws ConfigurationException {
+		String filePath = System.getProperty("user.dir");
+		PropertiesConfiguration config = new PropertiesConfiguration(filePath+"\\util\\Test.properties");
+		config.setProperty("CUCode",CollectionUnitCode);
+		config.save();
+	}
 	
 	@Test (priority = 1)
 	public void TestCase_3_1(){
+		driver = CommonClass.driverInstance();
+		driver = CommonClass.loginMeth();
+		driver = CommonClass.MainMenuNav();
+		driver = CommonClass.salesAndMketMenuNav();
 		objCollectionUnit = new _03_01_CollectionUnits(driver);
 		objCollectionUnit.navToCollUnit();
 		objCollectionUnit.newColUnit();
@@ -59,11 +89,13 @@ public class TestCase_03 extends CommonClass {
 	@Test(priority = 2) 
 	public void TestCase_3_2(){
 		objCreateNewCollectionUnit = new _03_02_CreateNewCollectionUnit(driver);
-		objCreateNewCollectionUnit.createNewColUnit("ColCode0083", "Phones", "50");			// Change code +++ x4
+		objCreateNewCollectionUnit.createNewColUnit(Integer.toString(CollectionUnitCode), "Phones", "50");			// Change code +++ x4
 		objCreateNewCollectionUnit.searchEmp("P.Perera", "50");
-		objCreateNewCollectionUnit.draftReleaseColUnit();
+		driver = CommonClassMainButtons.draftBtnClick();
+		driver = CommonClassMainButtons.releaseBtnClick();
+		driver = CommonClassMainButtons.chkLblStatusReleased();
 		objCreateNewCollectionUnit.verifyHeader();
-		driver.quit();
+		driver.close();
 		
 	}
 	
@@ -81,13 +113,14 @@ public class TestCase_03 extends CommonClass {
 			
 		//Reuse test case 3.2 functions
 		objCreateNewCollectionUnit = new _03_02_CreateNewCollectionUnit(driver);
-		objCreateNewCollectionUnit.createNewColUnit("ColCode0084", "Phones", "50");			// Change code +++ X4
+		objCreateNewCollectionUnit.createNewColUnit(Integer.toString(CollectionUnitCode), "Phones", "50");			// Change code +++ X4
 		objCreateNewCollectionUnit.searchEmp("P.Perera", "50");;
 		//Click on draft and new button
 		objColUniDraftAndNew = new _03_03_ColUniDraftAndNew(driver);
-		objColUniDraftAndNew.draftAndNew();
+		driver = CommonClassMainButtons.draftAndNewBtnClick();
+		//objColUniDraftAndNew.draftAndNew();
 		objColUniDraftAndNew.verifyColUnitExsistingData();
-		driver.quit();
+		driver.close();
 	}
 	
 	@Test(priority = 4) 
@@ -103,12 +136,12 @@ public class TestCase_03 extends CommonClass {
 				objCollectionUnit.verifyHeader();
 		//Click on the Copy From (Test case 03_04)
 			objColUnitCopyFrom	= new _03_04_ColUnitCopyFrom (driver);
-			objColUnitCopyFrom.colunitCopyFromBtnfunc();
+			driver = CommonClassMainButtons.copyFromBtnClick();
+		//	objColUnitCopyFrom.colunitCopyFromBtnfunc();
 				
 			objColUnitCopyFrom.selectColUnit("0010");	// use 0010
-				
 			objColUnitCopyFrom.verifyColUnit();
-			objColUnitCopyFrom.enterColUnitCode("ColCode0085"); 					// enter new code++++ X4
+			objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
 				
 	}	
 	
@@ -119,7 +152,8 @@ public class TestCase_03 extends CommonClass {
 			
 		//
 		objCreateNewCollectionUnit = new _03_02_CreateNewCollectionUnit(driver);
-		objCreateNewCollectionUnit.draftReleaseColUnit();
+		driver = CommonClassMainButtons.draftBtnClick();
+		driver = CommonClassMainButtons.releaseBtnClick();
 		objCreateNewCollectionUnit.verifyHeader();
 	}
 	
@@ -127,10 +161,11 @@ public class TestCase_03 extends CommonClass {
 	public void TestCase_3_6(){
 		objDuplicateColUnitData = new _03_06_DuplicateColUnitData(driver);
 		objDuplicateColUnitData.clkOnDuplicate();
-		objDuplicateColUnitData.fillMandatoryFields("ColCode0086");				// enter new code++++ X4
+		objDuplicateColUnitData.fillMandatoryFields(Integer.toString(CollectionUnitCode));				// enter new code++++ X4
 		//
 		objCreateNewCollectionUnit = new _03_02_CreateNewCollectionUnit(driver);
-		objCreateNewCollectionUnit.draftReleaseColUnit();
+		driver = CommonClassMainButtons.draftBtnClick();
+		driver = CommonClassMainButtons.releaseBtnClick();
 		objCreateNewCollectionUnit.verifyHeader();
 	}
 	

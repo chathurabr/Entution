@@ -36,21 +36,21 @@ public class _03_04_ColUnitCopyFrom {
 	
 	
 	public void ColUnitCopyFrom(String collectionUnitCode, String NewcollectionUnitCode){
-		this.colunitCopyFromBtnfunc();
+	//	this.colunitCopyFromBtnfunc();
 		this.selectColUnit(collectionUnitCode);
 		this.verifyColUnit();
 		this.enterColUnitCode(NewcollectionUnitCode);
 		
 	}
 	
-	public void colunitCopyFromBtnfunc(){
+/*	public void colunitCopyFromBtnfunc(){
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(copyFromBtn));
 		driver.findElement(copyFromBtn).click();
 			Reporter.log("Successfully clicked on copy from button and Collection unit window pop up");
-	}
+	}*/
 	public void selectColUnit(String collectionUnitCode){
 		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 40);

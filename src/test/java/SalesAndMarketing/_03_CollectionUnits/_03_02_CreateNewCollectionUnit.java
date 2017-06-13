@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
@@ -38,7 +39,7 @@ public class _03_02_CreateNewCollectionUnit {
 	public void CreateNewCollectionUnit(String collectionUnitCode,String collectionUnitName,String collectionUnitComRate,String employeeName,String employeeSharingRate){ //createNewColUnit,searchEmp
 		this.createNewColUnit(collectionUnitCode, collectionUnitName, collectionUnitComRate);
 		this.searchEmp(employeeName, employeeSharingRate);
-		this.draftReleaseColUnit();
+		//this.draftReleaseColUnit();
 		this.verifyHeader();
 	}
 	
@@ -89,7 +90,7 @@ public class _03_02_CreateNewCollectionUnit {
 			Reporter.log("Successfully entered employee sharing rate");
 	}
 	
-	public void draftReleaseColUnit(){
+	/*public void draftReleaseColUnit(){
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
@@ -107,7 +108,7 @@ public class _03_02_CreateNewCollectionUnit {
 		wait.until(ExpectedConditions.elementToBeClickable(releaseBtn));
 		driver.findElement(releaseBtn).click();
 		Reporter.log("Successfully clicked on draft button and then released created collection unit");
-	}
+	}*/
 	
 	public void verifyHeader(){
 		SoftAssert soAssert = new SoftAssert();
@@ -115,9 +116,9 @@ public class _03_02_CreateNewCollectionUnit {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.elementToBeClickable(statusLbl));
+		/*wait.until(ExpectedConditions.elementToBeClickable(statusLbl));
 		soAssert.assertEquals("(Released)", driver.findElement(statusLbl).getText());
-		Reporter.log("Collection unit released successfully");
+		Reporter.log("Collection unit released successfully");*/
 		
 		try {
 			Thread.sleep(5000);
@@ -129,8 +130,9 @@ public class _03_02_CreateNewCollectionUnit {
 		wait.until(ExpectedConditions.presenceOfElementLocated(satusActiveLbl));
 		String activeLbl = driver.findElement(satusActiveLbl).getText();
 		System.out.println("-----------------------------------"+activeLbl);
-		soAssert.assertEquals("ACTIVE",activeLbl);
-		soAssert.assertAll();
+		//soAssert.assertEquals("ACTIVEc",activeLbl);
+		Assert.assertEquals(activeLbl,"ACTIVE");
+		//soAssert.assertAll();
 			Reporter.log("Status changed as Active");
 	}
 }
