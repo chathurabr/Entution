@@ -59,9 +59,9 @@ public class TestCase_02 extends CommonClass {
 	@Test (priority = 3)
 	public void TestCase_2_3(){
 		objUnitLeaderAndEmpCode = new _02_03_UnitLeaderAndEmpCode(driver);
-		objUnitLeaderAndEmpCode.insertOtherInfo("AutoCode0110","AutoName0009","10");		//Change Code+
-		objUnitLeaderAndEmpCode.insertUnitLeadName("000003 [P.Perera]");
-		objUnitLeaderAndEmpCode.veryfyUnitLead();
+		objUnitLeaderAndEmpCode.insertOtherInfo("AutoCodeR0114","AutoName0009","10");		//Change Code+
+		objUnitLeaderAndEmpCode.insertUnitLeadName("P.Perera");
+		objUnitLeaderAndEmpCode.verifyUnitLead();
 		objUnitLeaderAndEmpCode.insertUnitLead();
 		objUnitLeaderAndEmpCode.clkOnEmpCodeIcon();
 		objUnitLeaderAndEmpCode.enterEmpCode("000003 [P.Perera]");
@@ -92,7 +92,7 @@ public class TestCase_02 extends CommonClass {
 			
 //--------------Enter Sales unit details------------------------------------------------------------------
 			objUnitLeaderAndEmpCode = new _02_03_UnitLeaderAndEmpCode(driver);
-			objUnitLeaderAndEmpCode.insertOtherInfo("AutCodSalsUni100","Test Sales Unit","5");		//Change Code+
+			objUnitLeaderAndEmpCode.insertOtherInfo("AutCodSalsUniR102","Test Sales Unit","5");		//Change Code+
 //------Collection unit search--------------------------------------------------------------------
 //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_HERE-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 				objNewSalesUnitCreate = new _02_05_NewSalesUnitCreate(driver);
@@ -107,9 +107,9 @@ public class TestCase_02 extends CommonClass {
 //Enter Collection unit data
 					objNewSalesUnitCreate.insertNewColUnitInfo("collectionUnitCode", "Nokia", "5");
 //New emp details
-//					objNewSalesUnitCreate.enterNewEmployeeColUnitInfo("AutCodEmpColUnit072", "Mr.", "Mike Fernando", "M. Fernando", "CEO");			
+					objNewSalesUnitCreate.enterNewEmployeeColUnitInfo("AutCodEmpColUnit072", "Mr.", "Mike Fernando", "M. Fernando", "CEO");
 		//employee code search
-//					objNewSalesUnitCreate.searchEmpForNewColUnitInfo();
+					objNewSalesUnitCreate.searchEmpForNewColUnitInfo();
 		//New employee btn click (open in new tab/window)
 //					objNewSalesUnitCreate.NewEmpForNewColUnitInfo();
 	/*del later*///	objNewSalesUnitCreate.shiftWindows(2);
