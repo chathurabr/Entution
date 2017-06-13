@@ -37,7 +37,7 @@ public class _02_03_UnitLeaderAndEmpCode {
 	public void UnitLeaderAndEmpCode(String salesUniCod,String salesUniName, String CommisionRate,String unitLeadName){
 		this.insertOtherInfo(salesUniCod, salesUniName, CommisionRate);
 		this.insertUnitLeadName(unitLeadName);
-		this.veryfyUnitLead();
+		this.verifyUnitLead();
 		this.insertUnitLead();
 		this.clkOnEmpCodeIcon();
 		this.enterEmpCode(unitLeadName);
@@ -72,13 +72,12 @@ public class _02_03_UnitLeaderAndEmpCode {
 		wait.until(ExpectedConditions.presenceOfElementLocated(unitLeaderName));
 		WebElement ClickIt = driver.findElement(unitLeaderName);
 		Actions action = new Actions(driver);
-		action.click(ClickIt);
-		action.sendKeys(unitLeadName);
-		action.sendKeys(Keys.ENTER);
-		action.build().perform();
+		action.click(ClickIt).build().perform();
+		action.sendKeys(unitLeadName).build().perform();
+		action.sendKeys(Keys.ENTER).build().perform();
 			
 	}
-	public void veryfyUnitLead(){
+	public void verifyUnitLead(){
 		SoftAssert soAssertion = new SoftAssert();
 		
 		WebDriverWait wait = new WebDriverWait(driver, 40);
