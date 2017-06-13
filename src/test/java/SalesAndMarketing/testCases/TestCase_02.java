@@ -62,10 +62,11 @@ public class TestCase_02 extends CommonClass {
 		objUnitLeaderAndEmpCode.insertOtherInfo("AutoCodeR0116","AutoName0009","10");		//Change Code+
 		objUnitLeaderAndEmpCode.insertUnitLeadName("P.Perera");
 		objUnitLeaderAndEmpCode.selectUnitLeader();
-		objUnitLeaderAndEmpCode.verifyUnitLead("P.Perera");
+		objUnitLeaderAndEmpCode.verifyUnitLead("000003 [P.Perera]");
 //		objUnitLeaderAndEmpCode.insertUnitLead();
-//		objUnitLeaderAndEmpCode.clkOnEmpCodeIcon();
-//		objUnitLeaderAndEmpCode.enterEmpCode("P.Perera");
+		objUnitLeaderAndEmpCode.clkOnEmpCodeIcon();
+		objUnitLeaderAndEmpCode.enterEmpCode("P.Perera");
+		objUnitLeaderAndEmpCode.selectEmployeeCode();
 //		objUnitLeaderAndEmpCode.verifyEmpCode();
 	}
 	

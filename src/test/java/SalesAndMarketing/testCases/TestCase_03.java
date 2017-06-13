@@ -39,14 +39,25 @@ public class TestCase_03 extends CommonClass {
 		return details;
 		}*/
 	
-/*	@BeforeTest
+	@BeforeTest
 	public void beforeTest(){
+	driver = CommonClass.driverInstance();
+		driver = CommonClass.loginMeth();
+		driver = CommonClass.MainMenuNav();
+		driver = CommonClass.salesAndMketMenuNav();
 
-	}*/
+	}
 	
 	@AfterMethod
 	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
 		driver = CommonScreenshot.takeSnapshot(testResult);
+	}
+
+	public void saveNewEmpID() throws ConfigurationException {
+		String filePath = System.getProperty("user.dir");
+		PropertiesConfiguration config = new PropertiesConfiguration(filePath+"\\util\\Test.properties");
+		config.setProperty("CUCode",CollectionUnitCode);
+		config.save();
 	}
 
 	@BeforeMethod
@@ -64,21 +75,9 @@ public class TestCase_03 extends CommonClass {
 			e.printStackTrace();
 		}
 	}
-
-	@AfterMethod
-	public void saveNewEmpID() throws ConfigurationException {
-		String filePath = System.getProperty("user.dir");
-		PropertiesConfiguration config = new PropertiesConfiguration(filePath+"\\util\\Test.properties");
-		config.setProperty("CUCode",CollectionUnitCode);
-		config.save();
-	}
-	
 	@Test (priority = 1)
 	public void TestCase_3_1(){
-		driver = CommonClass.driverInstance();
-		driver = CommonClass.loginMeth();
-		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+
 		objCollectionUnit = new _03_01_CollectionUnits(driver);
 		objCollectionUnit.navToCollUnit();
 		objCollectionUnit.newColUnit();
@@ -95,14 +94,14 @@ public class TestCase_03 extends CommonClass {
 		driver = CommonClassMainButtons.releaseBtnClick();
 		driver = CommonClassMainButtons.chkLblStatusReleased();
 		objCreateNewCollectionUnit.verifyHeader();
-		driver.close();
+
 		
 	}
 	
 	@Test(priority = 3) 
 	public void TestCase_3_3(){
-		driver = CommonClass.driverInstance();
-		driver = CommonClass.loginMeth();
+		driver.navigate().refresh();
+		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
 		driver = CommonClass.salesAndMketMenuNav();
 		//Reuse test case 3.1 functions
@@ -116,36 +115,31 @@ public class TestCase_03 extends CommonClass {
 		objCreateNewCollectionUnit.createNewColUnit(Integer.toString(CollectionUnitCode), "Phones", "50");			// Change code +++ X4
 		objCreateNewCollectionUnit.searchEmp("P.Perera", "50");;
 		//Click on draft and new button
-		objColUniDraftAndNew = new _03_03_ColUniDraftAndNew(driver);
 		driver = CommonClassMainButtons.draftAndNewBtnClick();
 		//objColUniDraftAndNew.draftAndNew();
-		objColUniDraftAndNew.verifyColUnitExsistingData();
-		driver.close();
+	//	objColUniDraftAndNew.verifyColUnitExsistingData();
+
 	}
 	
-	@Test(priority = 4) 
+/*	@Test(priority = 4)
 	public void TestCase_3_4(){
-		driver = CommonClass.driverInstance();
-		driver = CommonClass.loginMeth();
 		driver = CommonClass.MainMenuNav();
 		driver = CommonClass.salesAndMketMenuNav();
 		//Reuse test case 3.1 functions
 				objCollectionUnit = new _03_01_CollectionUnits(driver);
 				objCollectionUnit.navToCollUnit();
 				objCollectionUnit.newColUnit();
-				objCollectionUnit.verifyHeader();
+	//			objCollectionUnit.verifyHeader();
 		//Click on the Copy From (Test case 03_04)
-			objColUnitCopyFrom	= new _03_04_ColUnitCopyFrom (driver);
-			driver = CommonClassMainButtons.copyFromBtnClick();
+	//		driver = CommonClassMainButtons.copyFromBtnClick();
 		//	objColUnitCopyFrom.colunitCopyFromBtnfunc();
-				
-			objColUnitCopyFrom.selectColUnit("0010");	// use 0010
-			objColUnitCopyFrom.verifyColUnit();
-			objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
+	//		objColUnitCopyFrom.selectColUnit("0010");	// use 0010
+	//		objColUnitCopyFrom.verifyColUnit();
+	//		objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
 				
 	}	
 	
-	@Test(priority = 5) 
+/*	@Test(priority = 5)
 	public void TestCase_3_5(){
 		objModifyCopyFromDate = new _03_05_ModifyCopyFromDate (driver);
 		objModifyCopyFromDate.ModifyCopyFromDateFunc("PhonesNew", "75","25");
