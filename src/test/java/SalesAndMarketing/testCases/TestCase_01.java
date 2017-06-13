@@ -45,7 +45,8 @@ public class TestCase_01 extends CommonClass {
 			int getEmpID = Integer.parseInt(properties.getProperty("EMP_ID"));
 			//int get = Integer.parseInt(getEmpID);
 			EMP_ID= getEmpID + 1;
-			System.out.println(EMP_ID);
+
+		//	System.out.println(EMP_ID);
 
 		} catch (IOException e) {
 			e.printStackTrace();

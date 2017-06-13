@@ -24,7 +24,7 @@ public class CommonScreenshot extends CommonClass {
 			
 		
 			if (testResult.getStatus() == ITestResult.FAILURE) {
-				System.out.println(testResult.getStatus());
+			//	System.out.println(testResult.getStatus());
 				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(scrFile, new File("C://Screenshots//" + testResult.getName() + "-" + Arrays.toString(testResult.getParameters()) +  ".jpg"));
 			  
