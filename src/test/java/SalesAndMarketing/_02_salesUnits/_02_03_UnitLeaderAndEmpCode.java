@@ -34,10 +34,10 @@ public class _02_03_UnitLeaderAndEmpCode {
 		
 	}
 	
-	public void UnitLeaderAndEmpCode(String salesUniCod,String salesUniName, String CommisionRate,String unitLeadName){
+	public void UnitLeaderAndEmpCode(String salesUniCod,String salesUniName, String CommisionRate,String unitLeadName,String unitLeaderColName){
 		this.insertOtherInfo(salesUniCod, salesUniName, CommisionRate);
 		this.insertUnitLeadName(unitLeadName);
-		this.verifyUnitLead();
+		this.verifyUnitLead(unitLeaderColName);
 		this.insertUnitLead();
 		this.clkOnEmpCodeIcon();
 		this.enterEmpCode(unitLeadName);
@@ -75,22 +75,19 @@ public class _02_03_UnitLeaderAndEmpCode {
 		action.click(ClickIt).build().perform();
 		action.sendKeys(unitLeadName).build().perform();
 		action.sendKeys(Keys.ENTER).build().perform();
+		//Select searched Unit Leader
+
 			
 	}
-	public void verifyUnitLead(){
+	public void verifyUnitLead(String unitLeaderColName){
 		SoftAssert soAssertion = new SoftAssert();
-		
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+
 		wait.until(ExpectedConditions.presenceOfElementLocated(unitLeaderColumnName));
 		String columnText = driver.findElement(unitLeaderColumnName).getText();
 		//000003 [P.Perera]
-		soAssertion.assertEquals(columnText,"000003 [P.Perera]");
+		soAssertion.assertEquals(columnText,unitLeaderColName);
 		soAssertion.assertAll();
 	}
 	public void insertUnitLead(){

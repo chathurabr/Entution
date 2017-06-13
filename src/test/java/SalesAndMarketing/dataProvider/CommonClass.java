@@ -113,7 +113,7 @@ public class CommonClass {
 		}
 	 
 	 public static WebDriver salesAndMketMenuNav(){
-		
+		 SoftAssert soAssert = new SoftAssert();
 		//JavascriptExecutor executor = (JavascriptExecutor)driver;
 				WebDriverWait wait = new WebDriverWait(driver,40);
 				wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -125,12 +125,11 @@ public class CommonClass {
 				for(int i=0;i<li.size();i++){
 					
 					String lala = li.get(i).getText();
-					System.out.print("-----------------------------------"+lala);
+				//	System.out.print("-----------------------------------"+lala);
 						if(lala.equals("SALES & MARKETING")){
 							Actions action = new Actions(driver);
 							action.moveToElement(li.get(i)).click().build().perform();
 					}else{
-						System.out.print("Cannot Found");
 
 					}
 						
