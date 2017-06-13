@@ -2,7 +2,10 @@ package SalesAndMarketing._01_Common;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
@@ -156,11 +159,13 @@ public class _01_05_CreateVendorThroughAccLookup {
 		driver.findElement(vendorName).sendKeys(venName);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(vendorGroup));
-		driver.findElement(vendorGroup).click();
+		//driver.findElement(vendorGroup).click();
+		Select ddvenderGroup = new Select(driver.findElement(By.id("cobxQuickVendorGroup")));
+		ddvenderGroup.selectByVisibleText("TV01");
 		
-		wait.until(ExpectedConditions.elementToBeClickable(vendorGroupLocal));
-		driver.findElement(vendorGroupLocal).click();
-		
+		//wait.until(ExpectedConditions.elementToBeClickable(vendorGroupLocal));
+		//driver.findElement(vendorGroupLocal).click();
+
 		wait.until(ExpectedConditions.elementToBeClickable(vendorCode));
 		driver.findElement(vendorCode).click();
 		driver.findElement(vendorCode).sendKeys(venCode);
