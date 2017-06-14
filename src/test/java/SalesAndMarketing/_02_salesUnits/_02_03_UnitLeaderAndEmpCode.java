@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import java.util.concurrent.TimeUnit;
@@ -88,15 +89,16 @@ public class _02_03_UnitLeaderAndEmpCode {
 		action.moveToElement(columnOne).doubleClick().build().perform();
 	}
 	public void verifyUnitLead(String unitLeaderColName){
-		SoftAssert soAssertion = new SoftAssert();
+		//SoftAssert soAssertion = new SoftAssert();
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 
 		wait.until(ExpectedConditions.presenceOfElementLocated(unitLeaderColumnName));
 		String columnText = driver.findElement(unitLeaderColumnName).getText();
 		//000003 [P.Perera]
-		soAssertion.assertEquals(columnText,unitLeaderColName);
-		soAssertion.assertAll();
+		Assert.assertEquals(columnText,unitLeaderColName);
+		//soAssertion.assertEquals(columnText,unitLeaderColName);
+		//soAssertion.assertAll();
 	}
 	public void insertUnitLead(){
 		WebDriverWait wait = new WebDriverWait(driver, 40);

@@ -57,7 +57,7 @@ public class _03_01_CollectionUnits {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.elementToBeClickable(	headerLbl));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(headerLbl));
 		soAsert.assertEquals("New", driver.findElement(headerLbl).getText());
 		
 		soAsert.assertAll();
