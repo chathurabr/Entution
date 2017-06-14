@@ -49,33 +49,28 @@ public class _03_03_ColUniDraftAndNew {
 			e.printStackTrace();
 		}*/
 		
-		//SoftAssert soAssert = new SoftAssert();
+		SoftAssert soAssert = new SoftAssert();
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(colUnitCode));
-		Assert.assertEquals(driver.findElement(colUnitCode).getAttribute("value"),"");
-		//soAssert.assertEquals("",driver.findElement(colUnitCode).getAttribute("value"));
+		soAssert.assertEquals(driver.findElement(colUnitCode).getAttribute("value"),"");
 		
 		wait.until(ExpectedConditions.elementToBeClickable(colUnitName));
-		//soAssert.assertEquals("",driver.findElement(colUnitName).getAttribute("value"));
-		Assert.assertEquals(driver.findElement(colUnitName).getAttribute("value"),"");
+		soAssert.assertEquals(driver.findElement(colUnitName).getAttribute("value"),"");
 		
 		wait.until(ExpectedConditions.elementToBeClickable(comRate));
-		//soAssert.assertEquals("0.00",driver.findElement(comRate).getAttribute("value"));
-		Assert.assertEquals(driver.findElement(comRate).getAttribute("value"),"0.00");
+		soAssert.assertEquals(driver.findElement(comRate).getAttribute("value"),"0.00");
 			Reporter.log(" Collection unit Code, Collection Unit Name and Commission rate entered");
 			
 		wait.until(ExpectedConditions.elementToBeClickable(empSharingRate));
-		//soAssert.assertEquals("0.00",driver.findElement(empSharingRate).getAttribute("value"));
-		Assert.assertEquals(driver.findElement(empSharingRate).getAttribute("value"),"0.00");
+		soAssert.assertEquals(driver.findElement(empSharingRate).getAttribute("value"),"0.00");
 			Reporter.log("Successfully clicked on search icon under Employee code and select created employee");
 			Reporter.log("Sharing rate entered successfully");
 		wait.until(ExpectedConditions.elementToBeClickable(empSelectedCode));
-		//soAssert.assertEquals("",driver.findElement(empSelectedCode).getText());
-		Assert.assertEquals(driver.findElement(empSelectedCode).getAttribute("value"),"");
+		soAssert.assertEquals("",driver.findElement(empSelectedCode).getText());
 		
-		//soAssert.assertAll();
+		soAssert.assertAll();
 	}
 	
 	

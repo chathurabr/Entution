@@ -39,9 +39,11 @@ public class _02_03_UnitLeaderAndEmpCode {
 		this.insertOtherInfo(salesUniCod, salesUniName, CommisionRate);
 		this.insertUnitLeadName(unitLeadName);
 		this.verifyUnitLead(unitLeaderColName);
+		this.selectUnitLeader();
 		this.insertUnitLead();
 		this.clkOnEmpCodeIcon();
 		this.enterEmpCode(unitLeadName);
+		this.selectEmployeeCode();
 		this.verifyEmpCode();
 		//
 	}
@@ -94,15 +96,16 @@ public class _02_03_UnitLeaderAndEmpCode {
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 
 		wait.until(ExpectedConditions.presenceOfElementLocated(unitLeaderColumnName));
-		String columnText = driver.findElement(unitLeaderColumnName).getText();
+		String columnText = driver.findElement(unitLeaderColumnName).getAttribute("value");
 		//000003 [P.Perera]
 		Assert.assertEquals(columnText,unitLeaderColName);
 		//soAssertion.assertEquals(columnText,unitLeaderColName);
 		//soAssertion.assertAll();
+
 	}
 	public void insertUnitLead(){
 		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.pollingEvery(30, TimeUnit.SECONDS);
+		wait.pollingEvery(10, TimeUnit.SECONDS);
 		wait.until(ExpectedConditions.presenceOfElementLocated(unitLeaderColumn));
 		
 		WebElement clickIt = driver.findElement(unitLeaderColumn);	
@@ -127,11 +130,31 @@ public class _02_03_UnitLeaderAndEmpCode {
 		wait.until(ExpectedConditions.presenceOfElementLocated(empName));
 		WebElement clickIt = driver.findElement(empName);
 		Actions action = new Actions(driver);
-		action.click(clickIt);
-		action.sendKeys(unitLeadName);
+		action.click(clickIt).build().perform();
+		clickIt.clear();
+		action.sendKeys(unitLeadName).build().perform();
 		action.sendKeys(Keys.ENTER).build().perform();
 	}
-	
+	 public void selectEmployeeCode(){
+
+		 try {
+			 Thread.sleep(5000);
+		 } catch (InterruptedException e) {
+			 e.printStackTrace();
+		 }
+		 Actions action = new Actions(driver);
+		 WebDriverWait wait = new WebDriverWait(driver, 40);
+		 wait.pollingEvery(30, TimeUnit.SECONDS);
+
+		 wait.until(ExpectedConditions.elementToBeClickable(empColumn));
+		 WebElement colOne = driver.findElement(empColumn);
+
+		 action.moveToElement(colOne).doubleClick().build().perform();
+		 if(colOne.isDisplayed()){
+			 action.moveToElement(colOne).doubleClick().build().perform();
+			 System.out.println("If condition executed");
+		 }
+	 }
 	public void verifyEmpCode(){////////////////////////////////////////////// 			Find 
 		
 	/*	Dimension columnSize = driver.findElement(empColumn).getSize();

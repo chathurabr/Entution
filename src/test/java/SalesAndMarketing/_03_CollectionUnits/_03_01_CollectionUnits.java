@@ -36,7 +36,7 @@ public class _03_01_CollectionUnits {
 		wait.until(ExpectedConditions.elementToBeClickable(collUnitTab));
 		WebElement clickIt = driver.findElement(collUnitTab);
 		action.moveToElement(clickIt).click().build().perform();
-			Reporter.log("User clicked on collection unit tab adn navigate to Collection Unit page");
+			Reporter.log("User clicked on collection unit tab and navigate to Collection Unit page");
 		
 	}
 	
@@ -57,7 +57,8 @@ public class _03_01_CollectionUnits {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(headerLbl));
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(headerLbl));
+		wait.until(ExpectedConditions.presenceOfElementLocated(	headerLbl));
 		soAsert.assertEquals("New", driver.findElement(headerLbl).getText());
 		
 		soAsert.assertAll();
