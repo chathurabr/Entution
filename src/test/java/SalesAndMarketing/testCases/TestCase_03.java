@@ -52,7 +52,7 @@ public class TestCase_03 extends CommonClass {
 	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
 		driver = CommonScreenshot.takeSnapshot(testResult);
 	}
-
+	@AfterMethod
 	public void saveNewEmpID() throws ConfigurationException {
 		String filePath = System.getProperty("user.dir");
 		PropertiesConfiguration config = new PropertiesConfiguration(filePath+"\\util\\Test.properties");

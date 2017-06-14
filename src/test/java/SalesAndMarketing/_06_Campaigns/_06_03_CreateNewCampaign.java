@@ -85,7 +85,7 @@ public class _06_03_CreateNewCampaign {
 		//campaign Type
 		wait.until(ExpectedConditions.elementToBeClickable(campaignType));	
 			Select CampaignTypeDD = new Select(driver.findElement(campaignType));
-			CampaignTypeDD.selectByVisibleText("Telemarketing");
+			CampaignTypeDD.selectByVisibleText("Email");
 		//Click on srch icon
 		wait.until(ExpectedConditions.elementToBeClickable(parentCampaignSrchBtn));
 			WebElement parentCampScrchBtn = driver.findElement(parentCampaignSrchBtn);
