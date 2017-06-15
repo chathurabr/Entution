@@ -52,7 +52,7 @@ public class TestCase_06 {
 	@Test(priority = 3)
 	public void TestCase_6_3(){
 		objCreateNewCampaign = new _06_03_CreateNewCampaign(driver);
-		objCreateNewCampaign.campaignCodeEnter("campaignCode0001");							//campaign code+
+		objCreateNewCampaign.campaignCodeEnter("campaignCodeR0001");							//campaign code+
 		objCreateNewCampaign.campaignNameEnter("AutoCampaignName");
 		objCreateNewCampaign.selectStartDate("01", "12", "2017");
 		objCreateNewCampaign.EnterNewCampaignDetails("50", "100000", "50000", "45612");

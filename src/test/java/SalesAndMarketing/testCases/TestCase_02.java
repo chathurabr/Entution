@@ -67,7 +67,7 @@ public class TestCase_02 extends CommonClass {
 		objUnitLeaderAndEmpCode.clkOnEmpCodeIcon();
 		objUnitLeaderAndEmpCode.enterEmpCode("P.Perera");
 		objUnitLeaderAndEmpCode.selectEmployeeCode();
-//		objUnitLeaderAndEmpCode.verifyEmpCode();
+		objUnitLeaderAndEmpCode.verifyEmpCode();
 	}
 	
 //	@Test (priority = 4)

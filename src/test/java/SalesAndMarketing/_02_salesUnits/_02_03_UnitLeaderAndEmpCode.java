@@ -24,11 +24,13 @@ public class _02_03_UnitLeaderAndEmpCode {
 	By unitLeaderColumn = By.xpath("//*[@id='g1002-t']/table/tbody/tr[1]");
 	
 	//Employee Code
+
 	By empCodeIcon = By.xpath("//*[@id='tblEmpdata']/tbody/tr/td[4]/span");
 	By empName = By.id("txtg1002");
 	By empTable = By.xpath("//*[@id='g1002-t']");
 	By empColumn = By.xpath("//*[@id='g1002-t']/table/tbody/tr[1]");
-	
+	By empTextBox = By.xpath("//*[@id=\'tblEmpdata\']/tbody/tr/td[4]/input");
+
 	public _02_03_UnitLeaderAndEmpCode(WebDriver driver){
 		this.driver=driver;
 		
@@ -80,6 +82,12 @@ public class _02_03_UnitLeaderAndEmpCode {
 	}
 
 	public void selectUnitLeader(){
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(10, TimeUnit.SECONDS);
@@ -153,12 +161,15 @@ public class _02_03_UnitLeaderAndEmpCode {
 		 }
 	 }
 	public void verifyEmpCode(){////////////////////////////////////////////// 			Find 
-		
-	/*	Dimension columnSize = driver.findElement(empColumn).getSize();
-	if(columnSize == null ){
-		Reporter.log("Unit leader and EMployee code is not same");
-	}else{
-		Reporter.log("<font color='red'>Same employee visible</font>");
-	}*/
+		Actions action = new Actions(driver);
+		SoftAssert soAssert = new SoftAssert();
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.pollingEvery(30, TimeUnit.SECONDS);
+
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(empTextBox));
+		WebElement ele = driver.findElement(empTextBox);
+
+		soAssert.assertSame(ele.getText(),"[P.Perera]");
 	}
 }

@@ -47,18 +47,19 @@ public class TestCase_03 extends CommonClass {
 		driver = CommonClass.salesAndMketMenuNav();
 
 	}
-	
-	@AfterMethod
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
-		driver = CommonScreenshot.takeSnapshot(testResult);
-	}
 
+	@AfterMethod
 	public void saveNewEmpID() throws ConfigurationException {
 		String filePath = System.getProperty("user.dir");
 		PropertiesConfiguration config = new PropertiesConfiguration(filePath+"\\util\\Test.properties");
 		config.setProperty("CUCode",CollectionUnitCode);
 		config.save();
 	}
+	@AfterMethod
+	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+		driver = CommonScreenshot.takeSnapshot(testResult);
+	}
+
 
 	@BeforeMethod
 	public void getEmpID() throws org.apache.commons.configuration.ConfigurationException {
@@ -93,12 +94,12 @@ public class TestCase_03 extends CommonClass {
 		driver = CommonClassMainButtons.draftBtnClick();
 		driver = CommonClassMainButtons.releaseBtnClick();
 		driver = CommonClassMainButtons.chkLblStatusReleased();
-		objCreateNewCollectionUnit.verifyHeader();
+	//	objCreateNewCollectionUnit.verifyHeader();
 
 		
 	}
 	
-	@Test(priority = 3) 
+	/*@Test(priority = 3)
 	public void TestCase_3_3(){
 		driver.navigate().refresh();
 		driver = CommonClass.homeScreen();
@@ -116,24 +117,25 @@ public class TestCase_03 extends CommonClass {
 		objCreateNewCollectionUnit.searchEmp("P.Perera", "50");;
 		//Click on draft and new button
 		driver = CommonClassMainButtons.draftAndNewBtnClick();
-		//objColUniDraftAndNew.draftAndNew();
-	//	objColUniDraftAndNew.verifyColUnitExsistingData();
+		objColUniDraftAndNew = new _03_03_ColUniDraftAndNew(driver);
+		objColUniDraftAndNew.verifyColUnitExsistingData();
 
 	}
 	
-/*	@Test(priority = 4)
+	@Test(priority = 4)
 	public void TestCase_3_4(){
+		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
 		driver = CommonClass.salesAndMketMenuNav();
 		//Reuse test case 3.1 functions
 				objCollectionUnit = new _03_01_CollectionUnits(driver);
 				objCollectionUnit.navToCollUnit();
 				objCollectionUnit.newColUnit();
-	//			objCollectionUnit.verifyHeader();
+				objCollectionUnit.verifyHeader();
 		//Click on the Copy From (Test case 03_04)
-	//		driver = CommonClassMainButtons.copyFromBtnClick();
-		//	objColUnitCopyFrom.colunitCopyFromBtnfunc();
-	//		objColUnitCopyFrom.selectColUnit("0010");	// use 0010
+			driver = CommonClassMainButtons.copyFromBtnClick();
+		objColUnitCopyFrom = new _03_04_ColUnitCopyFrom(driver);
+			objColUnitCopyFrom.selectColUnit("0010");	// use 0010
 	//		objColUnitCopyFrom.verifyColUnit();
 	//		objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
 				

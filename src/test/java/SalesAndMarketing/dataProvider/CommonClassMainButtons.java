@@ -61,10 +61,10 @@ public class CommonClassMainButtons extends CommonClass {
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
 			//release Button
-			WebElement releaseB = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[2]")));
+			WebElement releaseB = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release']"));
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[text()='Release']")));
 
-		 List <WebElement> releaseButton = driver.findElements(By.xpath("//*[@id='permissionBar']/a[2]"));
+		 List <WebElement> releaseButton = driver.findElements(By.xpath("//*[@id='permissionBar']/a[text()='Release']"));
 			for(int i=0;i<releaseButton.size();i++){
 
 				if(releaseButton.get(i).getText().equals("Release")){
@@ -215,22 +215,26 @@ public class CommonClassMainButtons extends CommonClass {
 	 
 	 
 		public static WebDriver chkLblStatusReleased(){
-			try {
+			/*try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
-			}
+			}*/
+			By checkLabelStatus = By.xpath(".//label[@id='lbldocstatus']");
 			SoftAssert soAssert = new SoftAssert();
 			WebDriverWait wait = new WebDriverWait(wdd, 60);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
-			
-			WebElement lbl = driver.findElement(By.id("lbldocstatus"));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.id("lbldocstatus")));
-			
-			//(Released)
-			soAssert.assertEquals("(Released)", lbl.getText());
-		
+
+			wait.until(ExpectedConditions.presenceOfElementLocated(checkLabelStatus));
+			WebElement lbl = driver.findElement(checkLabelStatus);
+
+			if(lbl.isDisplayed()){
+				Assert.assertEquals(lbl.getText(),"(Released)");
+			}
+			else{
+				System.out.println("Release Label cannot find");
+			}
 			return wdd;
 			
 		}
