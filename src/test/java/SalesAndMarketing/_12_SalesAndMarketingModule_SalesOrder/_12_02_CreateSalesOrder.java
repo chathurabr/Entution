@@ -48,6 +48,30 @@ public class _12_02_CreateSalesOrder {
     private WebElement firstSearchedProduct;
     @FindBy(xpath = "//*[@id='tblSalesOrder']/tbody/tr/td[10]/select")
     private WebElement ddWareHouse;
+    @FindBy(xpath = "//*[@id='tblSalesOrder']/tbody/tr/td[17]/input[@coltype='Q']")
+    private WebElement txtQuantity;
+    @FindBy(xpath = "//*[@id='tblSalesOrder']/tbody/tr/td[18]/input[@coltype='UP']")
+    private WebElement txtUnitPrice;
+    @FindBy(xpath = "//span[@class='pic16 pic16-checkout']")
+    private WebElement btnCheckout;
+    @FindBy(xpath = "//input[@class='el-resize21 gcd']")
+    private WebElement  txtlineTotal;
+    @FindBy(xpath = "//input[@id='txtUnitTot']")
+    private WebElement txtUnitTotal;
+    @FindBy(xpath = "//input[@id='txtSubTot']")
+    private WebElement txtSubTotal;
+    @FindBy(xpath = "//input[@id='txtNetAmt']")
+    private WebElement txtTotal;
+    @FindBy(xpath = "//h1[@id='bannerTotal']")
+    private WebElement txtBannerTotal;
+    @FindBy(xpath = "//*[@id='permissionBar']/a[text()='Draft']")
+    private WebElement btnDraft;
+    @FindBy(xpath = "//*[@id='permissionBar']/a[text()='Release'] ")
+    private WebElement btnRelease;
+    @FindBy(xpath = "//label[@id='lbldocstatus']")
+    private WebElement lblSalesOrderStatus;
+    @FindBy(xpath = "//label[@id='lbldocstatus'][text()='(Draft)']")
+    private WebElement lblSalesOrderStatusDraft;
 
 
 
@@ -116,7 +140,7 @@ public class _12_02_CreateSalesOrder {
         wait.until(ExpectedConditions.elementToBeClickable(iconProductSearch));
         iconProductSearch.click();
         wait.until(ExpectedConditions.elementToBeClickable(lblHeaderProduct_info_popup));
-        System.out.println(lblHeaderProduct_info_popup.getText());
+        //System.out.println(lblHeaderProduct_info_popup.getText());
         action.moveToElement(txtSearchProduct2).sendKeys("Lot-Pro-1310").sendKeys(Keys.ENTER).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
         action.doubleClick(firstSearchedProduct).perform();
@@ -127,6 +151,62 @@ public class _12_02_CreateSalesOrder {
         Select selectSalesUnit = new Select(ddWareHouse);
         selectSalesUnit.selectByVisibleText("1310-1 [1310-ProductIn]");
     }
+
+    /*Enter Qty & Unit Price*/
+    public void enterQtyAndPrice(){
+        Actions actions = new Actions(driver);
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(txtQuantity));
+        txtQuantity.clear();
+        actions.moveToElement(txtQuantity).sendKeys("100").build().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(txtUnitPrice));
+        txtUnitPrice.clear();
+        actions.moveToElement(txtUnitPrice).sendKeys("20").build().perform();
+        btnCheckout.click();
+    }
+
+    /*Verify that total display correctly.*/
+    public void checkTotal(String total){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtTotal.getAttribute("value"),total);  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),total);  // Total in the right upper cornner
+    }
+
+    /*Draft and verify sales order status*/
+
+    public String draftAndCheckStatus(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(btnDraft));
+        btnDraft.click(); // click on draft button
+        wait.until(ExpectedConditions.elementToBeClickable(lblSalesOrderStatusDraft));
+        return lblSalesOrderStatus.getText();
+
+
+    }
+
+    /*Release and verify sales order status*/
+    public String releaseAndCheckStatus(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(btnRelease));
+        btnRelease.click(); // click on draft button
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // wait.until(ExpectedConditions.elementToBeClickable(lblSalesOrderStatusDraft));
+        return lblSalesOrderStatus.getText();
+
+
+    }
+
 
 
 }

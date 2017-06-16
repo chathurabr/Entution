@@ -36,13 +36,17 @@ public class TestCase_12 {
     @Test(priority = 2) //Create sales order (Sales order to Sales invoice)
     public void testCase_12_02(){
         createSalesOrder = new _12_02_CreateSalesOrder(driver);
-        createSalesOrder.CreateSalesOrder();
-        createSalesOrder.selectCustomerAccount();
-        createSalesOrder.selectCurruncy();
-        createSalesOrder.selectSalesUnit();
+        createSalesOrder.CreateSalesOrder();   /*New Sales Order - Select Sales Order to Sales Invoice */
+        createSalesOrder.selectCustomerAccount();  /* Select Customer Account*/
+        createSalesOrder.selectCurruncy(); /*select Curuncy Unit from Dropdown*/
+        createSalesOrder.selectSalesUnit(); /*select Sales Unit from Dropdown */
         Assert.assertEquals(createSalesOrder.getAccountOwnerName(),"PereraTest\n" + "Perera"); //Verify that Account owner is autofilled
-        createSalesOrder.addProduct();
-        createSalesOrder.selectWareHouse();
+        createSalesOrder.addProduct();  /*Click on Product Search icon and add a Lot product*/
+        createSalesOrder.selectWareHouse(); /* Select a warehouse from the warehouse dropdown.*/
+        createSalesOrder.enterQtyAndPrice(); /*Enter Qty & Unit Price*/
+        createSalesOrder.checkTotal("2,000.00");
+        Assert.assertEquals(createSalesOrder.draftAndCheckStatus(),"(Draft)");
+        Assert.assertEquals(createSalesOrder.releaseAndCheckStatus(),"(Draft)kkk");
 
     }
 
