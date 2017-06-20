@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="testCase6">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,7 +27,7 @@
       <file leaf-file-name="_12_02_CreateSalesOrder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="748">
               <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="68" selection-end-column="38" />
               <folding />
             </state>
@@ -37,7 +37,7 @@
       <file leaf-file-name="_12_03_PendingOutboundShipment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_03_PendingOutboundShipment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
+            <state relative-caret-position="1224">
               <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -49,7 +49,7 @@
       <file leaf-file-name="_12_04_PendingSalesInvoice.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
+            <state relative-caret-position="1122">
               <caret line="66" column="16" lean-forward="false" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -61,8 +61,8 @@
       <file leaf-file-name="CommonClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/dataProvider/CommonClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="401" column="39" lean-forward="true" selection-start-line="401" selection-start-column="4" selection-end-line="401" selection-end-column="39" />
+            <state relative-caret-position="6545">
+              <caret line="401" column="39" lean-forward="false" selection-start-line="401" selection-start-column="4" selection-end-line="401" selection-end-column="39" />
               <folding>
                 <marker date="1497957201606" expanded="true" signature="3888:3910" ph="{...}" />
               </folding>
@@ -73,7 +73,7 @@
       <file leaf-file-name="TestCase_12.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
+            <state relative-caret-position="556">
               <caret line="73" column="93" lean-forward="false" selection-start-line="73" selection-start-column="93" selection-end-line="73" selection-end-column="93" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -162,7 +162,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -368,7 +368,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -915,52 +915,19 @@
     <option name="localTasksCounter" value="19" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 32m 19s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 35m 32s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 37m 22s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 39m 40s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 50m 20s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 53m 15s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 55m 57s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 16h 59m 03s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 17h 01m 25s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12 - 2017.06.20 at 17h 11m 05s.xml">
-      <configuration name="TestCase_12" configurationId="TestNG" />
-    </history-entry>
-  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47360247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16719243" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15372671" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29192546" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.439441" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29192546" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -976,6 +943,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47360247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1007,10 +975,6 @@
       <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_01_Login.class">
@@ -1319,11 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="42" column="62" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1395#1396#0" expanded="false" />
-            <element signature="e#1420#1421#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1337,7 +1296,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="748">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="68" selection-end-column="38" />
           <folding />
         </state>
@@ -1345,7 +1304,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
+        <state relative-caret-position="1122">
           <caret line="66" column="16" lean-forward="false" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1355,7 +1314,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_03_PendingOutboundShipment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
+        <state relative-caret-position="1224">
           <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1365,8 +1324,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/dataProvider/CommonClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="401" column="39" lean-forward="true" selection-start-line="401" selection-start-column="4" selection-end-line="401" selection-end-column="39" />
+        <state relative-caret-position="6545">
+          <caret line="401" column="39" lean-forward="false" selection-start-line="401" selection-start-column="4" selection-end-line="401" selection-end-column="39" />
           <folding>
             <marker date="1497957201606" expanded="true" signature="3888:3910" ph="{...}" />
           </folding>
@@ -1375,7 +1334,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
+        <state relative-caret-position="556">
           <caret line="73" column="93" lean-forward="false" selection-start-line="73" selection-start-column="93" selection-end-line="73" selection-end-column="93" />
           <folding>
             <element signature="imports" expanded="true" />
