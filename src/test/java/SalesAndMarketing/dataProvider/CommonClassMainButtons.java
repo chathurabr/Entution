@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -23,15 +24,23 @@ import java.util.concurrent.TimeUnit;
 public class CommonClassMainButtons extends CommonClass {
 	//public static WebDriver driver;
 	static WebDriver wdd = CommonClass.driver;
-	
+
 	public static WebDriver createNewItem(){
+		By ButtonUpD = By.id("btnUpdate");
 		Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
-			
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("btnUpdate")));
-			WebElement clickIt = wdd.findElement(By.id("btnUpdate"));
-			action.moveToElement(clickIt).click().build().perform();
+
+			wait.until(ExpectedConditions.elementToBeClickable(ButtonUpD));
+			WebElement clickUpDButton = wdd.findElement(ButtonUpD);
+
+				for (int i = 0; i < 1000; i++) {
+					if(clickUpDButton.isDisplayed()) {
+					action.moveToElement(clickUpDButton).click().build().perform();
+					break;
+				}
+					}
+
 			
 		return wdd;
 	}
@@ -55,14 +64,18 @@ public class CommonClassMainButtons extends CommonClass {
 	 }
 	 
 	 public static WebDriver releaseBtnClick(){
-		 
+
+		 try {
+			 Thread.sleep(5000);
+		 } catch (InterruptedException e) {
+			 e.printStackTrace();
+		 }
 		 SoftAssert soAssert = new SoftAssert();
 		 Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+		 wait.pollingEvery(30, TimeUnit.SECONDS);
 			//release Button
-			WebElement releaseB = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[2]")));
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[2]")));
 
 		 List <WebElement> releaseButton = driver.findElements(By.xpath("//*[@id='permissionBar']/a[2]"));
 			for(int i=0;i<releaseButton.size();i++){
@@ -73,7 +86,7 @@ public class CommonClassMainButtons extends CommonClass {
 					Reporter.log("Release button clicked successfully");
 				}else{
 
-					soAssert.assertEquals(releaseButton.get(i).getText(), "Release");
+					action.moveToElement(releaseButton.get(i)).click().build().perform();
 				}
 
 			}
@@ -220,27 +233,42 @@ public class CommonClassMainButtons extends CommonClass {
 		}
 	 return wdd;
 }
-	 
-	 
 		public static WebDriver chkLblStatusReleased(){
 			try {
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
-				
 				e.printStackTrace();
 			}
+
+			By checkLabelStatus = By.xpath("//label[@id='lbldocstatus']");
+			By loadingScreen = By.xpath("//div[@class='waitbox-container']");
+
+
 			SoftAssert soAssert = new SoftAssert();
 			WebDriverWait wait = new WebDriverWait(wdd, 60);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
-			
-			WebElement lbl = driver.findElement(By.id("lbldocstatus"));
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.id("lbldocstatus")));
-			
-			//(Released)
-			soAssert.assertEquals("(Released)", lbl.getText());
-		
+
+			try {
+
+				WebElement loadingScr = driver.findElement(loadingScreen);
+				if (loadingScr.isDisplayed() || loadingScr.isEnabled()) {
+					wait.until(ExpectedConditions.invisibilityOf(loadingScr));
+				} else {
+					System.out.println("Loading screen not displayed :3");
+				}
+			}catch(Exception e){
+				System.out.println("Exception occurred: "+e);
+			}
+			String lbl = wait.until(ExpectedConditions.presenceOfElementLocated(checkLabelStatus)).getText();
+
+//			if(lbl.isDisplayed()){
+//				Assert.assertEquals(lblStat,"(Released)");
+				Assert.assertEquals(lbl,"(Released)");
+//			}
+//			else{
+//				System.out.println("Release Label cannot find");
+//			}
 			return wdd;
 			
 		}
-		 
 }

@@ -1,9 +1,6 @@
 package SalesAndMarketing._02_salesUnits;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -19,7 +16,8 @@ public class _02_05_NewSalesUnitCreate {
 	WebDriver driver;
 	By colUnitSearchIcon = By.xpath("//*[@id='divGen']/div[2]/table/tbody/tr[4]/td[2]/div/span[1]/span");
 	By colUnitNew = By.id("btnUpdate");
-	
+	By collectionUnitSearchResultColumn = By.xpath("//*[@id='g1029-t']/table/tbody/tr[1]");
+
 	By colUnitDraft = By.xpath("//*[@id='permissionBar']/a[1]/span");
 	By colUnitRelease = By.xpath("//*[@id='permissionBar']/a[2]");
 	//valMsg
@@ -32,7 +30,7 @@ public class _02_05_NewSalesUnitCreate {
 	By colUniCodeTxtBx = By.id("txtCUCode");
 	By colUniNameTxtBx = By.id("txtCUName");
 	By colUniComRateTxtBx = By.id("txtComRate");
-									
+
 	By empCodeSearchIcn = By.xpath("//*[@id='tblEmpdata']/tbody/tr/td[4]/span");
 	
 	By empNew = By.id("btnUpdate");
@@ -131,13 +129,17 @@ public class _02_05_NewSalesUnitCreate {
 	
 	public void collectionUniValidations(){
 	String err;
+		Actions action = new Actions(driver);
 		SoftAssert soAssert = new SoftAssert();
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(10, TimeUnit.SECONDS);
-		
-		wait.until(ExpectedConditions.presenceOfElementLocated(valMsgBoxCloseBtn));
-		driver.findElement(valMsgBoxCloseBtn).click();
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(valMsgBoxCloseBtn));
+		WebElement closeB = driver.findElement(valMsgBoxCloseBtn);
+
+		if(driver.findElement(valMsgBoxCloseBtn).isDisplayed()) {
+			wait.until(ExpectedConditions.presenceOfElementLocated(valMsgBoxCloseBtn));
+			action.moveToElement(closeB).click().build().perform();
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(valMsgBoxCloseBtn));
+		}
 
 		wait.until(ExpectedConditions.presenceOfElementLocated(colUniCodeValMsg));
 		err = driver.findElement(colUniCodeValMsg).getText();
@@ -158,15 +160,17 @@ public class _02_05_NewSalesUnitCreate {
 	public void insertNewColUnitInfo(String collectionUnitCode, String collectionUnitName,String collectionUnitComRate){
 		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.pollingEvery(30, TimeUnit.SECONDS);
+		wait.pollingEvery(5, TimeUnit.SECONDS);
 		
 		 wait.until(ExpectedConditions.elementToBeClickable(colUniCodeTxtBx));
 	        WebElement codeTxtBx = driver.findElement(colUniCodeTxtBx);
+	        action.moveToElement(codeTxtBx).click().build().perform();
 	        action.moveToElement(codeTxtBx).sendKeys(collectionUnitCode).build().perform();
 	        
 	    	wait.until(ExpectedConditions.elementToBeClickable(colUniNameTxtBx));
 			WebElement nameTxtBx = driver.findElement(colUniNameTxtBx);
-			action.moveToElement(nameTxtBx).sendKeys(collectionUnitName);
+			action.moveToElement(nameTxtBx).click().build().perform();
+			action.moveToElement(nameTxtBx).sendKeys(collectionUnitName).build().perform();
 			
 			wait.until(ExpectedConditions.elementToBeClickable(colUniComRateTxtBx));
 			WebElement rateTxtBx = driver.findElement(colUniComRateTxtBx);
@@ -190,12 +194,12 @@ public class _02_05_NewSalesUnitCreate {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(10, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.elementToBeClickable(empNew));
+		wait.until(ExpectedConditions.presenceOfElementLocated(empNew));
 		WebElement btnClk = driver.findElement(empNew);
 		
 		action.moveToElement(btnClk)
 		.keyDown(Keys.COMMAND).keyDown(Keys.SHIFT).click(btnClk)
-		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).perform();
+		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).build().perform();
 		
 	/*	ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(2));*/
@@ -310,17 +314,27 @@ public class _02_05_NewSalesUnitCreate {
 		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(10, TimeUnit.SECONDS);
-		
-		List<WebElement> trEle = driver.findElements(By.tagName("tr"));
+
+		try{
+			wait.until(ExpectedConditions.presenceOfElementLocated(collectionUnitSearchResultColumn));
+		}catch (NoSuchElementException e){
+		}
+
+		WebElement columnOne = driver.findElement(collectionUnitSearchResultColumn);
+
+		action.moveToElement(columnOne).doubleClick().build().perform();
+
+		/*List<WebElement> trEle = driver.findElements(By.tagName("td"));
 		
 		for(int i=0;i < trEle.size();i++){
-			String trElement = trEle.get(i).getText();
+			String trElement = trEle.get(i).getAttribute("desc");
+			System.out.println("/////////////--------------------"+trElement);
 			if(trElement.startsWith(searchCollectionUnitColumnName)){
 				action.moveToElement(trEle.get(i)).doubleClick().build().perform();
 				
 				break;
 			}
-		}		
+		}		*/
 	}
 	
 	public void selectSalesOrganization(){
@@ -345,10 +359,10 @@ public class _02_05_NewSalesUnitCreate {
 		
 		action.moveToElement(uniLdrSrchBtn)
 		.keyDown(Keys.COMMAND).keyDown(Keys.SHIFT).click(uniLdrSrchBtn)
-		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).perform();
+		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).build().perform();
 		
-		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(1));
+	/*	ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));*/
 	}
 	
 	public void newUniLeader(){
@@ -356,12 +370,12 @@ public class _02_05_NewSalesUnitCreate {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(10, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.elementToBeClickable(empNew));
+		wait.until(ExpectedConditions.presenceOfElementLocated(empNew));
 		WebElement btnClk = driver.findElement(empNew);
 		
 		action.moveToElement(btnClk)
 		.keyDown(Keys.COMMAND).keyDown(Keys.SHIFT).click(btnClk)
-		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).perform();
+		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).build().perform();
 		
 		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));

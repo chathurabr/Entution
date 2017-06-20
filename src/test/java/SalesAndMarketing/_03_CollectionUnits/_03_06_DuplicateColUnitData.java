@@ -1,5 +1,6 @@
 package SalesAndMarketing._03_CollectionUnits;
 
+import SalesAndMarketing.dataProvider.CommonClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,7 +30,8 @@ public class _03_06_DuplicateColUnitData {
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
 		wait.until(ExpectedConditions.elementToBeClickable(duplicateBtn));
-		driver.findElement(duplicateBtn).click();
+
+		//driver.findElement(duplicateBtn).click();
 			Reporter.log("Navigated to new page and work object opened with relevant data ");
 	}
 	

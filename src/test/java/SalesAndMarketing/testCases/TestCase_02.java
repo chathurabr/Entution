@@ -24,6 +24,11 @@ public class TestCase_02 extends CommonClass {
 	_02_04_SalesUnitCreate objSalesUnitCrate;
 	_02_05_NewSalesUnitCreate objNewSalesUnitCreate;
 	RegressionTesting objRegressionTesting;
+
+	String unitLeaderEmpCod = "AutoCodeR0171";//Step 1
+	String salesUniCod = "AutCodSalsUniR123";//+
+	String colUniCod = "colUntCodR0024";//Step 3 Change Code+
+	String employeColUnitzCod = "AutCodEmpColUnit106";//Step 2
 	
 	@BeforeTest
 	public void beforeTest(){
@@ -59,7 +64,7 @@ public class TestCase_02 extends CommonClass {
 	@Test (priority = 3)
 	public void TestCase_2_3(){
 		objUnitLeaderAndEmpCode = new _02_03_UnitLeaderAndEmpCode(driver);
-		objUnitLeaderAndEmpCode.insertOtherInfo("AutoCodeR0116","AutoName0009","10");		//Change Code+
+		objUnitLeaderAndEmpCode.insertOtherInfo(employeColUnitzCod,"AutoName0009","10");		//Step 1 Change Code
 		objUnitLeaderAndEmpCode.insertUnitLeadName("P.Perera");
 		objUnitLeaderAndEmpCode.selectUnitLeader();
 		objUnitLeaderAndEmpCode.verifyUnitLead("000003 [P.Perera]");
@@ -67,82 +72,86 @@ public class TestCase_02 extends CommonClass {
 		objUnitLeaderAndEmpCode.clkOnEmpCodeIcon();
 		objUnitLeaderAndEmpCode.enterEmpCode("P.Perera");
 		objUnitLeaderAndEmpCode.selectEmployeeCode();
-//		objUnitLeaderAndEmpCode.verifyEmpCode();
+		objUnitLeaderAndEmpCode.verifyEmpCode();
 	}
 	
-//	@Test (priority = 4)
-//	public void TestCase_2_4(){
-//		objSalesUnitCrate = new _02_04_SalesUnitCreate(driver);
-//		objSalesUnitCrate.draftSalesUnit("100");
-//	}
+	@Test (priority = 4)
+	public void TestCase_2_4(){
+		objSalesUnitCrate = new _02_04_SalesUnitCreate(driver);
+		objSalesUnitCrate.enterSharingRate("100");
+		driver = CommonClassMainButtons.draftBtnClick();
+		driver = CommonClass.chkLblStatusReleased();
+	}
 
-//	@Test (priority = 5)
-//	public void TestCase_2_5(){
+	@Test (priority = 5)
+	public void TestCase_2_5(){
+		driver = CommonClass.homeScreen();
+	/*	String unitLeaderEmpCod = "AutoCodeR0147";
+		String salesUniCod = "AutCodSalsUniR123";//+
+		String colUniCod = "colUntCodR0004";//Step 3 Change Code+
+		String employeColUnitzCod = "AutCodEmpColUnit084";*/
+
+	driver = CommonClass.MainMenuNav();
+	driver = CommonClass.salesAndMketMenuNav();
 		
-	// delete later	driver.navigate().refresh();
-//		driver = CommonClass.homeScreen();
-	//objSalesAndMktMenu = new _01_02_SalesAndMarketingMenu (driver);
-//		driver = CommonClass.MainMenuNav();
-//		driver = CommonClass.salesAndMketMenuNav();
-		
-//		objSalesUnits = new _02_01_SalesUnits (driver);
-//		objSalesUnits.navTOsalesUnitTab();
-		
-		//delete later objNewSalesUnit = new _02_02_NewSalesUnit(driver);	
-		//delete later objNewSalesUnit.newSalesUnitClk();
-//		driver = CommonClassMainButtons.createNewItem();
-//
+		objSalesUnits = new _02_01_SalesUnits (driver);
+		objSalesUnits.navTOsalesUnitTab();
+		driver = CommonClassMainButtons.createNewItem();
+
 //--------------Enter Sales unit details------------------------------------------------------------------
-//			objUnitLeaderAndEmpCode = new _02_03_UnitLeaderAndEmpCode(driver);
-//			objUnitLeaderAndEmpCode.insertOtherInfo("AutCodSalsUniR102","Test Sales Unit","5");		//Change Code+
+			objUnitLeaderAndEmpCode = new _02_03_UnitLeaderAndEmpCode(driver);
+			objUnitLeaderAndEmpCode.insertOtherInfo(salesUniCod,"Test Sales Unit","5");
 //------Collection unit search--------------------------------------------------------------------
 //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_HERE-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-//				objNewSalesUnitCreate = new _02_05_NewSalesUnitCreate(driver);
-//				objNewSalesUnitCreate.CollectionUnitNav();
+				objNewSalesUnitCreate = new _02_05_NewSalesUnitCreate(driver);
+				objNewSalesUnitCreate.CollectionUnitNav();
 //New col unit btn click
-//					objNewSalesUnitCreate.newCollectionUnitBtnCLk();
+				objNewSalesUnitCreate.newCollectionUnitBtnCLk();
 //Check validations
-//					driver = CommonClassMainButtons.draftBtnClick();
-//					objNewSalesUnitCreate.collectionUniValidations();
+					driver = CommonClassMainButtons.draftBtnClick();
+					objNewSalesUnitCreate.collectionUniValidations();
 //Refresh page
-//					driver.navigate().refresh();
+					driver.navigate().refresh();
 //Enter Collection unit data
-//					objNewSalesUnitCreate.insertNewColUnitInfo("collectionUnitCode", "Nokia", "5");
+					objNewSalesUnitCreate.insertNewColUnitInfo(colUniCod, "Nokia", "5");
+//employee code search
+					objNewSalesUnitCreate.searchEmpForNewColUnitInfo();
+//New employee btn click (open in new tab/window)
+					objNewSalesUnitCreate.NewEmpForNewColUnitInfo();
 //New emp details
-//					objNewSalesUnitCreate.enterNewEmployeeColUnitInfo("AutCodEmpColUnit072", "Mr.", "Mike Fernando", "M. Fernando", "CEO");
-		//employee code search
-//					objNewSalesUnitCreate.searchEmpForNewColUnitInfo();
-		//New employee btn click (open in new tab/window)
-//					objNewSalesUnitCreate.NewEmpForNewColUnitInfo();
+					objNewSalesUnitCreate.enterNewEmployeeColUnitInfo(employeColUnitzCod, "Mr.", "Mike Fernando", "M. Fernando", "CEO");// step 2 code +
 	/*del later*///	objNewSalesUnitCreate.shiftWindows(2);
 	
 		//draft
-//					driver = CommonClassMainButtons.draftBtnClick();
+					driver = CommonClassMainButtons.draftBtnClick();
 		//Release
-//					driver = CommonClassMainButtons.releaseBtnClick();
+					driver = CommonClassMainButtons.releaseBtnClick();
 		//Close the current tab(Window) and driver move back
-//					driver.close();
-//					objNewSalesUnitCreate.shiftWindows();
+					driver.close();
+					objNewSalesUnitCreate.shiftWindows();
 		//search for created employee
-//					objNewSalesUnitCreate.searchCreatedEmp("a.aruni"); //employeeFullName
+					objNewSalesUnitCreate.searchCreatedEmp("a.aruni"); //employeeFullName
 		//Select searched employee
-//					objNewSalesUnitCreate.selectSearchedEmployee("Mr. 000001 [A.Aruni]"); 
+					objNewSalesUnitCreate.selectSearchedEmployee("Mr. 000001 [A.Aruni]");
 		//Draft
-//					driver = CommonClassMainButtons.draftBtnClick();
+					driver = CommonClassMainButtons.draftBtnClick();
 		//Release
-//					driver = CommonClassMainButtons.releaseBtnClick();
+					driver = CommonClassMainButtons.releaseBtnClick();
 		//Close collection unit
-		//			driver.close();
-		//Search for the created colection unit //objNewSalesUnitCreate.insertNewColUnitInfo(collectionUnitCode, collectionUnitName, collectionUnitComRate);
-		//			objNewSalesUnitCreate.searchCreatedCollectionUnit(createdColUnitName);
+					driver.close();
+		//Search for the created colection unit
+		// objNewSalesUnitCreate.insertNewColUnitInfo(collectionUnitCode, collectionUnitName, collectionUnitComRate);
+					//driver = CommonClass.moveDriver(0);
+					objNewSalesUnitCreate.shiftWindows();
+					objNewSalesUnitCreate.searchCreatedCollectionUnit(colUniCod); //Copied previously created collection unit
 		//Select searched collection unit
-		//			objNewSalesUnitCreate.selectSearchedCreatedCollectionUnit(searchCollectionUnitColumnName);
+					objNewSalesUnitCreate.selectSearchedCreatedCollectionUnit(colUniCod);
 		//Enter value for Sales Organization (Selector)
-		//			objNewSalesUnitCreate.selectSalesOrganization();
+					objNewSalesUnitCreate.selectSalesOrganization();
 		//Unit leader Search Btn
-		//			objNewSalesUnitCreate.clkUniLeaderSrchIcon();
+					objNewSalesUnitCreate.clkUniLeaderSrchIcon();
 		//New Unit leader btn
-		//			objNewSalesUnitCreate.newUniLeader();				//try to change window handle
+					objNewSalesUnitCreate.newUniLeader();				//try to change window handle
 		//Unit leader info
 		//			objNewSalesUnitCreate.UniLeaderCreate(employeeCode, nameTitleSelectBy, employeeFullName, empInitials, employeeGroupSelectBy);
 		//Draft
@@ -171,7 +180,8 @@ public class TestCase_02 extends CommonClass {
 		//			objNewSalesUnitCreate.employeeCodeSharingRate(employeeCodSharingRate);
 		//12. Click on draft button
 		//13. Click on release button
-	}				
+	}
+}
 /*	//Regression on fixed bugs
 	@Test (priority = 6)
 	public void TestCase_2_Regression(){

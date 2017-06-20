@@ -47,11 +47,7 @@ public class TestCase_03 extends CommonClass {
 		driver = CommonClass.salesAndMketMenuNav();
 
 	}
-	
-	@AfterMethod
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
-		driver = CommonScreenshot.takeSnapshot(testResult);
-	}
+
 	@AfterMethod
 	public void saveNewEmpID() throws ConfigurationException {
 		String filePath = System.getProperty("user.dir");
@@ -59,6 +55,11 @@ public class TestCase_03 extends CommonClass {
 		config.setProperty("CUCode",CollectionUnitCode);
 		config.save();
 	}
+	@AfterMethod
+	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+		driver = CommonScreenshot.takeSnapshot(testResult);
+	}
+
 
 	@BeforeMethod
 	public void getEmpID() throws org.apache.commons.configuration.ConfigurationException {
@@ -98,7 +99,7 @@ public class TestCase_03 extends CommonClass {
 		
 	}
 	
-	@Test(priority = 3) 
+	@Test(priority = 3)
 	public void TestCase_3_3(){
 		driver.navigate().refresh();
 		driver = CommonClass.homeScreen();
@@ -116,30 +117,31 @@ public class TestCase_03 extends CommonClass {
 		objCreateNewCollectionUnit.searchEmp("P.Perera", "50");;
 		//Click on draft and new button
 		driver = CommonClassMainButtons.draftAndNewBtnClick();
-		//objColUniDraftAndNew.draftAndNew();
-	//	objColUniDraftAndNew.verifyColUnitExsistingData();
+		objColUniDraftAndNew = new _03_03_ColUniDraftAndNew(driver);
+		objColUniDraftAndNew.verifyColUnitExsistingData();
 
 	}
 	
-/*	@Test(priority = 4)
+	@Test(priority = 4)
 	public void TestCase_3_4(){
+		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
 		driver = CommonClass.salesAndMketMenuNav();
 		//Reuse test case 3.1 functions
 				objCollectionUnit = new _03_01_CollectionUnits(driver);
 				objCollectionUnit.navToCollUnit();
 				objCollectionUnit.newColUnit();
-	//			objCollectionUnit.verifyHeader();
+				objCollectionUnit.verifyHeader();
 		//Click on the Copy From (Test case 03_04)
-	//		driver = CommonClassMainButtons.copyFromBtnClick();
-		//	objColUnitCopyFrom.colunitCopyFromBtnfunc();
-	//		objColUnitCopyFrom.selectColUnit("0010");	// use 0010
-	//		objColUnitCopyFrom.verifyColUnit();
-	//		objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
+			driver = CommonClassMainButtons.copyFromBtnClick();
+		objColUnitCopyFrom = new _03_04_ColUnitCopyFrom(driver);
+			objColUnitCopyFrom.selectColUnit("0010");	// use 0010
+			objColUnitCopyFrom.verifyColUnit();
+			objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
 				
 	}	
 	
-/*	@Test(priority = 5)
+	@Test(priority = 5)
 	public void TestCase_3_5(){
 		objModifyCopyFromDate = new _03_05_ModifyCopyFromDate (driver);
 		objModifyCopyFromDate.ModifyCopyFromDateFunc("PhonesNew", "75","25");
@@ -151,10 +153,11 @@ public class TestCase_03 extends CommonClass {
 		objCreateNewCollectionUnit.verifyHeader();
 	}
 	
-	@Test(priority = 6) 
+	@Test(priority = 6)
 	public void TestCase_3_6(){
 		objDuplicateColUnitData = new _03_06_DuplicateColUnitData(driver);
-		objDuplicateColUnitData.clkOnDuplicate();
+		driver = CommonClass.duplicateBtnClick();
+		//objDuplicateColUnitData.clkOnDuplicate();
 		objDuplicateColUnitData.fillMandatoryFields(Integer.toString(CollectionUnitCode));				// enter new code++++ X4
 		//
 		objCreateNewCollectionUnit = new _03_02_CreateNewCollectionUnit(driver);
@@ -168,7 +171,6 @@ public class TestCase_03 extends CommonClass {
 		objActionDropdown = new _03_07_ActionDropdown (driver);
 		objActionDropdown.actionDropDownFunc();
 		objActionDropdown.verifyHistory();
-			
 	}
 	
 	/*@AfterSuite

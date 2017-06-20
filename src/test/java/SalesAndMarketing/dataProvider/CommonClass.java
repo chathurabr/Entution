@@ -98,12 +98,13 @@ public class CommonClass {
 			e.printStackTrace();
 		}
 		 
-		 wait.until(ExpectedConditions.elementToBeClickable(By.id("homelink")));
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("homelink")));
 		 driver.findElement(By.id("homelink")).click();
 		 return driver;
 	 }
 	 
 	 public static WebDriver MainMenuNav(){
+		 		Actions action = new Actions(driver);
 
 				WebDriverWait wait = new WebDriverWait(driver,40);
 				wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -111,13 +112,8 @@ public class CommonClass {
 				
 					
 					WebElement ClickIt = driver.findElement(By.xpath("html/body/div[1]/div[1]/div[1]/span[1]/img"));
-					Actions action = new Actions(driver);
-					action.click(ClickIt);
-					action.build().perform();
-				
-					
-					//Reporter.log("Main Navigation Menu Available and clicked on the Main Navigation Menu ");
-			
+					action.click(ClickIt).build().perform();
+
 			return driver;
 		}
 	 
