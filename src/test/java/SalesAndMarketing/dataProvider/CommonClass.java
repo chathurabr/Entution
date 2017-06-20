@@ -7,8 +7,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
@@ -24,7 +26,14 @@ import java.util.concurrent.TimeUnit;
  *****************************************************************************************/
 public class CommonClass {
 	 public static WebDriver driver;
-	 
+
+	@FindBy(xpath = "//*[@id='permissionBar']/a[text()='Draft']")
+	private WebElement btnDraft;
+	@FindBy(xpath = "//label[@id='lbldocstatus'][text()='(Draft)']")
+	private WebElement lblSalesOrderStatusDraft;
+	@FindBy(xpath = "//label[@id='lbldocstatus']")
+	private WebElement lblSalesOrderStatus;
+
 	 public static WebDriver driverInstance(){
 		
 		System.setProperty("webdriver.chrome.driver","C:/ChromeDriver/chromedriver.exe");
@@ -354,5 +363,47 @@ public class CommonClass {
 			 
 			 return driver;
 		 }
-		 
+
+
+		 public static WebDriver HomePgeTiles_TaskEvent(){
+			 WebDriverWait wait = new WebDriverWait(driver, 40);
+			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='tiles-header'][text()='Task/Event']")));
+			 driver.findElement(By.xpath("//p[@class='tiles-header'][text()='Task/Event']")).click();
+			 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='col-sm-12']/h2[text()='Task Schedule']")));
+			 Assert.assertEquals(driver.findElement(By.xpath("//div[@class='col-sm-12']/h2[text()='Task Schedule']")).getText(),"Task Schedule");
+			 return driver;
+
+		 }
+
+
+	public static void sleepTime(int time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/*Draft and verify order status*/
+	public static String draftAndCheckStatus(){
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Draft']"))));
+		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Draft']")).click(); // click on draft button
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']"))));
+		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText();  // return for verify dreaft order status
+
+
+	}
+
+	/*Release and verify sales status*/
+	public static String releaseOkAndCheckStatus(){
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] "))));
+		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] ")).click(); // click on draft button
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html/body/div[6]/div[3]/a"))));
+		driver.findElement(By.xpath("/html/body/div[6]/div[3]/a")).click();  // click ok on information dialog box
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']"))));
+		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText(); // verify Relesed order status
+
+	}
 }
