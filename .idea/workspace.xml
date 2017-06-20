@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="Merge branch 'master' of https://bitbucket.org/bileetaautomation/entution&#10;&#10;# Conflicts:&#10;#&#9;src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_01_CollectionUnits.java&#10;#&#9;src/test/java/SalesAndMarketing/testCases/TestCase_03.java&#10;#&#9;src/test/java/SalesAndMarketing/testCases/TestCase_06.java&#10;#&#9;target/test-classes/SalesAndMarketing/_02_salesUnits/_02_03_UnitLeaderAndEmpCode.class&#10;#&#9;target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_01_CollectionUnits.class&#10;#&#9;target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_03_ColUniDraftAndNew.class&#10;#&#9;target/test-classes/SalesAndMarketing/dataProvider/CommonClassMainButtons.class&#10;#&#9;target/test-classes/SalesAndMarketing/testCases/TestCase_03.class&#10;#&#9;target/test-classes/SalesAndMarketing/testCases/TestCase_06.class&#10;#&#9;util/Test.properties">
+    <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -804,7 +804,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497933950845</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Merge branch 'master' of https://bitbucket.org/bileetaautomation/entution&#10;&#10;# Conflicts:&#10;#&#9;src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_01_CollectionUnits.java&#10;#&#9;src/test/java/SalesAndMarketing/testCases/TestCase_03.java&#10;#&#9;src/test/java/SalesAndMarketing/testCases/TestCase_06.java&#10;#&#9;target/test-classes/SalesAndMarketing/_02_salesUnits/_02_03_UnitLeaderAndEmpCode.class&#10;#&#9;target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_01_CollectionUnits.class&#10;#&#9;target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_03_ColUniDraftAndNew.class&#10;#&#9;target/test-classes/SalesAndMarketing/dataProvider/CommonClassMainButtons.class&#10;#&#9;target/test-classes/SalesAndMarketing/testCases/TestCase_03.class&#10;#&#9;target/test-classes/SalesAndMarketing/testCases/TestCase_06.class&#10;#&#9;util/Test.properties">
+      <created>1497934086678</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1497934086678</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
