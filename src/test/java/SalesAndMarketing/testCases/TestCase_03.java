@@ -94,12 +94,12 @@ public class TestCase_03 extends CommonClass {
 		driver = CommonClassMainButtons.draftBtnClick();
 		driver = CommonClassMainButtons.releaseBtnClick();
 		driver = CommonClassMainButtons.chkLblStatusReleased();
-	//	objCreateNewCollectionUnit.verifyHeader();
+		objCreateNewCollectionUnit.verifyHeader();
 
 		
 	}
 	
-	/*@Test(priority = 3)
+	@Test(priority = 3)
 	public void TestCase_3_3(){
 		driver.navigate().refresh();
 		driver = CommonClass.homeScreen();
@@ -136,12 +136,12 @@ public class TestCase_03 extends CommonClass {
 			driver = CommonClassMainButtons.copyFromBtnClick();
 		objColUnitCopyFrom = new _03_04_ColUnitCopyFrom(driver);
 			objColUnitCopyFrom.selectColUnit("0010");	// use 0010
-	//		objColUnitCopyFrom.verifyColUnit();
-	//		objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
+			objColUnitCopyFrom.verifyColUnit();
+			objColUnitCopyFrom.enterColUnitCode(Integer.toString(CollectionUnitCode)); 					// enter new code++++ X4
 				
 	}	
 	
-/*	@Test(priority = 5)
+	@Test(priority = 5)
 	public void TestCase_3_5(){
 		objModifyCopyFromDate = new _03_05_ModifyCopyFromDate (driver);
 		objModifyCopyFromDate.ModifyCopyFromDateFunc("PhonesNew", "75","25");
@@ -153,10 +153,11 @@ public class TestCase_03 extends CommonClass {
 		objCreateNewCollectionUnit.verifyHeader();
 	}
 	
-	@Test(priority = 6) 
+	@Test(priority = 6)
 	public void TestCase_3_6(){
 		objDuplicateColUnitData = new _03_06_DuplicateColUnitData(driver);
-		objDuplicateColUnitData.clkOnDuplicate();
+		driver = CommonClass.duplicateBtnClick();
+		//objDuplicateColUnitData.clkOnDuplicate();
 		objDuplicateColUnitData.fillMandatoryFields(Integer.toString(CollectionUnitCode));				// enter new code++++ X4
 		//
 		objCreateNewCollectionUnit = new _03_02_CreateNewCollectionUnit(driver);
@@ -170,7 +171,6 @@ public class TestCase_03 extends CommonClass {
 		objActionDropdown = new _03_07_ActionDropdown (driver);
 		objActionDropdown.actionDropDownFunc();
 		objActionDropdown.verifyHistory();
-			
 	}
 	
 	/*@AfterSuite

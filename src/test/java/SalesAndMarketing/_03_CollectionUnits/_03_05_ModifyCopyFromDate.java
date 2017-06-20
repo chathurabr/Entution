@@ -27,7 +27,7 @@ public class _03_05_ModifyCopyFromDate {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.elementToBeClickable(colUnitName));
+		wait.until(ExpectedConditions.presenceOfElementLocated(colUnitName));
 		driver.findElement(colUnitName).clear();
 		driver.findElement(colUnitName).sendKeys(newColectionUnitName);
 		

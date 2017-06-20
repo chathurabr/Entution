@@ -30,7 +30,7 @@ public class _03_07_ActionDropdown {
 	 WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.elementToBeClickable(actionDropdownBtn));
+		wait.until(ExpectedConditions.presenceOfElementLocated(actionDropdownBtn));
 		driver.findElement(actionDropdownBtn).click();
 		
 		wait.until(ExpectedConditions.elementToBeClickable(actionHistoryIcon));

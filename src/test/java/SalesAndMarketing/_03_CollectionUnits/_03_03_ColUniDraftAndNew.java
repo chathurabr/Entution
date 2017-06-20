@@ -50,7 +50,7 @@ public class _03_03_ColUniDraftAndNew {
 		
 		wait.until(ExpectedConditions.presenceOfElementLocated(colUnitName));
 		WebElement CUN = driver.findElement(colUnitCode);
-		Assert.assertEquals(CUN.getAttribute("value"),"");
+		Assert.assertEquals(CUN.getText(),"");
 	//	soAssert.assertEquals(driver.findElement(colUnitName).getAttribute("value"),"");
 		
 		wait.until(ExpectedConditions.presenceOfElementLocated(comRate));

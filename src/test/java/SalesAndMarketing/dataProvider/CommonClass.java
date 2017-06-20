@@ -89,7 +89,7 @@ public class CommonClass {
 			e.printStackTrace();
 		}
 		 
-		 wait.until(ExpectedConditions.elementToBeClickable(By.id("homelink")));
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("homelink")));
 		 driver.findElement(By.id("homelink")).click();
 		 return driver;
 	 }

@@ -110,7 +110,16 @@ public class _03_02_CreateNewCollectionUnit {
 		String activeLbl = satusActiveLbl.getText();
 		System.out.println("-----------------------------------"+activeLbl);
 		//soAssert.assertEquals("ACTIVEc",activeLbl);
-		Assert.assertEquals(activeLbl,"ACTIVE");
+
+			for(int i=0;i<1000;i++){
+				if(activeLbl=="NONE"){
+					i++;
+			}else if(activeLbl=="ACTIVE"){
+					Assert.assertEquals(activeLbl,"ACTIVE");
+					break;
+				}
+		}
+
 		//soAssert.assertAll();
 			Reporter.log("Status changed as Active");
 	}

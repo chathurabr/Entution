@@ -115,8 +115,8 @@ public class _01_05_CreateVendorThroughAccLookup {
 		WebDriverWait wait = new WebDriverWait(driver,40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		
-		wait.until(ExpectedConditions.elementToBeClickable(newPurchaseOrder));
-		driver.findElement(newPurchaseOrder).click();
+		/*wait.until(ExpectedConditions.elementToBeClickable(newPurchaseOrder));
+		driver.findElement(newPurchaseOrder).click();*/
 		
 		wait.until(ExpectedConditions.elementToBeClickable(secondJourny));
 		//driver.findElement(secondJourny).click();

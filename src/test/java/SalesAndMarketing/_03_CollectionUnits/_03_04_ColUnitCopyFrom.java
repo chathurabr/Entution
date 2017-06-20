@@ -22,7 +22,10 @@ public class _03_04_ColUnitCopyFrom {
 			private WebElement enterColUnitCodeTxtfld;
 
 	By colUnitSearchIcon = By.xpath("//*[@id='g1029']/div[1]/span[2]");
+
+
 	By colUnitTblColumn	= By.xpath("//*[@id='g1029-t']/table/tbody/tr");
+
 	//Collection unit code,name,comm rate, employee, com rate
 	By colUnitCode = By.id("txtCUCode");
 	By colUnitName = By.id("txtCUName");
@@ -59,7 +62,10 @@ public class _03_04_ColUnitCopyFrom {
 		action.moveToElement(dblClick).doubleClick().build().perform();
 			Reporter.log("Existing collection units appeared and created Collection unit selected");
 			Reporter.log("selected collection unit appeared");*/
-		
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(colUnitTblColumn));
+		WebElement column = driver.findElement(colUnitTblColumn);
+		action.moveToElement(column).doubleClick().build().perform();
 	}
 	
 	public void verifyColUnit(){

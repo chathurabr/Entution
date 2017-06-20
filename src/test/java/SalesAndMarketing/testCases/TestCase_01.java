@@ -109,6 +109,7 @@ public class TestCase_01 extends CommonClass {
 		objCreateVendor = new _01_05_CreateVendorThroughAccLookup(driver);
 		//objSalesAndMktMenu = new _01_02_SalesAndMarketingMenu (driver);
 		objCreateVendor.openPurchaseOrder();
+		driver = CommonClassMainButtons.createNewItem();
 		objCreateVendor.newPurchaseOrder();
 		objCreateVendor.newVendor("Auto Ven Na R"+EMP_ID,"Auto Ven Na R"+EMP_ID); 	//Change +  AutoVenCo +
 		objCreateVendor.searchNSelectVedor("Auto Ven Na R"+EMP_ID);			//get the above number

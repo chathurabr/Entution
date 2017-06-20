@@ -23,47 +23,22 @@ public class _02_04_SalesUnitCreate {
 		this.driver=driver;
 	}
 	public void NewSalesUnitCrate(String sharingRateVal){
-		this.draftSalesUnit(sharingRateVal);
+		this.enterSharingRate(sharingRateVal);
 	}
 	
-	public void draftSalesUnit(String sharingRateVal){
+	public void enterSharingRate(String sharingRateVal){
 		SoftAssert soAssert = new SoftAssert();
 		
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
-		
-		wait.until(ExpectedConditions.elementToBeClickable(empNameTxtField));
-		driver.findElement(empNameTxtField).clear();
-		driver.findElement(empNameTxtField).sendKeys(Keys.ENTER);
-		
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		wait.until(ExpectedConditions.elementToBeClickable(empColumn));
-		WebElement clickIt = driver.findElement(empColumn);
-		Actions action = new Actions(driver);
-		action.doubleClick(clickIt).build().perform();
+
 		
 		wait.until(ExpectedConditions.elementToBeClickable(sharingRate));
 		driver.findElement(sharingRate).clear();
 		driver.findElement(sharingRate).sendKeys(sharingRateVal);
-		
-		//wait.until(ExpectedConditions.elementToBeClickable(draftAndNewBtn));
-		//driver.findElement(draftAndNewBtn).click();
-		
-		wait.until(ExpectedConditions.elementToBeClickable(draftAndNewBtn));
-		WebElement ClickIt = driver.findElement(draftAndNewBtn);
-		Actions actionn = new Actions(driver);
-		actionn.click(ClickIt);
-		actionn.build().perform();
 
-		
-		wait.until(ExpectedConditions.elementToBeClickable(newLabel));
+		/*wait.until(ExpectedConditions.elementToBeClickable(newLabel));
 		soAssert.assertEquals("New", driver.findElement(newLabel).getText());
-		soAssert.assertAll();
+		soAssert.assertAll();*/
 	}
 }
