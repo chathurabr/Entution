@@ -159,17 +159,24 @@ public class CommonClassMainButtons extends CommonClass {
 		 Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
-			
-			WebElement drftNew = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
+		 try {
+			 Thread.sleep(2000);
+		 } catch (InterruptedException e) {
+			 e.printStackTrace();
+		 }
+
+		 WebElement drftNew = driver.findElement(By.xpath("//*[@id='permissionBar']/a[contains(text(),'Draft & New')]"));
 			wait.until(ExpectedConditions.elementToBeClickable(drftNew));
 			
 			if(drftNew.getText().equals("Draft & New")){
 			//Draft Button
-				action.moveToElement(drftNew).click().build().perform();
+				drftNew.click();
+				//action.moveToElement(drftNew).click().build().perform();
+				System.out.println("Draft and new button clicked ");
 				Reporter.log("Draft and New button clicked successfully");
 			}else{
 				//soAssert.assertEquals(drftNew.getText(), "Draft & New");
-				Assert.assertEquals("Draft & New",drftNew.getText());
+				Assert.assertEquals(drftNew.getText(),"Draft & New");
 				//soAssert.assertAll();
 			}
 		 return wdd;
@@ -188,11 +195,12 @@ public class CommonClassMainButtons extends CommonClass {
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
 			
-			WebElement cpyFrm = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[3]"));
+			WebElement cpyFrm = wdd.findElement(By.xpath("//*[@id='permissionBar']/a[contains(text(),'Copy From')]"));
 			wait.until(ExpectedConditions.elementToBeClickable(cpyFrm));
 			if(cpyFrm.getText().equals("Copy From")){
 			//Draft Button
-			action.moveToElement(cpyFrm).click().build().perform();
+				cpyFrm.click();
+			//action.moveToElement(cpyFrm).click().build().perform();
 			Reporter.log("Copy From button clicked successfully");
 			}else{
 				soAssert.assertEquals(cpyFrm.getText(), "Copy From");
