@@ -45,6 +45,8 @@ public class _12_03_PendingOutboundShipment {
     private WebElement lblNumberOfUnits;
     @FindBy(xpath = "//span[@class='pic16 pic16-checkout']")
     private WebElement btnCheckout;
+    @FindBy(xpath = "//i[@class='fa fa-sign-in fa-2x']")
+    private WebElement btnErrorSign;
 
 
 
@@ -54,30 +56,42 @@ public class _12_03_PendingOutboundShipment {
     }
 
     /*Search for a pending Outbound shipment from Tast List.*/
-    public void OutboundShipment(String orderNumber){
-        Actions action = new Actions(driver);
+    public void selectOutboundShipment() {
         WebDriverWait wait = new WebDriverWait(driver, 40);
-       // Actions action = new Actions (driver);
         wait.until(ExpectedConditions.elementToBeClickable(btnOutboundShipment));
         btnOutboundShipment.click();  //  Click on the "Outbound Shipment" tile.
+    }
+
+
+    //Enter the already created Sales order number in the search bar and search.
+    public void searchSalesOrderNumber(String orderNumber){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(txtSearch));
         wait.until(ExpectedConditions.elementToBeClickable(txtSearch));
         txtSearch.clear();
         txtSearch.sendKeys(orderNumber);
         System.out.println(orderNumber);
-        txtSearch.sendKeys(Keys.ENTER);
-//        System.out.println(driver.findElement(By.xpath("//*[@id='lblToday']/div[2]/div[2]/div/div/div[3]/a")).getText());
-       /* Select dd = new Select(ddAutosearch);
-        dd.selectByVisibleText("NTU/124 - 00001 [Vendor Name]");*/
-
-        driver.findElement(By.xpath("//*[@id='lblToday']/div[2]/div[2]/div[1]/div/div[7]/a/i")).click();
-//        wait.until(ExpectedConditions.elementToBeClickable(ddAutosearch));
-  //      ddAutosearch.click();
-        CommonClass.sleepTime(5000);
-        System.out.println(driver.findElement(By.xpath("//*[@id='trnpageheader']/a[text()='Outbound Shipment']")).getText());
+        String lastChar = orderNumber.substring(orderNumber.length() - 1);
+        System.out.println(lastChar+": lastnumber");
+        txtSearch.sendKeys(Keys.BACK_SPACE);
+        txtSearch.sendKeys(lastChar);
+        CommonClass.sleepTime(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(ddAutosearch));
+        ddAutosearch.click();
+        // Store the current window handle
+        String winHandleBefore = driver.getWindowHandle();
+        CommonClass.sleepTime(3000);
+        wait.until(ExpectedConditions.elementToBeClickable(btnErrorSign));
+        btnErrorSign.click();
+        // Switch to new window opened
+        for (String winHandle : driver.getWindowHandles()) {
+            driver.switchTo().window(winHandle);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        }
 
     }
 
-    public void releaseAndGoToPage(String orderNumber,String quantity){
+    public void releaseAndGoToPage() {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnRelease));
         btnRelease.click(); // click on draft button
@@ -86,31 +100,36 @@ public class _12_03_PendingOutboundShipment {
         wait.until(ExpectedConditions.elementToBeClickable(linkGoToPageInformationBox));
         linkGoToPageInformationBox.click(); // click Go to page on information dialog box
         // Switch to new window opened
-        for(String winHandle : driver.getWindowHandles()){
+        for (String winHandle : driver.getWindowHandles()) {
             driver.switchTo().window(winHandle);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
+    }
+
+    public void outBoundShipment(String orderNumber,String quantity) {
         // Perform the actions on new window
-        Assert.assertEquals(lblPageHeaderOutboundShipment.getText(),"Outbound Shipment");  // Verify the by page header.
+        WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.visibilityOf(lblPageHeaderOutboundShipment));
-        Assert.assertEquals(lblStatus.getText(),"New"); //  Verify the outbound shipment's status.
+        Assert.assertEquals(lblPageHeaderOutboundShipment.getText(), "Outbound Shipment");  // Verify the by page header.
+        Assert.assertEquals(lblStatus.getText(), "New"); //  Verify the outbound shipment's status.
         wait.until(ExpectedConditions.visibilityOf(txtRefDocNo));
-        Assert.assertEquals(txtRefDocNo.getText(),orderNumber);
+        Assert.assertEquals(txtRefDocNo.getText(), orderNumber);
         CommonClass.sleepTime(4000);
-        Assert.assertEquals(lblNumberOfUnits.getText(),quantity);
+        Assert.assertEquals(lblNumberOfUnits.getText(), quantity);
         wait.until(ExpectedConditions.elementToBeClickable(btnCheckout));
         btnCheckout.click();
-        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
-        Assert.assertEquals(CommonClass.releaseOkAndCheckStatus(),"(Releasedd)");
-
-
-
+        CommonClass.sleepTime(4000);
         // Close the new window, if that window no more required
- //       driver.close();
+        //       driver.close();
         // Switch back to original browser (first window)
- //       driver.switchTo().window(winHandleBefore);
+        //       driver.switchTo().window(winHandleBefore);
 
+    }
 
+    public String getSalesOrderNumber(){   // Get sales Order Number
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.visibilityOf(lblStatus));
+        return lblStatus.getText();
 
     }
 

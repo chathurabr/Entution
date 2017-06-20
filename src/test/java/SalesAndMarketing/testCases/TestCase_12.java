@@ -3,6 +3,7 @@ package SalesAndMarketing.testCases;
 import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_01_NavigatesToSalesOrderScreen;
 import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_02_CreateSalesOrder;
 import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_03_PendingOutboundShipment;
+import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_04_PendingSalesInvoice;
 import SalesAndMarketing.dataProvider.CommonClass;
 import SalesAndMarketing.dataProvider.CommonClassMainButtons;
 import org.openqa.selenium.WebDriver;
@@ -17,12 +18,15 @@ public class TestCase_12 {
     public WebDriver driver;
 
     private String salesOrderNumber;
+    private String OutBoundShipmentOrderNumber;
+
     private String price = "20";
     private String quantity= "100";
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
     private _12_03_PendingOutboundShipment outboundShipment;
+    private _12_04_PendingSalesInvoice pendingSalesInvoice;
 
     @BeforeTest
     public void beforeTest(){
@@ -52,21 +56,36 @@ public class TestCase_12 {
         createSalesOrder.enterQtyAndPrice(quantity,price); /*Enter Qty & Unit Price*/
         createSalesOrder.checkTotal("2,000.00");  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
-     //   Assert.assertEquals(createSalesOrder.releaseAndCheckStatus(),"(Released)");
-       // createSalesOrder.checkTotalAfterRelesed("2,000.00"); // verify total balace of the available fields after Released
-        salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get Order Number
+        Assert.assertEquals(CommonClass.releaseOkAndCheckStatus(),"(Released)");
+        createSalesOrder.checkTotalAfterRelesed("2,000.00"); // verify total balace of the available fields after Released
+        salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
+        System.out.println(salesOrderNumber);
 
     }
     @Test(priority = 3,enabled = true)  //Search for a pending Outbound shipment from Tast List.
     public void SOTC_002(){
         outboundShipment = new _12_03_PendingOutboundShipment(driver);
-     //   driver = CommonClass.homeScreen();  // Go to home Screen
-    //    driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
-    //    outboundShipment.OutboundShipment(salesOrderNumber);
-        outboundShipment.releaseAndGoToPage(salesOrderNumber,quantity+".00");
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        outboundShipment.selectOutboundShipment();  //  Click on the "Outbound Shipment" tile.
+        outboundShipment.searchSalesOrderNumber(salesOrderNumber); // search using Sales Order Number
+       // outboundShipment.releaseAndGoToPage();
+        outboundShipment.outBoundShipment(salesOrderNumber,quantity+".00");
+        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");/*Draft and verify order status*/
+        Assert.assertEquals(CommonClass.releaseOkAndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
+        OutBoundShipmentOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get Outbound Shipment Order Number
     }
 
-
-
-
+    @Test(priority = 4) // Search for a pending Sales invoice from Tast List.
+    public void SOTC_003(){
+        pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
+        pendingSalesInvoice.searchOutboundShipmentOrderNumber(OutBoundShipmentOrderNumber); // search using Outbound Shipment Order Number
+        pendingSalesInvoice.sales_Invoice(OutBoundShipmentOrderNumber);
+        pendingSalesInvoice.checkTotal("2,000.00");  // verify total balace of the available fields
+        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
+        Assert.assertEquals(CommonClass.releaseAndCheckStatusSalesInvoice(),"(Released)");/*Release and Sales invoice status*/
+    }
 }

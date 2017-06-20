@@ -27,14 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class CommonClass {
 	 public static WebDriver driver;
 
-	@FindBy(xpath = "//*[@id='permissionBar']/a[text()='Draft']")
-	private WebElement btnDraft;
-	@FindBy(xpath = "//label[@id='lbldocstatus'][text()='(Draft)']")
-	private WebElement lblSalesOrderStatusDraft;
-	@FindBy(xpath = "//label[@id='lbldocstatus']")
-	private WebElement lblSalesOrderStatus;
-
-	 public static WebDriver driverInstance(){
+	public static WebDriver driverInstance(){
 		
 		System.setProperty("webdriver.chrome.driver","C:/ChromeDriver/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
@@ -382,9 +375,11 @@ public class CommonClass {
 
 	/*Draft and verify order status*/
 	public static String draftAndCheckStatus(){
-		WebDriverWait wait = new WebDriverWait(driver, 40);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[text()='Draft']")));
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Draft']"))));
 		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Draft']")).click(); // click on draft button
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']")));
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']"))));
 		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText();  // return for verify dreaft order status
 
@@ -393,12 +388,24 @@ public class CommonClass {
 
 	/*Release and verify sales status*/
 	public static String releaseOkAndCheckStatus(){
-		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] "))));
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[text()='Release']")));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release']"))));
 		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] ")).click(); // click on draft button
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html/body/div[6]/div[3]/a"))));
 		driver.findElement(By.xpath("/html/body/div[6]/div[3]/a")).click();  // click ok on information dialog box
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']"))));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Released)']")));
+		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText(); // verify Relesed order status
+
+	}
+
+	/*Release and verify sales status*/
+	public static String releaseAndCheckStatusSalesInvoice(){
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[text()='Release']")));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release']"))));
+		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] ")).click(); // click on draft button
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Released)']")));
 		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText(); // verify Relesed order status
 
 	}
