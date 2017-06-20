@@ -1,5 +1,6 @@
 package SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder;
 
+import SalesAndMarketing.dataProvider.CommonClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -56,6 +57,8 @@ public class _12_02_CreateSalesOrder {
     private WebElement btnCheckout;
     @FindBy(xpath = "//input[@class='el-resize21 gcd']")
     private WebElement  txtlineTotal;
+    @FindBy(xpath = "//div[@class='el-resize19']")
+    private WebElement txtlineTotalRelesed;
     @FindBy(xpath = "//input[@id='txtUnitTot']")
     private WebElement txtUnitTotal;
     @FindBy(xpath = "//input[@id='txtSubTot']")
@@ -72,11 +75,12 @@ public class _12_02_CreateSalesOrder {
     private WebElement lblSalesOrderStatus;
     @FindBy(xpath = "//label[@id='lbldocstatus'][text()='(Draft)']")
     private WebElement lblSalesOrderStatusDraft;
-
-
-
-
-   // private By cboxCurrency = By.id( "cboxCurrency]");
+    @FindBy(xpath = "/html/body/div[6]/div[3]/a")
+    private WebElement okButtonInformationBox;
+    @FindBy(id = "cboxSalesUnitPerson")
+    private WebElement ddSalesUnit;
+    @FindBy(xpath = "//label[@id='lblTemplateFormHeader']")
+    private WebElement lblStatus;
 
 
 
@@ -97,31 +101,37 @@ public class _12_02_CreateSalesOrder {
     /* Select Customer Account*/
     public void selectCustomerAccount() {
         WebDriverWait wait = new WebDriverWait(driver, 40);
+        Actions action = new Actions(driver);
         wait.until(ExpectedConditions.elementToBeClickable(lblPageHeaderNewSalesOrder));
-        Assert.assertEquals(lblPageHeaderNewSalesOrder.getText(),"New");
+        Assert.assertEquals(lblPageHeaderNewSalesOrder.getText(),"New"); // verify Accounts new Sales Order header
         searchIconSelectCustomer.click();
         Assert.assertEquals(lblHeaderAccounts_info_popup.getText(), "Account"); // verify Accounts info new pop-up header
+        CommonClass.sleepTime(2000);
         wait.until(ExpectedConditions.elementToBeClickable(buttonRefresh));
         driver.findElement(buttonRefresh).click();
         wait.until(ExpectedConditions.elementToBeClickable(firstAccountCodeInTheTable));
-        Actions action = new Actions(driver);
         action.doubleClick(firstAccountCodeInTheTable).perform(); //Double click the first Account
+        if (lblHeaderAccounts_info_popup.isDisplayed()) {
+            wait.until(ExpectedConditions.elementToBeClickable(firstAccountCodeInTheTable));
+            action.doubleClick(firstAccountCodeInTheTable).perform();
+        }
+
     }
 
     /*select Curuncy Unit from Dropdown*/
-    public void selectCurruncy(){
+    public void selectCurruncy(String currency,int currencyNumber){
         Select selectCurruncy = new Select(cboxCurrency);
         List<WebElement> allCurruncies = selectCurruncy.getOptions();
    /*     for (int j = 0; j < allCurruncies.size(); j++) {
             System.out.println(allCurruncies.get(j).getText());}*/
-        String getLKRunit = allCurruncies.get(5).getText().trim();
-        Assert.assertEquals(getLKRunit,"LKR");
+        String getLKRunit = allCurruncies.get(currencyNumber).getText().trim();
+        Assert.assertEquals(getLKRunit,currency);
         selectCurruncy.selectByVisibleText(getLKRunit);
     }
 
     /*Sales Unit from Dropdown */
     public void selectSalesUnit(){
-        Select selectSalesUnit = new Select(driver.findElement(By.id("cboxSalesUnitPerson")));
+        Select selectSalesUnit = new Select(ddSalesUnit);
         List<WebElement> e = selectSalesUnit.getOptions();
         String unit = e.get(2).getText().trim();
         selectSalesUnit.selectByVisibleText(unit);
@@ -134,44 +144,46 @@ public class _12_02_CreateSalesOrder {
     }
 
     /*Click on Product Search icon and add a Lot product*/
-    public void addProduct(){
+    public void addProduct(String productName){
         Actions action = new Actions (driver);
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(iconProductSearch));
         iconProductSearch.click();
         wait.until(ExpectedConditions.elementToBeClickable(lblHeaderProduct_info_popup));
         //System.out.println(lblHeaderProduct_info_popup.getText());
-        action.moveToElement(txtSearchProduct2).sendKeys("Lot-Pro-1310").sendKeys(Keys.ENTER).build().perform();
+        action.moveToElement(txtSearchProduct2).sendKeys(productName).sendKeys(Keys.ENTER).build().perform();
+        CommonClass.sleepTime(2000);
         wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
         action.doubleClick(firstSearchedProduct).perform();
+        if (lblHeaderProduct_info_popup.isDisplayed()) {
+            wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
+            action.doubleClick(firstSearchedProduct).perform();
+        }
     }
 
     /* Select a warehouse from the warehouse dropdown.*/
-    public void selectWareHouse(){
+    public void selectWareHouse(String wareHouseName){
         Select selectSalesUnit = new Select(ddWareHouse);
-        selectSalesUnit.selectByVisibleText("1310-1 [1310-ProductIn]");
+        selectSalesUnit.selectByVisibleText(wareHouseName);
     }
 
     /*Enter Qty & Unit Price*/
-    public void enterQtyAndPrice(){
+    public void enterQtyAndPrice(String quantity, String price){
         Actions actions = new Actions(driver);
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(txtQuantity));
         txtQuantity.clear();
-        actions.moveToElement(txtQuantity).sendKeys("100").build().perform();
+        actions.moveToElement(txtQuantity).sendKeys(quantity).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(txtUnitPrice));
         txtUnitPrice.clear();
-        actions.moveToElement(txtUnitPrice).sendKeys("20").build().perform();
+        actions.moveToElement(txtUnitPrice).sendKeys(price).build().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(btnCheckout));
         btnCheckout.click();
     }
 
     /*Verify that total display correctly.*/
     public void checkTotal(String total){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        CommonClass.sleepTime(2000);
         Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
         Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
@@ -179,34 +191,33 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(txtBannerTotal.getText(),total);  // Total in the right upper cornner
     }
 
-    /*Draft and verify sales order status*/
-
-    public String draftAndCheckStatus(){
-        WebDriverWait wait = new WebDriverWait(driver, 40);
-        wait.until(ExpectedConditions.elementToBeClickable(btnDraft));
-        btnDraft.click(); // click on draft button
-        wait.until(ExpectedConditions.elementToBeClickable(lblSalesOrderStatusDraft));
-        return lblSalesOrderStatus.getText();
-
-
-    }
 
     /*Release and verify sales order status*/
     public String releaseAndCheckStatus(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnRelease));
         btnRelease.click(); // click on draft button
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        // wait.until(ExpectedConditions.elementToBeClickable(lblSalesOrderStatusDraft));
-        return lblSalesOrderStatus.getText();
-
+        wait.until(ExpectedConditions.elementToBeClickable(okButtonInformationBox));
+        okButtonInformationBox.click();  // click ok on information dialog box
+        wait.until(ExpectedConditions.elementToBeClickable(lblSalesOrderStatus));
+        return lblSalesOrderStatus.getText(); // verify Relesed order status
 
     }
 
+
+    public String getSalesOrderNumber(){   // Get sales Order Number
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.visibilityOf(lblStatus));
+        return lblStatus.getText();
+
+    }
+    public void checkTotalAfterRelesed(String total){
+        Assert.assertEquals(txtlineTotalRelesed.getText(),total);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtTotal.getAttribute("value"),total);  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),total);  // Total in the right upper cornner
+    }
 
 
 }
