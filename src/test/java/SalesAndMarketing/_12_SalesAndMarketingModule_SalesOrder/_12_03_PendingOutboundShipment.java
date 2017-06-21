@@ -25,8 +25,10 @@ public class _12_03_PendingOutboundShipment {
     private WebElement btnOutboundShipment;
     @FindBy(id = "txtComTran")
     private WebElement txtSearch;
+    By searchTxtBox = By.id("txtComTran");
     @FindBy(xpath = "//div[@id='txtComTranac']")
-    private WebElement ddAutosearch;
+    private WebElement SearchDrop;
+    By searchDropDown = By.id("txtComTranac");
 
     @FindBy(xpath = "//label[@id='lblTemplateFormHeader']")
     private WebElement lblStatus;
@@ -59,21 +61,31 @@ public class _12_03_PendingOutboundShipment {
         WebDriverWait wait = new WebDriverWait(driver, 40);
        // Actions action = new Actions (driver);
         wait.until(ExpectedConditions.elementToBeClickable(btnOutboundShipment));
-        btnOutboundShipment.click();  //  Click on the "Outbound Shipment" tile.
-        wait.until(ExpectedConditions.elementToBeClickable(txtSearch));
-        txtSearch.clear();
-        txtSearch.sendKeys(orderNumber);
-        System.out.println(orderNumber);
-        txtSearch.sendKeys(Keys.ENTER);
+        action.moveToElement(btnOutboundShipment).click().build().perform(); //Click on the "Outbound Shipment" tile on the left panel.
+
+        WebElement srch = driver.findElement(searchTxtBox);
+        wait.until(ExpectedConditions.presenceOfElementLocated(searchTxtBox));
+        wait.until(ExpectedConditions.elementToBeClickable(srch));
+
+        try{
+            Thread.sleep(3000);
+            srch.click();
+        }catch (Exception e){
+            System.out.println("-------------------------------------- srch.click();"+ e);
+            action.moveToElement(srch).click().build().perform();
+        }
+        //action.moveToElement(srch).click().build().perform();
+        action.moveToElement(srch).sendKeys("00001").build().perform();
+
 //        System.out.println(driver.findElement(By.xpath("//*[@id='lblToday']/div[2]/div[2]/div/div/div[3]/a")).getText());
        /* Select dd = new Select(ddAutosearch);
         dd.selectByVisibleText("NTU/124 - 00001 [Vendor Name]");*/
 
-        driver.findElement(By.xpath("//*[@id='lblToday']/div[2]/div[2]/div[1]/div/div[7]/a/i")).click();
+   //     driver.findElement(By.xpath("//*[@id='lblToday']/div[2]/div[2]/div[1]/div/div[7]/a/i")).click();
 //        wait.until(ExpectedConditions.elementToBeClickable(ddAutosearch));
   //      ddAutosearch.click();
-        CommonClass.sleepTime(5000);
-        System.out.println(driver.findElement(By.xpath("//*[@id='trnpageheader']/a[text()='Outbound Shipment']")).getText());
+    //    CommonClass.sleepTime(5000);
+    //    System.out.println(driver.findElement(By.xpath("//*[@id='trnpageheader']/a[text()='Outbound Shipment']")).getText());
 
     }
 

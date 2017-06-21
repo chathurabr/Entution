@@ -34,22 +34,26 @@ public class _01_02_SalesAndMarketingMenu {
 		
 			WebDriverWait wait = new WebDriverWait(driver,40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
-			wait.until(ExpectedConditions.presenceOfElementLocated(itemMainNavMenu));
-			
-			if(driver.findElement(itemMainNavMenu).isDisplayed()){
-				bool1=true;
-				
-				WebElement ClickIt = driver.findElement(itemMainNavMenu);
-				Actions action = new Actions(driver);
-				action.click(ClickIt);
-				action.build().perform();
-				
-				Reporter.log("Main Navigation Menu Available and clicked on the Main Navigation Menu ");
-			}
-			else{
-			soAssertion.assertTrue(bool1);
-			Reporter.log("<fnt color='red'>Main Navigation menu not available</font>");
-			soAssertion.assertAll();
+
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(itemMainNavMenu));
+
+				if (driver.findElement(itemMainNavMenu).isDisplayed()) {
+					bool1 = true;
+
+					WebElement ClickIt = driver.findElement(itemMainNavMenu);
+					Actions action = new Actions(driver);
+					action.click(ClickIt);
+					action.build().perform();
+
+					Reporter.log("Main Navigation Menu Available and clicked on the Main Navigation Menu ");
+				} else {
+					soAssertion.assertTrue(bool1);
+					Reporter.log("<fnt color='red'>Main Navigation menu not available</font>");
+					soAssertion.assertAll();
+				}
+			}catch (Exception e){
+				System.out.println("Error is "+ e);
 			}
 			
 	}

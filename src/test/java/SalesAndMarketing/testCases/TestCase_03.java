@@ -26,19 +26,6 @@ public class TestCase_03 extends CommonClass {
 
 	private int CollectionUnitCode;
 	
-	//@DataProvider
-	/*public Object[] testcred(){ 
-		Object[] details = new Object[1];
-		
-		details[0][0][0][0][0] = "ColCode0001";//Collection Unit Code
-		details[0][1][0][0][0] = "Phones";//Collection Unit Name
-		details[0][1][1][0][0] = "50";//Collection Unit Com Rate
-		details[0][1][1][1][0] = "P.Perera";//Employee Name
-		details[0][1][1][1][1] = "50";//Employee Sharing Rate
-		
-		return details;
-		}*/
-	
 	@BeforeTest
 	public void beforeTest(){
 	driver = CommonClass.driverInstance();

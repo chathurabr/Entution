@@ -43,6 +43,7 @@ public class TestCase_12 {
     public void testCase_12_02(){
         createSalesOrder = new _12_02_CreateSalesOrder(driver);
         createSalesOrder.CreateSalesOrder();   /*New Sales Order - Select Sales Order to Sales Invoice */
+        driver = CommonClassMainButtons.createNewItem(); /*New Sales Order - Select Sales Order to Sales Invoice */
         createSalesOrder.selectCustomerAccount();  /* Select Customer Account*/
         createSalesOrder.selectCurruncy("LKR",5); /*select Curuncy Unit from Dropdown*/
         createSalesOrder.selectSalesUnit(); /*select Sales Unit from Dropdown */
@@ -60,10 +61,10 @@ public class TestCase_12 {
     @Test(priority = 3,enabled = true)  //Search for a pending Outbound shipment from Tast List.
     public void SOTC_002(){
         outboundShipment = new _12_03_PendingOutboundShipment(driver);
-     //   driver = CommonClass.homeScreen();  // Go to home Screen
-    //    driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
-    //    outboundShipment.OutboundShipment(salesOrderNumber);
-        outboundShipment.releaseAndGoToPage(salesOrderNumber,quantity+".00");
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        outboundShipment.OutboundShipment(salesOrderNumber);
+ //       outboundShipment.releaseAndGoToPage(salesOrderNumber,quantity+".00");
     }
 
 

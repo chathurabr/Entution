@@ -14,6 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Created by chathura on 6/15/2017.
@@ -92,8 +95,8 @@ public class _12_02_CreateSalesOrder {
     /*New Sales Order - Select Sales Order to Sales Invoice */
     public void CreateSalesOrder(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
-        wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
-        btnNewSalesOrser.click();   // Click on New Sales Order button
+        wait.pollingEvery(2,SECONDS);
+
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoice));
         btnSalesOrderToSalesInvoice.click();   //Select Sales Order to Sales Invoice (Option One)
     }
@@ -102,9 +105,11 @@ public class _12_02_CreateSalesOrder {
     public void selectCustomerAccount() {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         Actions action = new Actions(driver);
+
         wait.until(ExpectedConditions.elementToBeClickable(lblPageHeaderNewSalesOrder));
         Assert.assertEquals(lblPageHeaderNewSalesOrder.getText(),"New"); // verify Accounts new Sales Order header
         searchIconSelectCustomer.click();
+
         Assert.assertEquals(lblHeaderAccounts_info_popup.getText(), "Account"); // verify Accounts info new pop-up header
         CommonClass.sleepTime(2000);
         wait.until(ExpectedConditions.elementToBeClickable(buttonRefresh));
