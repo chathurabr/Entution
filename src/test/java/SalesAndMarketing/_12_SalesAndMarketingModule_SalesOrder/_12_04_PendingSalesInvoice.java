@@ -35,13 +35,15 @@ public class _12_04_PendingSalesInvoice {
     private WebElement lblPageHeadeSalesInvoice;
     @FindBy(xpath = "//label[@id='lblTemplateFormHeader']")
     private WebElement lblStatus;
-    @FindBy(xpath = "//*[@id='tblSalesInv']/tbody/tr/td[9]/div")
-    private WebElement txtRefDocNo;
+    @FindBy(xpath = "//*[@id='tblSalesInv']/tbody/tr/td[10]/div")  //*[@id='tblSalesInv']/tbody/tr/td[9]/div
+    private WebElement txtRefDocNo;  //*[@id='tblSalesInv']/tbody/tr/td[10]/div
     @FindBy(xpath = "//span[@class='pic16 pic16-checkout']")
     private WebElement btnCheckout;
 
     @FindBy(xpath = "//input[@class='el-resize21 gcd']")
     private WebElement  txtlineTotal;
+    @FindBy(xpath = "//input[@class='el-resize22 gcd']")
+    private WebElement  txtlineTotal_SSO;
     @FindBy(xpath = "//div[@class='el-resize19']")
     private WebElement txtlineTotalRelesed;
     @FindBy(xpath = "//input[@id='txtUnitTot']")
@@ -64,7 +66,7 @@ public class _12_04_PendingSalesInvoice {
         btnSalesInvoice.click();
     }
 
-    public void searchOutboundShipmentOrderNumber(String orderNumber){
+    public void searchOrderNumber(String orderNumber){
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(txtSearch));
         txtSearch.clear();
@@ -96,17 +98,27 @@ public class _12_04_PendingSalesInvoice {
         wait.until(ExpectedConditions.visibilityOf(lblPageHeadeSalesInvoice));
         Assert.assertEquals(lblPageHeadeSalesInvoice.getText(), "Sales Invoice");  // Verify the by page header.
         Assert.assertEquals(lblStatus.getText(), "New"); //  Verify the Sales Invoice's status.
-        wait.until(ExpectedConditions.visibilityOf(txtRefDocNo));
-        Assert.assertEquals(txtRefDocNo.getText(), orderNumber);  // Verify the Ref Doc No in the product line.
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='tblSalesInv']/tbody/tr/td/div[contains(text(),'"+orderNumber+"')]"))));
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id='tblSalesInv']/tbody/tr/td/div[contains(text(),'"+orderNumber+"')]")).getText(), orderNumber);  // Verify the Ref Doc No in the product line.
         CommonClass.sleepTime(4000);
         wait.until(ExpectedConditions.elementToBeClickable(btnCheckout));
         btnCheckout.click();  // Click on Check-out button.
     }
 
-    /*Verify that total display correctly.*/
+    /*Verify that total display correctly. Sales to Invoice*/
     public void checkTotal(String total){
         CommonClass.sleepTime(2000);
         Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtTotal.getAttribute("value"),total);  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),total);  // Total in the right upper cornner
+    }
+
+    /*Verify that total display correctly.  Sales To Outbound*/
+    public void checkTotal_SSO(String total){
+        CommonClass.sleepTime(2000);
+        Assert.assertEquals(txtlineTotal_SSO.getAttribute("value"),total);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
         Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
         Assert.assertEquals(txtTotal.getAttribute("value"),total);  // right bottom corner

@@ -57,6 +57,7 @@ public class _12_03_PendingOutboundShipment {
 
     /*Search for a pending Outbound shipment from Tast List.*/
     public void selectOutboundShipment() {
+        CommonClass.sleepTime(2000);
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnOutboundShipment));
         btnOutboundShipment.click();  //  Click on the "Outbound Shipment" tile.
@@ -70,9 +71,9 @@ public class _12_03_PendingOutboundShipment {
         wait.until(ExpectedConditions.elementToBeClickable(txtSearch));
         txtSearch.clear();
         txtSearch.sendKeys(orderNumber);
-        System.out.println(orderNumber);
+       // System.out.println(orderNumber);
         String lastChar = orderNumber.substring(orderNumber.length() - 1);
-        System.out.println(lastChar+": lastnumber");
+       // System.out.println(lastChar+": lastnumber");
         txtSearch.sendKeys(Keys.BACK_SPACE);
         txtSearch.sendKeys(lastChar);
         CommonClass.sleepTime(2000);
