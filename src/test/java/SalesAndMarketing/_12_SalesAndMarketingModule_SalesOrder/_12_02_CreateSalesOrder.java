@@ -28,6 +28,8 @@ public class _12_02_CreateSalesOrder {
     private WebElement btnNewSalesOrser;
     @FindBy(xpath = "//span[text()='Sales Order to Sales Invoice']")
     private WebElement btnSalesOrderToSalesInvoice;
+    @FindBy(xpath = "//span[text()='Sales Order to Outbound Shipment']")
+    private WebElement btnSalesOrderToOutboundShipment;
     @FindBy(xpath = "//*[@id='lbldocstatus'][text()='New']")
     private WebElement lblPageHeaderNewSalesOrder;
     @FindBy(id = "cboxCurrency")
@@ -93,12 +95,21 @@ public class _12_02_CreateSalesOrder {
     }
 
     /*New Sales Order - Select Sales Order to Sales Invoice */
-    public void CreateSalesOrder(){
+    public void CreateSalesOrder_SalesOrderToSalesInvoice(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.pollingEvery(2,SECONDS);
 
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoice));
         btnSalesOrderToSalesInvoice.click();   //Select Sales Order to Sales Invoice (Option One)
+    }
+
+    /*New Sales Order - Select Sales Order to Outbound Shipment*/
+    public void CreateSalesOrder_SalesOrderToOutboundShipment(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
+        btnNewSalesOrser.click();   // Click on New Sales Order button
+        wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToOutboundShipment));
+        btnSalesOrderToOutboundShipment.click();   //Select Sales Order to Sales Invoice (Option One)
     }
 
     /* Select Customer Account*/

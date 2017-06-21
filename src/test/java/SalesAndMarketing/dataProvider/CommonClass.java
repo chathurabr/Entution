@@ -27,14 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class CommonClass {
 	 public static WebDriver driver;
 
-	@FindBy(xpath = "//*[@id='permissionBar']/a[text()='Draft']")
-	private WebElement btnDraft;
-	@FindBy(xpath = "//label[@id='lbldocstatus'][text()='(Draft)']")
-	private WebElement lblSalesOrderStatusDraft;
-	@FindBy(xpath = "//label[@id='lbldocstatus']")
-	private WebElement lblSalesOrderStatus;
-
-	 public static WebDriver driverInstance(){
+	public static WebDriver driverInstance(){
 		
 		System.setProperty("webdriver.chrome.driver","C:/ChromeDriver/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
@@ -68,22 +61,24 @@ public class CommonClass {
 	 
 	 public static WebDriver loginMeth(){
 				
-				WebDriverWait wait = new WebDriverWait(driver, 40);
-				wait.pollingEvery(30, TimeUnit.SECONDS);
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtUserName")));
+		 WebDriverWait wait = new WebDriverWait(driver, 40);
+		 wait.pollingEvery(30, TimeUnit.SECONDS);
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtUserName")));
 				
-				//Assert.assertEquals("UserName", driver.findElement(txtBoxUsername).getText());
+		 //Assert.assertEquals("UserName", driver.findElement(txtBoxUsername).getText());
 				
-				driver.findElement(By.id("txtUserName")).sendKeys("aaa@123.com");
-				Reporter.log("Username Entered successfully");
+		 driver.findElement(By.id("txtUserName")).sendKeys("aaa@123.com");
+		 //driver.findElement(By.id("txtUserName")).sendKeys("ann@abs1.com");
+		 Reporter.log("Username Entered successfully");
 				
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtPassword")));
-				driver.findElement(By.id("txtPassword")).sendKeys("kQF5Es");
-				Reporter.log("Password Entered Successfully");
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtPassword")));
+		 driver.findElement(By.id("txtPassword")).sendKeys("kQF5Es");
+		 //driver.findElement(By.id("txtPassword")).sendKeys("ScbUL3");
+		 Reporter.log("Password Entered Successfully");
 				
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnLogin")));
-				driver.findElement(By.id("btnLogin")).click();
-				Reporter.log("Login button clicked");
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnLogin")));
+		 driver.findElement(By.id("btnLogin")).click();
+		 Reporter.log("Login button clicked");
 		 
 		 return driver;
 	 }
@@ -91,69 +86,59 @@ public class CommonClass {
 	 public static WebDriver homeScreen(){
 		 WebDriverWait wait = new WebDriverWait(driver, 40);
 		 wait.pollingEvery(5, TimeUnit.SECONDS);
-		 
-		 try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		 
+		 sleepTime(3000);
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("homelink")));
 		 driver.findElement(By.id("homelink")).click();
 		 return driver;
 	 }
 	 
 	 public static WebDriver MainMenuNav(){
-		 		Actions action = new Actions(driver);
+		 Actions action = new Actions(driver);
+		 WebDriverWait wait = new WebDriverWait(driver,40);
+		 wait.pollingEvery(30, TimeUnit.SECONDS);
+		 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("html/body/div[1]/div[1]/div[1]/span[1]/img")));
 
-				WebDriverWait wait = new WebDriverWait(driver,40);
-				wait.pollingEvery(30, TimeUnit.SECONDS);
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("html/body/div[1]/div[1]/div[1]/span[1]/img")));
-				
-					
-					WebElement ClickIt = driver.findElement(By.xpath("html/body/div[1]/div[1]/div[1]/span[1]/img"));
-					action.click(ClickIt).build().perform();
-
-			return driver;
+		 WebElement ClickIt = driver.findElement(By.xpath("html/body/div[1]/div[1]/div[1]/span[1]/img"));
+		 action.click(ClickIt).build().perform();
+		 return driver;
 		}
 	 
 	 public static WebDriver salesAndMketMenuNav(){
 		 SoftAssert soAssert = new SoftAssert();
 		//JavascriptExecutor executor = (JavascriptExecutor)driver;
-				WebDriverWait wait = new WebDriverWait(driver,40);
-				wait.pollingEvery(30, TimeUnit.SECONDS);
-				
-				wait.until(ExpectedConditions.elementToBeClickable(By.tagName("li")));
-				List<WebElement> li = driver.findElements(By.tagName("li"));
-				//li.get(3).click();
-				
-				for(int i=0;i<li.size();i++){
-					
-					String lala = li.get(i).getText();
-				//	System.out.print("-----------------------------------"+lala);
-						if(lala.equals("SALES & MARKETING")){
-							Actions action = new Actions(driver);
-							action.moveToElement(li.get(i)).click().build().perform();
-					}else{
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		wait.pollingEvery(30, TimeUnit.SECONDS);
 
-					}
-						
-				}	
+		wait.until(ExpectedConditions.elementToBeClickable(By.tagName("li")));
+		List<WebElement> li = driver.findElements(By.tagName("li"));
+		//li.get(3).click();
+
+		for(int i=0;i<li.size();i++){
+
+			String lala = li.get(i).getText();
+		//	System.out.print("-----------------------------------"+lala);
+				if(lala.equals("SALES & MARKETING")){
+					Actions action = new Actions(driver);
+					action.moveToElement(li.get(i)).click().build().perform();
+			}else{
+
+			}
+
+		}
 			
 			return driver;
 		}
 	 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 public static WebDriver draftBtnClick(){
-		 Actions action = new Actions(driver);
-		 WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
-			//Draft Button
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='permissionBar']/a[1]")));
-			WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[1]"));
-			action.moveToElement(clickIt).click().build().perform();
-				Reporter.log("Draft button clicked successfully");
-			
-		 return driver;
+	 	Actions action = new Actions(driver);
+	 	WebDriverWait wait = new WebDriverWait(driver,40);
+		wait.pollingEvery(30, TimeUnit.SECONDS);
+		//Draft Button
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='permissionBar']/a[1]")));
+		WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[1]"));
+		action.moveToElement(clickIt).click().build().perform();
+		Reporter.log("Draft button clicked successfully");
+		return driver;
 	 }
 	 
 	 public static WebDriver releaseBtnClick(){
@@ -363,6 +348,7 @@ public class CommonClass {
 
 		 public static WebDriver HomePgeTiles_TaskEvent(){
 			 WebDriverWait wait = new WebDriverWait(driver, 40);
+			 sleepTime(3000);
 			 wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//p[@class='tiles-header'][text()='Task/Event']")));
 			 driver.findElement(By.xpath("//p[@class='tiles-header'][text()='Task/Event']")).click();
 			 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='col-sm-12']/h2[text()='Task Schedule']")));
@@ -382,9 +368,11 @@ public class CommonClass {
 
 	/*Draft and verify order status*/
 	public static String draftAndCheckStatus(){
-		WebDriverWait wait = new WebDriverWait(driver, 40);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[text()='Draft']")));
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Draft']"))));
 		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Draft']")).click(); // click on draft button
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']")));
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']"))));
 		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText();  // return for verify dreaft order status
 
@@ -392,13 +380,25 @@ public class CommonClass {
 	}
 
 	/*Release and verify sales status*/
-	public static String releaseOkAndCheckStatus(){
-		WebDriverWait wait = new WebDriverWait(driver, 40);
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] "))));
+	public static String release_Ok_AndCheckStatus(){
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[text()='Release']")));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release']"))));
 		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] ")).click(); // click on draft button
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html/body/div[6]/div[3]/a"))));
 		driver.findElement(By.xpath("/html/body/div[6]/div[3]/a")).click();  // click ok on information dialog box
-		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']"))));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Released)']")));
+		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText(); // verify Relesed order status
+
+	}
+
+	/*Release and verify sales status*/
+	public static String releaseAndCheckStatus(){
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='permissionBar']/a[text()='Release']")));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release']"))));
+		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] ")).click(); // click on draft button
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Released)']")));
 		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText(); // verify Relesed order status
 
 	}
