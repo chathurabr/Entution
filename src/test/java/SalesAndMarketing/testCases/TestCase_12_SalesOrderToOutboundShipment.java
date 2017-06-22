@@ -27,6 +27,7 @@ public class TestCase_12_SalesOrderToOutboundShipment {
 
     private String price = "20";
     private String quantity= "100";
+    private String total= "2,000";
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -64,10 +65,10 @@ public class TestCase_12_SalesOrderToOutboundShipment {
         createSalesOrder.addProduct("Lot-Pro-1310");  /*Click on Product Search icon and add a product*/
         createSalesOrder.selectWareHouse("1310-1 [1310-ProductIn]"); /* Select a warehouse from the warehouse dropdown.*/
         createSalesOrder.enterQtyAndPrice(quantity,price); /*Enter Qty & Unit Price*/
-        createSalesOrder.checkTotal("2,000.00");  // verify total balace of the available fields
+      //  createSalesOrder.checkTotal(total);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");
-        createSalesOrder.checkTotalAfterRelesed("2,000.00"); // verify total balace of the available fields after Released
+    //    createSalesOrder.checkTotalAfterRelesed(total); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
         //System.out.println(salesOrderNumber);
 
@@ -81,7 +82,7 @@ public class TestCase_12_SalesOrderToOutboundShipment {
         pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
         pendingSalesInvoice.searchOrderNumber(salesOrderNumber); // search using sales Order Number
         pendingSalesInvoice.sales_Invoice(salesOrderNumber);
-        pendingSalesInvoice.checkTotal_SSO("2,000.00");  // verify total balace of the available fields
+        pendingSalesInvoice.checkTotal_SSO(total);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
         salesIncoiceNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Invoice Number
