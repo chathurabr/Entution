@@ -11,9 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Created by chathura on 6/15/2017.
- */
+
 public class _12_01_NavigatesToSalesOrderScreen {
     WebDriver driver;
 

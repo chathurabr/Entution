@@ -15,9 +15,6 @@ import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by chathura on 6/19/2017.
- */
 public class _12_03_PendingOutboundShipment {
     WebDriver driver;
 
@@ -57,6 +54,7 @@ public class _12_03_PendingOutboundShipment {
         PageFactory.initElements(driver, this);
     }
 
+
     /*Search for a pending Outbound shipment from Tast List.*/
     public void selectOutboundShipment() {
         CommonClass.sleepTime(5000);
@@ -93,7 +91,6 @@ public class _12_03_PendingOutboundShipment {
             driver.switchTo().window(winHandle);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
-
     }
 
     public void releaseAndGoToPage() {

@@ -13,10 +13,6 @@ import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by chathura on 6/20/2017.
- */
-
 // Search for a pending Sales invoice from Tast List.
 
 public class _12_04_PendingSalesInvoice {
