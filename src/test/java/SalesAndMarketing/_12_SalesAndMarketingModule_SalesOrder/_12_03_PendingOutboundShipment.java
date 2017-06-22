@@ -15,9 +15,6 @@ import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by chathura on 6/19/2017.
- */
 public class _12_03_PendingOutboundShipment {
     WebDriver driver;
 

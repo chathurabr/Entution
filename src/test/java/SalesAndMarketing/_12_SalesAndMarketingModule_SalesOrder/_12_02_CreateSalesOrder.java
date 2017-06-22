@@ -18,9 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-/**
- * Created by chathura on 6/15/2017.
- */
+
 public class _12_02_CreateSalesOrder {
     WebDriver driver;
 
@@ -298,6 +296,4 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
     }
-
-
 }
