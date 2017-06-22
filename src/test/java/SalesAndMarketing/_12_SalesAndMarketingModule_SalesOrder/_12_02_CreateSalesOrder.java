@@ -34,6 +34,10 @@ public class _12_02_CreateSalesOrder {
     private WebElement lblPageHeaderNewSalesOrder;
     @FindBy(id = "cboxCurrency")
     private WebElement cboxCurrency;
+    @FindBy(id = "txtBillingAdd")
+    private WebElement txtBillingAdd;
+    @FindBy(id = "txtShipAddress")
+    private WebElement txtShipAddress;
     @FindBy(xpath = "//*[@id='divSO']/div[1]/table/tbody/tr[1]/td[2]/div/span[2]/span")
     private WebElement searchIconSelectCustomer;
     private By buttonRefresh = By.xpath( "//i[@class='fa fa-rotate-right']");
@@ -106,10 +110,12 @@ public class _12_02_CreateSalesOrder {
     /*New Sales Order - Select Sales Order to Sales Invoice */
     public void CreateSalesOrder_SalesOrderToSalesInvoice(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
-        wait.pollingEvery(2,SECONDS);
-
+        wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
+        btnNewSalesOrser.click();   // Click on New Sales Order button
+        System.out.println("Clicked on New Sales Order");;
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoice));
         btnSalesOrderToSalesInvoice.click();   //Select Sales Order to Sales Invoice (Option One)
+        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
     }
 
     /*New Sales Order - Select Sales Order to Outbound Shipment*/
@@ -117,8 +123,10 @@ public class _12_02_CreateSalesOrder {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
         btnNewSalesOrser.click();   // Click on New Sales Order button
+        System.out.println(" Clicked on New Sales Order");
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToOutboundShipment));
         btnSalesOrderToOutboundShipment.click();   //Select Sales Order to Sales Invoice (Option One)
+        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
     }
 
     /* Select Customer Account*/
@@ -128,9 +136,11 @@ public class _12_02_CreateSalesOrder {
 
         wait.until(ExpectedConditions.elementToBeClickable(lblPageHeaderNewSalesOrder));
         Assert.assertEquals(lblPageHeaderNewSalesOrder.getText(),"New"); // verify Accounts new Sales Order header
+        System.out.println("Verified the sales order status. - 'New'");
         searchIconSelectCustomer.click();
 
         Assert.assertEquals(lblHeaderAccounts_info_popup.getText(), "Account"); // verify Accounts info new pop-up header
+        System.out.println("\"Account\" window pop-up. - verified");
         CommonClass.sleepTime(2000);
         wait.until(ExpectedConditions.elementToBeClickable(buttonRefresh));
         driver.findElement(buttonRefresh).click();
@@ -140,6 +150,11 @@ public class _12_02_CreateSalesOrder {
             wait.until(ExpectedConditions.elementToBeClickable(firstAccountCodeInTheTable));
             action.doubleClick(firstAccountCodeInTheTable).perform();
         }
+        CommonClass.sleepTime(2000);
+        Assert.assertEquals(txtBillingAdd.getAttribute("value"),"21, colombo, Sri Lanka");
+        System.out.println("Billing Address autofiled - Verified");
+        Assert.assertEquals(txtShipAddress.getAttribute("value"),"5622, Argentina");
+        System.out.println("Shipping Address autofiled - Verified");
 
     }
 
@@ -175,6 +190,7 @@ public class _12_02_CreateSalesOrder {
         wait.until(ExpectedConditions.elementToBeClickable(iconProductSearch));
         iconProductSearch.click();
         wait.until(ExpectedConditions.elementToBeClickable(lblHeaderProduct_info_popup));
+        System.out.println("'Product\" window should pop-up. - Verified");
         //System.out.println(lblHeaderProduct_info_popup.getText());
         action.moveToElement(txtSearchProduct2).sendKeys(productName).sendKeys(Keys.ENTER).build().perform();
         CommonClass.sleepTime(2000);
@@ -263,19 +279,6 @@ public class _12_02_CreateSalesOrder {
     }
 
 
-    /*Verify that total display correctly.*/
-    public void checkTotalBeforeDraft(String total,String totalAfterDiscount,String discountTotal,String quantity){
-        CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount+".00");
-        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount+".00");  // right bottom corner
-        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount+".00");  // Total in the right upper cornner
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
-        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
-
-
-    }
 
 
     public void checkTotalBeforeDiscount(String total,String quantity){
@@ -288,13 +291,33 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
 
     }
+    /*Verify that total display correctly.*/
+    public void checkTotalBeforeDraft(String total,String totalAfterDiscount,String discountTotal,String quantity){
+        CommonClass.sleepTime(2000);
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
+        System.out.println("Unit total is equl to the line total.");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount+".00");
+        System.out.println("Sub total is equl to (Line total - Discount amount).");
+        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount+".00");  // right bottom corner
+        System.out.println(" Total is equl to Sub total.");
+        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount+".00");  // Total in the right upper cornner
+        System.out.println("Total in the right upper cornner is equl to total.");
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
+    }
+
 
     public void checkTotalAfterRelesed(String total,String totalAfterDiscount,String discountTotal, String quantity){
         Assert.assertEquals(txtlineTotalRelesed.getText(),total+".00");
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
+        System.out.println("Unit total is equl to the line total.");
         Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount+".00");
+        System.out.println("Sub total is equl to (Line total - Discount amount).");
         Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount+".00");  // right bottom corner
+        System.out.println(" Total is equl to Sub total.");
         Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount+".00");  // Total in the right upper cornner
+        System.out.println("Total in the right upper cornner is equl to total.");
         Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
     }

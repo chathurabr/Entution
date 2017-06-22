@@ -353,6 +353,7 @@ public class CommonClass {
 			 driver.findElement(By.xpath("//p[@class='tiles-header'][text()='Task/Event']")).click();
 			 wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='col-sm-12']/h2[text()='Task Schedule']")));
 			 Assert.assertEquals(driver.findElement(By.xpath("//div[@class='col-sm-12']/h2[text()='Task Schedule']")).getText(),"Task Schedule");
+			 System.out.println("Header \"Task Schedule\" - verified");
 			 return driver;
 
 		 }
@@ -374,6 +375,7 @@ public class CommonClass {
 		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Draft']")).click(); // click on draft button
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']")));
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//label[@id='lbldocstatus'][text()='(Draft)']"))));
+		System.out.println("Status''Draft'' - verified");
 		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText();  // return for verify dreaft order status
 
 
@@ -387,8 +389,10 @@ public class CommonClass {
 		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] ")).click(); // click on draft button
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[6]/div[3]/a")));
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("/html/body/div[6]/div[3]/a"))));
+		System.out.println(" ''Information'' pop-up. - Verified");
 		driver.findElement(By.xpath("/html/body/div[6]/div[3]/a")).click();  // click ok on information dialog box
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Released)']")));
+		System.out.println("Status''Released'' - verified");
 		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText(); // verify Relesed order status
 
 	}
@@ -400,6 +404,7 @@ public class CommonClass {
 		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release']"))));
 		driver.findElement(By.xpath("//*[@id='permissionBar']/a[text()='Release'] ")).click(); // click on draft button
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[@id='lbldocstatus'][text()='(Released)']")));
+		System.out.println("Status''Released'' - verified");
 		return driver.findElement(By.xpath("//label[@id='lbldocstatus']")).getText(); // verify Relesed order status
 
 	}
