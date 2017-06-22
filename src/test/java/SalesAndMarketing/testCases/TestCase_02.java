@@ -8,6 +8,7 @@ import SalesAndMarketing.dataProvider.CommonScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -25,16 +26,21 @@ public class TestCase_02 extends CommonClass {
 	_02_05_NewSalesUnitCreate objNewSalesUnitCreate;
 	RegressionTesting objRegressionTesting;
 
-	String unitLeaderEmpCod = "AutoCodeR0171";//Step 1
+	private int unitLeaderEmpCod1;
+
+	String unitLeaderEmpCod = "AutoCodeR0180";//Step 1
 	String salesUniCod = "AutCodSalsUniR123";//+
-	String colUniCod = "colUntCodR0024";//Step 3 Change Code+
-	String employeColUnitzCod = "AutCodEmpColUnit106";//Step 2
+	String colUniCod = "colUntCodR0033";//Step 3 Change Code+
+	String employeColUnitzCod = "AutCodEmpColUnit115";//Step 2
 	
 	@BeforeTest
 	public void beforeTest(){
 		driver = CommonClass.driverInstance();
 		driver = CommonClass.loginMeth();
 	}
+
+	@BeforeMethod
+
 	
 	@AfterMethod
 	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
@@ -138,6 +144,7 @@ public class TestCase_02 extends CommonClass {
 		//Release
 					driver = CommonClassMainButtons.releaseBtnClick();
 		//Close collection unit
+					driver = CommonClass.chkLblStatusReleased();
 					driver.close();
 		//Search for the created colection unit
 		// objNewSalesUnitCreate.insertNewColUnitInfo(collectionUnitCode, collectionUnitName, collectionUnitComRate);

@@ -2,8 +2,79 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonScreenshot.class" afterPath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonScreenshot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/TestTestNuwan.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_01_Login.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_02_SalesAndMarketingMenu.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_03_SalesAndMarketingModules.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_04_NewEmployeeCreate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_01_Common/_01_05_CreateVendorThroughAccLookup.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/RegressionTesting.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_01_SalesUnits.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_02_NewSalesUnit.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_03_UnitLeaderAndEmpCode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_04_SalesUnitCreate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_05_NewSalesUnitCreate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_02_salesUnits/_02_06_NewSalesUnitCreateWithExsistingData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_01_CollectionUnits.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_02_CreateNewCollectionUnit.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_03_ColUniDraftAndNew.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_04_ColUnitCopyFrom.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_05_ModifyCopyFromDate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_06_DuplicateColUnitData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_03_CollectionUnits/_03_07_ActionDropdown.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_01_LeadInfoModule.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_02_VerifyMandatoryFields.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_03_NewLeadCreation.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_04_DraftAndNew.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_05_CopyFrom.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_06_CopyFromModify.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_07_DuplicateLead.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_08_DuplicateLeadModify.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_09_HistoryChk.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_10_ConvertLeadAsAccount.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_04_leadInformation/_04_11_NewLeadByPlusSign.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/Regression.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_01_SalesInquiryModule.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_02_VerifyFields.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_03_TagDetails.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_04_Campaing.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_05_TagExistingCamp.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_06_TagASalesInquiryToALead.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_07_TagSalesInquiryToAccount.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_08_DraftAndNew.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_09_NewSalesInqUsingExsisting.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_10_NewSalesInqUsingCopyFrom.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_11_ChangeCopyFromDetails.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_05_SalesInquiry/_05_12_ChkHistory.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_06_Campaigns/_06_01_NavToCampaign.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_06_Campaigns/_06_02_VerifyFields.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/_06_Campaigns/_06_03_CreateNewCampaign.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonClass.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonClassActionDropDown.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonClassAddItemPopUp.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonClassDatePicker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonClassMainButtons.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/CommonScreenshot.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/dataProvider/ConstantPaths.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/entutionUtensils/ImageCapture.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_01.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_02.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_03.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_04.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_05.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/SalesAndMarketing/testCases/TestCase_06.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entution.iml" afterPath="$PROJECT_DIR$/Entution.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_02_SalesAndMarketingMenu.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_02_SalesAndMarketingMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_04_NewEmployeeCreate.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_04_NewEmployeeCreate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_05_CreateVendorThroughAccLookup.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_01_Common/_01_05_CreateVendorThroughAccLookup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_02_salesUnits/_02_05_NewSalesUnitCreate.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_02_salesUnits/_02_05_NewSalesUnitCreate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_01.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_01.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_02.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_02.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_03.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_03.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Test.properties" afterPath="$PROJECT_DIR$/util/Test.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,7 +99,7 @@
       <file leaf-file-name="_12_02_CreateSalesOrder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
+            <state relative-caret-position="1258">
               <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="93" selection-end-column="46" />
               <folding />
             </state>
@@ -38,7 +109,7 @@
       <file leaf-file-name="_12_03_PendingOutboundShipment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_03_PendingOutboundShipment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="816">
               <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
               <folding />
             </state>
@@ -48,7 +119,7 @@
       <file leaf-file-name="TestCase_12_SalesOrderToSalesInvoice_Discount.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice_Discount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1581">
+            <state relative-caret-position="556">
               <caret line="107" column="36" lean-forward="false" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
               <folding />
             </state>
@@ -58,7 +129,7 @@
       <file leaf-file-name="_12_04_PendingSalesInvoice.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1542">
+            <state relative-caret-position="1700">
               <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding />
             </state>
@@ -68,7 +139,7 @@
       <file leaf-file-name="TestCase_12_SalesOrderToOutboundShipment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="952">
               <caret line="70" column="6" lean-forward="false" selection-start-line="70" selection-start-column="6" selection-end-line="70" selection-end-column="6" />
               <folding />
             </state>
@@ -78,7 +149,7 @@
       <file leaf-file-name="TestCase_12_SalesOrderToSalesInvoice.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
+            <state relative-caret-position="1649">
               <caret line="97" column="8" lean-forward="false" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -171,8 +242,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -250,11 +321,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../securefactautomation" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="SalesAndMarketing.testCases" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -839,52 +905,19 @@
     <option name="localTasksCounter" value="21" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 11h 51m 57s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 11h 54m 23s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 12h 01m 57s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 12h 05m 05s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 12h 09m 00s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 12h 18m 31s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 12h 49m 42s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 12h 57m 43s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 13h 48m 15s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount - 2017.06.22 at 14h 06m 05s.xml">
-      <configuration name="TestCase_12_SalesOrderToSalesInvoice_Discount" configurationId="TestNG" />
-    </history-entry>
-  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47360247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16719243" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.439441" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34472048" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34472048" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -900,6 +933,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47360247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -932,10 +966,6 @@
       <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_07_ActionDropdown.java">
@@ -1208,7 +1238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1232,21 +1261,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="29" column="78" lean-forward="false" selection-start-line="29" selection-start-column="78" selection-end-line="29" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="952">
           <caret line="70" column="6" lean-forward="false" selection-start-line="70" selection-start-column="6" selection-end-line="70" selection-end-column="6" />
           <folding />
         </state>
@@ -1262,7 +1283,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
+        <state relative-caret-position="1258">
           <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="93" selection-end-column="46" />
           <folding />
         </state>
@@ -1270,7 +1291,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
+        <state relative-caret-position="1649">
           <caret line="97" column="8" lean-forward="false" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1280,7 +1301,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_03_PendingOutboundShipment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
+        <state relative-caret-position="816">
           <caret line="61" column="31" lean-forward="false" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
           <folding />
         </state>
@@ -1288,7 +1309,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1542">
+        <state relative-caret-position="1700">
           <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding />
         </state>
@@ -1296,7 +1317,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice_Discount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
+        <state relative-caret-position="556">
           <caret line="107" column="36" lean-forward="false" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
           <folding />
         </state>

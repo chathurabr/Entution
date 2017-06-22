@@ -11,6 +11,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -23,16 +24,12 @@ public class TestCase_01 extends CommonClass {
 	_01_05_CreateVendorThroughAccLookup objCreateVendor;
 
 	private int EMP_ID;
+	private int EMP_CODE;
 
 	
 	@BeforeTest
 	public void beforeTest(){
 		driver = CommonClass.driverInstance();
-	}
-	
-	@AfterMethod
-	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
-		driver = CommonScreenshot.takeSnapshot(testResult);
 	}
 
 	@BeforeTest
@@ -46,11 +43,36 @@ public class TestCase_01 extends CommonClass {
 			//int get = Integer.parseInt(getEmpID);
 			EMP_ID= getEmpID + 1;
 
-		//	System.out.println(EMP_ID);
+			//	System.out.println(EMP_ID);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	@BeforeTest
+	public void getEmpCode() throws IOException {
+		Properties properties = new Properties();
+		try{
+			String filePath = System.getProperty("user.dir");
+			properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+			int getEmpCode = Integer.parseInt(properties.getProperty("EMP_CODE"));
+			EMP_CODE=getEmpCode+1;
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	@AfterTest
+	public void saveNewEmpCode() throws ConfigurationException {
+		String filePath = System.getProperty("user.dir");
+		PropertiesConfiguration config = new PropertiesConfiguration(filePath+"\\util\\Test.properties");
+		config.setProperty("EMP_CODE",EMP_CODE);
+		config.save();
+	}
+	
+	@AfterMethod
+	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
+		driver = CommonScreenshot.takeSnapshot(testResult);
 	}
 
 	@AfterTest
@@ -91,7 +113,9 @@ public class TestCase_01 extends CommonClass {
 		//objNewEmployee.chkEmpInfoPage();
 		objNewEmployee.newEmployeeWindow();
 		String empID = Integer.toString(EMP_ID);
-		objNewEmployee.enterEmpDetails(empID, "Fernando", "A.H.Fernando");					// Employee	Code +
+		String empCod = Integer.toString(EMP_CODE);
+
+		objNewEmployee.enterEmpDetails(empID, empCod,"Fernando", "A.H.Fernando");					// Employee	Code +
 		objNewEmployee.searchUserCode();
 		objNewEmployee.selectUserCode();
 		objNewEmployee.instHomeAddress("25","Nugegoda");

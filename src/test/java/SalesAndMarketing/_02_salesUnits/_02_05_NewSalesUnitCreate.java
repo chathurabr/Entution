@@ -372,13 +372,20 @@ public class _02_05_NewSalesUnitCreate {
 		
 		wait.until(ExpectedConditions.presenceOfElementLocated(empNew));
 		WebElement btnClk = driver.findElement(empNew);
+
+		action.moveToElement(btnClk).click().build().perform();
 		
-		action.moveToElement(btnClk)
+		/*action.moveToElement(btnClk)
 		.keyDown(Keys.COMMAND).keyDown(Keys.SHIFT).click(btnClk)
-		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).build().perform();
+		.keyUp(Keys.COMMAND).keyDown(Keys.SHIFT).build().perform();*/
 		
-		ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(1));
+		/*ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));*/
+
+		for(String handle:driver.getWindowHandles()){
+			driver.switchTo().window(handle); //Shift to next window
+		}
+
 	}
 	
 	

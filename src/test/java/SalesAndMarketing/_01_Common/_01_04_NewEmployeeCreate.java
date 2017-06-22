@@ -26,7 +26,8 @@ public class _01_04_NewEmployeeCreate {
 	By headPageName = By.id("spPageName");////*[@id='spPageName'] - id - spPageName
 	By btnNewEmployee = By.id("btnUpdate");//("button pull-right margin-0");//("//*[@id='btnUpdate0']]");		//Identification issue				//("btnUpdate");
 	By lblHeader = By.id("lblTemplateFormHeader");								//Employee information - New
-	
+
+	By txtEmployeeCode = By.id("txtEmpCode");
 	By txtBoxEmpNo = By.id("txtEmpNo");
 	By listName = By.id("cboxTitle");
 	By listNameMs = By.xpath("//*[@id='cboxTitle']/option[2]");
@@ -36,14 +37,10 @@ public class _01_04_NewEmployeeCreate {
 	By cboxEmpCatOption1	= By.xpath("//*[@id='cboxEmpCategory']/option[4]");//D
 	By cboxDesig = By.id("cboxDesig");//D
 	By cBocDesigQAManager = By.xpath("//*[@id='cboxDesig']/option[16]");//D
-	
-	
+
 	//<Search User Code>
 	By SearchUserCOde = By.xpath("//*[@id='divgen']/div[1]/div[2]/table/tbody/tr[6]/td[2]/div/span[2]");//D
-	By formNameUser = By.xpath("/html/body/div[7]/div[1]/span[1]");//D
-	//By filterListId = By.id("filterListId");//D
-	//By filterList1	= By.xpath("//*[@id='filterListId']/option[1]");
-	//By SearchUser = By.id("A17");
+
 	By refreshButton = By.xpath("//*[@id='g1015']/div[1]/span[1]/span[2]");
 	By userTable = By.id("g1015-t");
 	// Select a user - SELECT COMMAND
@@ -71,31 +68,21 @@ public class _01_04_NewEmployeeCreate {
 	//</Address Info - Office>
 	
 	//Draft, Edit, Update
-	By btnDraft = By.xpath("//*[@id='permissionBar']/a[1]");
-	By lbldocstatus	= By.id("lbldocstatus");
-	By btnEdit = By.xpath("//*[@id='permissionBar']/a[1]");
-	By btnUpdate = By.xpath("//*[@id='permissionBar']/a[1]");
-	By btnRelease= By.xpath("//*[@id='permissionBar']/a[2]");
 	By lblDocSatusReleased = By.id("lbldocstatus"); //(Released)
-	By statusDropDown = By.xpath("//*[@id='lnkTeplateStatus']/span");
-	By cboxStatus = By.id("cboxselect"); //
 	
 	public _01_04_NewEmployeeCreate(WebDriver driver){
 		this.driver = driver;
 	}
 	
-	public void NewEmployeeCreate(String uNumber,String fullName, String nameInitials, String houseNo, String houseCity, String oficeNo, String officeCity ){
+	public void NewEmployeeCreate(String EmpCode,String uNumber,String fullName, String nameInitials, String houseNo, String houseCity, String oficeNo, String officeCity ){
 		this.openOrgMamagamentModule();
 		this.openEmpInfoModule();
-		//this.chkEmpInfoPage();
 		this.newEmployeeWindow();
-		this.enterEmpDetails(uNumber,fullName,nameInitials);
+		this.enterEmpDetails(EmpCode,uNumber,fullName,nameInitials);
 		this.searchUserCode();
 		this.selectUserCode();
 		this.instHomeAddress(houseNo, houseCity);
 		this.instOfficeAddress(oficeNo, officeCity);
-		
-		//this.editEmployee(fullName, nameInitials, uNumber);
 		
 		this.checkEmpStatus();
 	}
@@ -111,15 +98,11 @@ public class _01_04_NewEmployeeCreate {
 			for(int i=0;i<li.size();i++){
 
 				String lala = li.get(i).getText();
-		//		System.out.print("-----------------------------------"+lala);
 					if(lala.equals("ORGANIZATION MANAGEMENT")){
 						Actions action = new Actions(driver);
 						action.moveToElement(li.get(i)).click().build().perform();
 						Reporter.log("Organization Management module tab opened");
 				}else{
-		//			System.out.print("Cannot Found");
-		//			Reporter.log("Organization Management module cannot find");
-
 			}
 
 		}
@@ -127,63 +110,16 @@ public class _01_04_NewEmployeeCreate {
 	}
 	
 	public void openEmpInfoModule(){
-		try{
+
 			WebDriverWait wait = new WebDriverWait(driver,40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
 			wait.until(ExpectedConditions.presenceOfElementLocated(modEmpInfo));
 			//driver.manage()wait.withTimeout(duration, unit);
 			driver.findElement(modEmpInfo).click();
 				Reporter.log("Clicked on Employee Information tab and Employee Information loaded");
-			
-		}catch(TimeoutException e){
-				Reporter.log("<font color='red'>Organization Management module not loaded - exception</font>");
-			}finally{}
 	}
 	
-	/*public void chkEmpInfoPage(){
-		try{
-			
-			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-			
-			
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.until(ExpectedConditions.elementToBeClickable(headPageName));
-			
-			String pageName = driver.findElement(By.id("spPageName")).getText();
-			//String pageURL = driver.getCurrentUrl();
-			
-			if(pageName == "Employee Information"){
-				Reporter.log("Employee Information page loaded");
-				}
-			else{
-				Reporter.log("<font color ='red'>Employee Information page label not found</font>");
-			}
-			}
-			catch(Exception e){
-				Reporter.log("<font color ='red'>Employee Information page label not found - Exception</font>");
-			}finally{}
-			}*/
-			
-			
-			/*String btnName =driver.findElement(btnNewEmployee).getText();
-			AssertJUnit.assertEquals("New Employee", btnName);
-			
-			if(btnName == "New Employee"){
-				Reporter.log("Employee Information page loaded");
-			}
-			else{
-				AssertJUnit.assertEquals("http://192.168.80.26/Web/common/search/default.aspx?id=1002", pageURL);
-				System.out.println("URLLLL"+btnName);
-				Reporter.log("<font color = 'blue'>elese etatement executed</font>");
-			}
-			
-			}catch(NoSuchElementException e){
-				Reporter.log("<font color = 'red'>Employee Information page cannot load Exception handling error</font>");
-			}*/
-			
-	
 	public void newEmployeeWindow() {
-		try{
 		WebDriverWait wait = new WebDriverWait(driver,40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
 		wait.until(ExpectedConditions.elementToBeClickable(btnNewEmployee));
@@ -193,87 +129,58 @@ public class _01_04_NewEmployeeCreate {
 		Reporter.log("New Employee window loaded");
 		//wait.pollingEvery(30, TimeUnit.SECONDS);
 		//wait.until(ExpectedConditions.elementToBeClickable(headPageName));
-		}catch(Exception e){
-			Reporter.log("New Employee window not loaded - exception");
-		}
-		finally{}
 	}
 	
-	public void enterEmpDetails (String uNumber, String fullName, String nameInitials){
+	public void enterEmpDetails (String EmpCode, String uNumber, String fullName, String nameInitials){
 		//EMp Number
-		try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+		Actions action = new Actions(driver);
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		wait.pollingEvery(30, TimeUnit.SECONDS);
+
+		WebElement empCode = driver.findElement(txtEmployeeCode);
+		action.moveToElement(empCode).click().sendKeys(EmpCode).build().perform();
+
 			wait.until(ExpectedConditions.elementToBeClickable(txtBoxEmpNo));
 			driver.findElement(txtBoxEmpNo).click();
 			driver.findElement(txtBoxEmpNo).sendKeys(uNumber);
 			
 			Reporter.log("Employee Number Entered");
-			
-		}catch(Exception e){
-			Reporter.log("<font color='red'>Employee number cannot enter</font>");
-		}
 		//EMp Name Title
-		try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+
 			wait.until(ExpectedConditions.elementToBeClickable(listName));
 			driver.findElement(listName).click();
 			wait.until(ExpectedConditions.presenceOfElementLocated(listNameMs));
 			driver.findElement(listNameMs).click();
 			Reporter.log("Employee titl selected");
-		}catch(Exception e){
-			Reporter.log("<font color='red'>Employee title cannot select</font>");
-		}
+
 		//Emp Name
-		try{
-			WebDriverWait wait= new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+
 			wait.until(ExpectedConditions.presenceOfElementLocated(txtBoxFullName));
 			driver.findElement(txtBoxFullName).click();
 			driver.findElement(txtBoxFullName).sendKeys(fullName);
 			Reporter.log("Employee full name entered");
-		}catch(Exception e){
-			Reporter.log("<font color='red'>Employee full name cannot enter</font>");
-		}
+
 		//Emp Name With Initials
-		try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+
 			wait.until(ExpectedConditions.presenceOfElementLocated(txtBoxInitials));
 			driver.findElement(txtBoxInitials).click();
 			driver.findElement(txtBoxInitials).sendKeys(nameInitials);
 			Reporter.log("Name with initials entered");
-		}catch(Exception e){
-			Reporter.log("<font color='red'>NAme wth nitials cannot enter</font>");
-		}
 		//cboxEmpCategory
-		try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+
 			wait.until(ExpectedConditions.presenceOfElementLocated(cboxEmpCategory));
 			driver.findElement(cboxEmpCategory).click();
 			wait.until(ExpectedConditions.presenceOfElementLocated(cboxEmpCatOption1));
 			driver.findElement(cboxEmpCatOption1).click();
 			Reporter.log("Employee Category Selected");
-			
-		}catch(Exception e){
-			Reporter.log("<font color='red'>Employee category cannot select</font>");
-		}
+
 		//Designations cboxDesig
-		try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
+
 			wait.until(ExpectedConditions.presenceOfElementLocated(cboxDesig));
 			driver.findElement(cboxDesig).click();
 			wait.until(ExpectedConditions.presenceOfElementLocated(cBocDesigQAManager));
 			driver.findElement(cBocDesigQAManager).click();
 			Reporter.log("Designation Selected");
-			
-		}catch(Exception e){
-			Reporter.log("<font color='red'>Designation cannot select</font>");
-		}
-		finally{}
 		
 	}
 	
@@ -293,7 +200,8 @@ public class _01_04_NewEmployeeCreate {
 			WebElement refreshBtnElement = driver.findElement(refreshButton);
 			Actions actionClickbtn = new Actions(driver);
 			actionClickbtn.moveToElement(refreshBtnElement).click().perform();
-			
+
+
 			//WebElement element = driver.findElement(By("element_path"));
 			//Actions actions = new Actions(driver);
 			//actions.moveToElement(refreshButton).click().perform();
@@ -301,38 +209,7 @@ public class _01_04_NewEmployeeCreate {
 			
 			wait.until(ExpectedConditions.presenceOfElementLocated(userTable));
 			
-		
-	/*	try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
-			wait.until(ExpectedConditions.presenceOfElementLocated(formNameUser));
-			Reporter.log("User form loaded");
-		}catch(Exception e){
-			Reporter.log("<font color='red'>User form cannot load</font>");
-		}*/
-		
-		/*try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
-			wait.until(ExpectedConditions.presenceOfElementLocated(filterListId));
-			driver.findElement(filterListId).click();
-			wait.until(ExpectedConditions.presenceOfElementLocated(filterList1));
-			driver.findElement(filterList1).click();
-			Reporter.log("Template (All) Selected");
-		}catch(Exception e){
-			Reporter.log("<font color='red'>Template (All) canot select</font>");
-		}
-		try{
-			WebDriverWait wait = new WebDriverWait(driver,40);
-			wait.pollingEvery(30, TimeUnit.SECONDS);
-			wait.until(ExpectedConditions.elementToBeClickable(SearchUser));
-			driver.findElement(SearchUser).click();
-			Reporter.log("Clicked on search user button");
-			wait.until(ExpectedConditions.presenceOfElementLocated(userTable));
-			
-		}catch(Exception e){
-			Reporter.log("<font color='red'>Search user btton cannot visible</font>");
-		}*/
+
 		
 	}
 	
@@ -342,6 +219,8 @@ public class _01_04_NewEmployeeCreate {
 			wait.pollingEvery(30, TimeUnit.SECONDS);
 			wait.until(ExpectedConditions.elementToBeClickable(SelectUser));
 			//driver.findElement(SelectUser).click();
+
+
 			
 			WebElement dbClick = driver.findElement(By.xpath("//*[@id='g1015-t']/table/tbody/tr[1]"));
 			Actions action = new Actions(driver);
@@ -399,25 +278,7 @@ public class _01_04_NewEmployeeCreate {
 		//driver.findElement(txtBoxCityOfice).sendKeys(Keys.RETURN);
 		
 	}
-	//---------------------------------------------------------------------------------------------------
-	/*public boolean retryingFindClick(By by) {
-        boolean result = false;
-        int attempts = 0;
 
-        while(attempts < 2) {
-            try {
-                driver.findElement(by).click();
-                result = true;
-                break;
-            } catch(StaleElementReferenceException e) {
-            }
-            attempts++;
-        }
-        return result;
-}*/
-//-------------------------------------------------------------------------------------------------------
-
-	
 	public void checkEmpStatus(){
 		SoftAssert soAssertion = new SoftAssert();
 		
@@ -430,70 +291,6 @@ public class _01_04_NewEmployeeCreate {
 		
 		soAssertion.assertEquals("(Released)", driver.findElement(lblDocSatusReleased).getText());
 		Reporter.log("Header marked as released");
-		
-		//wait.until(ExpectedConditions.elementToBeClickable(statusDropDown));
-		//driver.findElement(statusDropDown).click();
-		//Assert.assertEquals("", driver.findElement(cboxStatus).getText());
-		//Reporter.log("Status marked as Active");
+
 	}
-	
-	/*public void clearEmployeeDetails(){
-		WebDriverWait wait = new WebDriverWait(driver,40);
-		wait.pollingEvery(30, TimeUnit.SECONDS);
-		
-		wait.until(ExpectedConditions.elementToBeClickable(txtBoxEmpNo));
-		driver.findElement(txtBoxEmpNo).clear();
-		
-		wait.until(ExpectedConditions.elementToBeClickable(listName));
-		driver.findElement(listName).clear();
-		
-		wait.until(ExpectedConditions.elementToBeClickable(listNameMs));
-		driver.findElement(listNameMs).clear();
-		
-		wait.until(ExpectedConditions.elementToBeClickable(txtBoxFullName));
-		driver.findElement(txtBoxFullName).clear();
-		
-		wait.until(ExpectedConditions.elementToBeClickable(txtBoxInitials));
-		driver.findElement(txtBoxInitials).clear();
-		
-		wait.until(ExpectedConditions.elementToBeClickable(cboxEmpCategory));
-		driver.findElement(cboxEmpCategory).clear();
-		
-		wait.until(ExpectedConditions.elementToBeClickable(cboxDesig));
-		driver.findElement(cboxDesig).clear();
-	
-	}*/
-	
-	/*public void editEmployee(){
-		WebDriverWait wait = new WebDriverWait(driver,40);
-		wait.pollingEvery(30, TimeUnit.SECONDS);
-		
-		wait.until(ExpectedConditions.presenceOfElementLocated(lbldocstatus));
-		wait.until(ExpectedConditions.elementToBeClickable(btnEdit));
-		driver.findElement(btnEdit).click();
-		//Reporter.log("New Employee details drafted");
-		//this.clearEmployeeDetails();
-		//this.enterEmpDetails(uNumber, fullName, nameInitials);
-		
-		
-	}*/
-	
-	
-		/*try{
-		WebDriverWait wait2 = new WebDriverWait(driver,40);
-		wait2.pollingEvery(30, TimeUnit.SECONDS);
-		wait2.until(ExpectedConditions.presenceOfElementLocated(lblHeader));
-		String lblHeaderTxt = driver.findElement(lblHeader).getText();
-		
-		if(lblHeaderTxt=="New")
-		Reporter.log("New Employee registration window opened");
-		else{
-			Reporter.log("<font color='red'>New Employee label not fond</font>");	
-		}
-		}catch(Exception e){
-			Reporter.log("<font color='red'>New Employee label not fond - exception</font>");
-			
-		}finally{}*/
-		
-		
 }

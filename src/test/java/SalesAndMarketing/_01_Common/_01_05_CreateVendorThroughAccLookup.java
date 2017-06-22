@@ -117,13 +117,12 @@ public class _01_05_CreateVendorThroughAccLookup {
 		
 		/*wait.until(ExpectedConditions.elementToBeClickable(newPurchaseOrder));
 		driver.findElement(newPurchaseOrder).click();*/
-		
+
 		wait.until(ExpectedConditions.elementToBeClickable(secondJourny));
 		//driver.findElement(secondJourny).click();
-		
 		WebElement secondJournyButton = driver.findElement(secondJourny);
 		Actions actionClickbtn = new Actions(driver);
-		actionClickbtn.moveToElement(secondJournyButton).click().perform();
+		actionClickbtn.moveToElement(secondJournyButton).click().build().perform();
 		
 		
 	}
