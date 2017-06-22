@@ -19,7 +19,7 @@ import java.io.IOException;
 /**
  * Created by chathura on 6/15/2017.
  */
-public class TestCase_12_SalesOrderToSalesInvoice {
+public class TestCase_12_SalesOrderToSalesInvoice_Discount {
     public WebDriver driver;
 
     private String salesOrderNumber;
@@ -27,7 +27,11 @@ public class TestCase_12_SalesOrderToSalesInvoice {
 
     private String price = "20";
     private String quantity= "100";
+    private String discountPercentage= "10";
+    private String discountValue= "200";
     private String total= "2,000";
+    private String totalAfterDiscount= "1,800";
+
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -65,10 +69,16 @@ public class TestCase_12_SalesOrderToSalesInvoice {
         createSalesOrder.addProduct("Lot-Pro-1310");  /*Click on Product Search icon and add a product*/
         createSalesOrder.selectWareHouse("1310-1 [1310-ProductIn]"); /* Select a warehouse from the warehouse dropdown.*/
         createSalesOrder.enterQtyAndPrice(quantity,price); /*Enter Qty & Unit Price*/
-      //  createSalesOrder.checkTotal(total);  // verify total balace of the available fields
+        createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
+        createSalesOrder.checkTotalBeforeDiscount(total,quantity);
+        createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
+        createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/
+        createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
+        createSalesOrder.checkTotalBeforeDraft(total,totalAfterDiscount,discountValue,quantity);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");
-     //   createSalesOrder.checkTotalAfterRelesed(total); // verify total balace of the available fields after Released
+        CommonClass.sleepTime(2000);
+        createSalesOrder.checkTotalAfterRelesed(total,totalAfterDiscount,discountValue,quantity); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
         //System.out.println(salesOrderNumber);
 
@@ -87,7 +97,7 @@ public class TestCase_12_SalesOrderToSalesInvoice {
         OutBoundShipmentOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get Outbound Shipment Order Number
     }
 
-    @Test(priority = 4) // Search for a pending Sales invoice from Tast List.
+    @Test(priority = 4,enabled = true) // Search for a pending Sales invoice from Tast List.
     public void SOTC_003_SalesInvoice(){
         pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
         driver = CommonClass.homeScreen();  // Go to home Screen
@@ -95,7 +105,7 @@ public class TestCase_12_SalesOrderToSalesInvoice {
         pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
         pendingSalesInvoice.searchOrderNumber(OutBoundShipmentOrderNumber); // search using Outbound Shipment Order Number
         pendingSalesInvoice.sales_Invoice(OutBoundShipmentOrderNumber);
-      //  pendingSalesInvoice.checkTotal(total);  // verify total balace of the available fields
+        pendingSalesInvoice.checkTotal(total,totalAfterDiscount,discountValue,quantity);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
     }

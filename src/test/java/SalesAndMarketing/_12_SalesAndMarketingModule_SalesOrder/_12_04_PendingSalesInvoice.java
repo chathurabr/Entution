@@ -54,6 +54,10 @@ public class _12_04_PendingSalesInvoice {
     private WebElement txtTotal;
     @FindBy(xpath = "//h1[@id='bannerTotal']")
     private WebElement txtBannerTotal;
+    @FindBy(xpath = "//input[@id='txtDiscountTot']")
+    private WebElement txtDisountTotalValue;
+    @FindBy(xpath = "//*[@id='bannerTotQty']")
+    private WebElement lblBannerNumberOfUnits;
 
     public _12_04_PendingSalesInvoice(WebDriver driver){
         this.driver = driver;
@@ -61,6 +65,7 @@ public class _12_04_PendingSalesInvoice {
     }
 
     public void selectSalesInvoice(){
+        CommonClass.sleepTime(2000);
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesInvoice));
         btnSalesInvoice.click();
@@ -105,24 +110,27 @@ public class _12_04_PendingSalesInvoice {
         btnCheckout.click();  // Click on Check-out button.
     }
 
+
     /*Verify that total display correctly. Sales to Invoice*/
-    public void checkTotal(String total){
+    public void checkTotal(String total,String totalAfterDiscount,String discountTotal, String quantity){
         CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
-        Assert.assertEquals(txtTotal.getAttribute("value"),total);  // right bottom corner
-        Assert.assertEquals(txtBannerTotal.getText(),total);  // Total in the right upper cornner
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount+".00");
+        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount+".00");  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount+".00");  // Total in the right upper cornner
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
     }
 
     /*Verify that total display correctly.  Sales To Outbound*/
     public void checkTotal_SSO(String total){
         CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal_SSO.getAttribute("value"),total);
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
-        Assert.assertEquals(txtTotal.getAttribute("value"),total);  // right bottom corner
-        Assert.assertEquals(txtBannerTotal.getText(),total);  // Total in the right upper cornner
+        Assert.assertEquals(txtlineTotal_SSO.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtTotal.getAttribute("value"),total+".00");  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),total+".00");  // Total in the right upper cornner
     }
 
 

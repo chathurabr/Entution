@@ -47,6 +47,8 @@ public class _12_03_PendingOutboundShipment {
     private WebElement btnCheckout;
     @FindBy(xpath = "//i[@class='fa fa-sign-in fa-2x']")
     private WebElement btnErrorSign;
+    @FindBy(xpath = "//*[@id='divTaskTiles']/div/div[1]/a[5]/div/div[@class='begin-selected-tile-arrow color-selectedborder']")
+    private WebElement selectedOutboundTile;
 
 
 
@@ -57,10 +59,11 @@ public class _12_03_PendingOutboundShipment {
 
     /*Search for a pending Outbound shipment from Tast List.*/
     public void selectOutboundShipment() {
-        CommonClass.sleepTime(2000);
+        CommonClass.sleepTime(5000);
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnOutboundShipment));
         btnOutboundShipment.click();  //  Click on the "Outbound Shipment" tile.
+
     }
 
 
