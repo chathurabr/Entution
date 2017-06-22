@@ -10,21 +10,17 @@ import java.text.DecimalFormat;
 public class Calculations {
     private static WebDriver driver;
     //LineTotal
-    private static double price = 1000;
-    private static double quantity =10;
+    private static double price = 10000;
+    private static double quantity =100;
     private static double lineTotal; //Unit total = Line Total
-    //Discount - Amount to precentage
-    private static double discountAmount = 250;
-    private static double discountPrecentage;
-    //Discount - precentage to amount
-    private static double discountAmount2;
-    private static double discountPrecentage2 = 15;
+    //Discount
+    private static double discountAmount= 50000 ;
+    private static double discountPrecentage ;
     //SubTotal
     private static double subTotal;
 
     public Calculations(){
         this.driver = driver;
-
     }
 
     public static String lineTotalCalculation(){
@@ -34,48 +30,86 @@ public class Calculations {
 
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         SlineTotal =  formatter.format(lineTotal);
-        //String.valueOf(lineTotal);
+
         return SlineTotal;
     }
 
-    public static String discountPrecentageCalculation(){
-        String discPrecent;
+    public static String discountCalculation(){
+        String discount = null;
 
-        discountPrecentage = (discountAmount/lineTotal)*100;
 
-        DecimalFormat formatter = new DecimalFormat("#,###.00");
-        discPrecent = formatter.format(discountPrecentage);
-        return discPrecent;
+        if(discountAmount>0 && discountPrecentage <= 0) {
+            discountPrecentage = (discountAmount / lineTotal) * 100;
+
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            discount = formatter.format(discountPrecentage);
+           // discount = discountPrecentage;
+            return discount;
+
+        }else if (discountPrecentage >0 && discountAmount<=0){
+            discountAmount = (discountPrecentage/100)*lineTotal;
+
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            discount = formatter.format(discountAmount);
+            return discount;
+        }else if(discountAmount>0 && discountPrecentage >0){
+            System.out.println("Pala pala");
+            return discount;
+        }
+        return discount;
     }
 
-    public static String discountAmountCalculation(){
-        String discAmou;
+    public static String subTotalCalculation(){
+        String subTotalValue = null;
 
-        discountAmount2 = (discountPrecentage2/100)*lineTotal;
+        double lineTot;
+        double subT;
 
-        DecimalFormat formatter = new DecimalFormat("#,###.00");
-        discAmou = formatter.format(discountAmount2);
-        return discAmou;
+        if(discountAmount>0) {
+
+            lineTot = price*quantity;
+            subT = lineTot - discountAmount;
+
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            subTotalValue =  formatter.format(subT);
+
+            return subTotalValue;
+
+        }else if (discountPrecentage >0 && discountAmount<=0){
+
+            lineTot = price*quantity;
+            double discAmtByPrecentage =(discountPrecentage/100)*lineTot;
+            subT = lineTot - discAmtByPrecentage;
+
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            subTotalValue =  formatter.format(subT);
+
+            return subTotalValue;
+
+        }else if(discountAmount>0 && discountPrecentage >0){
+            System.out.println("Pala pala");
+            return subTotalValue;
+        }
+        return subTotalValue;
     }
 
-    public static String subTotalCalculationByDiscountPrecentage(){
-        String subT;
+    public void subT(){
 
-        return null;
     }
-
-
     public static void main(String args[]){
         String lineTotal = Calculations.lineTotalCalculation();
         System.out.println("Price is     "+price);
         System.out.println("QTY is       "+quantity);
         System.out.println("------------------");
         System.out.println("LineTotal is "+lineTotal);
-
-        String dicPrecentage = Calculations.discountPrecentageCalculation();
+        System.out.println("------------------");
+        String dicPrecentage = Calculations.discountCalculation();
         System.out.println("Discount precentage Is "+dicPrecentage+"%");
+        System.out.println("*******************");
+        //Sub Total Calculation
+        String subtott = Calculations.subTotalCalculation();
+        System.out.println("SubTotal is "+subtott);
 
-        String dicAmount = Calculations.discountAmountCalculation();
-        System.out.println("Discount amount is"+dicAmount);
+
     }
 }
