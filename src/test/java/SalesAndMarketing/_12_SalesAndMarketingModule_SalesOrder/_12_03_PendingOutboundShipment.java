@@ -55,6 +55,7 @@ public class _12_03_PendingOutboundShipment {
         PageFactory.initElements(driver, this);
     }
 
+
     /*Search for a pending Outbound shipment from Tast List.*/
     public void selectOutboundShipment() {
         CommonClass.sleepTime(2000);
@@ -89,7 +90,6 @@ public class _12_03_PendingOutboundShipment {
             driver.switchTo().window(winHandle);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
-
     }
 
     public void releaseAndGoToPage() {
