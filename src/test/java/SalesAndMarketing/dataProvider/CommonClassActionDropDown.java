@@ -44,8 +44,6 @@ public class CommonClassActionDropDown extends CommonClass {
 			wait.until(ExpectedConditions.elementToBeClickable(By.className("spltbtnitm")));
 			wdd.findElement(By.className("spltbtnitm")).click();
 			Reporter.log("Convert to account option available");
-			
-			
 				
 			return wdd;
 		}
