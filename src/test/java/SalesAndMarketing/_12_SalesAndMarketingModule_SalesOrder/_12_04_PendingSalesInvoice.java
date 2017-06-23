@@ -65,6 +65,7 @@ public class _12_04_PendingSalesInvoice {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesInvoice));
         btnSalesInvoice.click();
+        System.out.println("clicked on \"Salese Invoice\".");
     }
 
     public void searchOrderNumber(String orderNumber){
@@ -98,9 +99,12 @@ public class _12_04_PendingSalesInvoice {
         WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.visibilityOf(lblPageHeadeSalesInvoice));
         Assert.assertEquals(lblPageHeadeSalesInvoice.getText(), "Sales Invoice");  // Verify the by page header.
+        System.out.println("Verified the by page header - \"Sales Invoice\"");
         Assert.assertEquals(lblStatus.getText(), "New"); //  Verify the Sales Invoice's status.
+        System.out.println("Verify the Sales Invoice's status. - 'New'");
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='tblSalesInv']/tbody/tr/td/div[contains(text(),'"+orderNumber+"')]"))));
         Assert.assertEquals(driver.findElement(By.xpath("//*[@id='tblSalesInv']/tbody/tr/td/div[contains(text(),'"+orderNumber+"')]")).getText(), orderNumber);  // Verify the Ref Doc No in the product line.
+        System.out.println("Ref Doc No is equal to Outbound shipment Number.");
         CommonClass.sleepTime(4000);
         wait.until(ExpectedConditions.elementToBeClickable(btnCheckout));
         btnCheckout.click();  // Click on Check-out button.
@@ -110,13 +114,17 @@ public class _12_04_PendingSalesInvoice {
     /*Verify that total display correctly. Sales to Invoice*/
     public void checkTotal(String total,String totalAfterDiscount,String discountTotal, String quantity){
         CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount+".00");
-        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount+".00");  // right bottom corner
-        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount+".00");  // Total in the right upper cornner
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
-        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
+        System.out.println(" Unit total is equl to the line total.");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount);
+        System.out.println("Sub total is equl to (Line total - Discount amount)."); /////////////////
+        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount);  // right bottom corner
+        System.out.println(" Total is equl to Sub total.");
+        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount);  // Total in the right upper cornner
+        System.out.println("Total in the right upper cornner is equl to total.");
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
     }
 
     /*Verify that total display correctly.  Sales To Outbound*/

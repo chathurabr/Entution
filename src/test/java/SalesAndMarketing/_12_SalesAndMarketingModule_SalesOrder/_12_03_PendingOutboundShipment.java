@@ -61,6 +61,7 @@ public class _12_03_PendingOutboundShipment {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnOutboundShipment));
         btnOutboundShipment.click();  //  Click on the "Outbound Shipment" tile.
+        System.out.println("opened the outbound shipment window.");
 
     }
 
@@ -112,11 +113,15 @@ public class _12_03_PendingOutboundShipment {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.visibilityOf(lblPageHeaderOutboundShipment));
         Assert.assertEquals(lblPageHeaderOutboundShipment.getText(), "Outbound Shipment");  // Verify the by page header.
+        System.out.println(" Header \"Outbound Shipment\" - verified");
         Assert.assertEquals(lblStatus.getText(), "New"); //  Verify the outbound shipment's status.
+        System.out.println("erify the outbound shipment's status as 'New'");
         wait.until(ExpectedConditions.visibilityOf(txtRefDocNo));
         Assert.assertEquals(txtRefDocNo.getText(), orderNumber);
+        System.out.println("Ref Doc No is equal to Sales Order Number - verified");
         CommonClass.sleepTime(4000);
         Assert.assertEquals(lblNumberOfUnits.getText(), quantity);
+        System.out.println("No of unit equels to the sales orders Qty - verified");
         wait.until(ExpectedConditions.elementToBeClickable(btnCheckout));
         btnCheckout.click();
         CommonClass.sleepTime(4000);

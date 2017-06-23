@@ -1,9 +1,6 @@
 package SalesAndMarketing.testCases;
 
-import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_01_NavigatesToSalesOrderScreen;
-import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_02_CreateSalesOrder;
-import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_03_PendingOutboundShipment;
-import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_04_PendingSalesInvoice;
+import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder.*;
 import SalesAndMarketing.dataProvider.CommonClass;
 import SalesAndMarketing.dataProvider.CommonClassMainButtons;
 import SalesAndMarketing.dataProvider.CommonScreenshot;
@@ -11,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -25,12 +23,12 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
     private String salesOrderNumber;
     private String OutBoundShipmentOrderNumber;
 
-    private String price = "20";
-    private String quantity= "100";
-    private String discountPercentage= "10";
-    private String discountValue= "200";
-    private String total= "2,000";
-    private String totalAfterDiscount= "1,800";
+    private String price;
+    private String quantity;
+    private String discountPercentage;
+    private String discountValue;
+    private String total;;
+    private String totalAfterDiscount;
 
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
@@ -44,6 +42,18 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
         driver = CommonClassMainButtons.loginMeth();
         driver = CommonClassMainButtons.MainMenuNav();
         driver = CommonClass.salesAndMketMenuNav();
+    }
+
+    @BeforeClass
+    public void getCalculations(){
+        price = Calculations.getPrice();
+        quantity = Calculations.getquantity();
+        total = Calculations.lineTotalCalculation();
+        discountPercentage = Calculations.discountPercentageCalculation();
+        discountValue = Calculations.discountAmountCalculation();
+        totalAfterDiscount = Calculations.subTotalCalculation();
+
+
     }
 
     @AfterMethod
@@ -91,7 +101,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
         outboundShipment.selectOutboundShipment();  //  Click on the "Outbound Shipment" tile.
         outboundShipment.searchSalesOrderNumber(salesOrderNumber); // search using Sales Order Number
        // outboundShipment.releaseAndGoToPage();
-        outboundShipment.outBoundShipment(salesOrderNumber,quantity+".00");
+        outboundShipment.outBoundShipment(salesOrderNumber,quantity);
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");/*Draft and verify order status*/
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
         OutBoundShipmentOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get Outbound Shipment Order Number

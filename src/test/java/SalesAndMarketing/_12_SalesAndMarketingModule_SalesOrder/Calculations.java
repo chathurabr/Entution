@@ -8,16 +8,16 @@ import java.text.DecimalFormat;
  * Created by Ramitha on 6/22/2017.
  */
 public class Calculations {
-    private static WebDriver driver;
+    public static WebDriver driver;
     //LineTotal
-    private static double price = 10000.00;
-    private static double quantity =100.00;
-    private static double lineTotal; //Unit total = Line Total
+    public static double price = 10000;
+    public static double quantity =100;
+    public static double lineTotal; //Unit total = Line Total
     //Discount
-    private static double discountAmount =50000 ;
-    private static double discountPrecentage;
+    public static double discountAmount= 50000 ;
+    public static double discountPrecentage = 0 ;
     //SubTotal
-    private static double subTotal;
+    public static double subTotal;
 
     public Calculations(){
         this.driver = driver;
@@ -34,7 +34,41 @@ public class Calculations {
         return SlineTotal;
     }
 
-    public static String discountCalculation(){
+    public static String discountPercentageCalculation() {
+        String discountP = null;
+
+        if (discountAmount > 0 && discountPrecentage <= 0) {
+            discountPrecentage = (discountAmount / lineTotal) * 100;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            discountP = formatter.format(discountPrecentage);
+            return discountP;
+
+        } else {
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            return formatter.format(discountPrecentage);
+
+        }
+
+    }
+
+    public static String discountAmountCalculation(){
+        String discountA = null;
+        if (discountPrecentage >0 && discountAmount<=0){
+            discountAmount = (discountPrecentage/100)*lineTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            discountA = formatter.format(discountAmount);
+            return discountA;
+        }
+        else {
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            return formatter.format(discountAmount);
+        }
+
+    }
+
+
+
+/*    public static String discountCalculation(){
         String discount = null;
 
 
@@ -48,6 +82,7 @@ public class Calculations {
 
         }else if (discountPrecentage >0 && discountAmount<=0){
             discountAmount = (discountPrecentage/100)*lineTotal;
+
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             discount = formatter.format(discountAmount);
             return discount;
@@ -55,7 +90,22 @@ public class Calculations {
             System.out.println("Pala pala");
             return discount;
         }
-        return discount;
+        else {
+            return discount;
+        }
+
+    }*/
+
+    public static String getPrice(){
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        return  formatter.format(price);
+
+    }
+
+    public static String getquantity(){
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        return  formatter.format(quantity);
+
     }
 
     public static String subTotalCalculation(){
@@ -92,9 +142,7 @@ public class Calculations {
         return subTotalValue;
     }
 
-    public void subT(){
 
-    }
     public static void main(String args[]){
         String lineTotal = Calculations.lineTotalCalculation();
         System.out.println("Price is     "+price);
@@ -102,8 +150,8 @@ public class Calculations {
         System.out.println("------------------");
         System.out.println("LineTotal is "+lineTotal);
         System.out.println("------------------");
-        String dicPrecentage = Calculations.discountCalculation();
-        System.out.println("Discount precentage Is "+dicPrecentage+"%");
+      //  String dicPrecentage = Calculations.discountCalculation();
+     //   System.out.println("Discount precentage Is "+dicPrecentage+"%");
         System.out.println("*******************");
         //Sub Total Calculation
         String subtott = Calculations.subTotalCalculation();
