@@ -10,12 +10,12 @@ import java.text.DecimalFormat;
 public class Calculations {
     private static WebDriver driver;
     //LineTotal
-    private static double price = 10000;
-    private static double quantity =100;
+    private static double price = 10000.00;
+    private static double quantity =100.00;
     private static double lineTotal; //Unit total = Line Total
     //Discount
-    private static double discountAmount= 50000 ;
-    private static double discountPrecentage ;
+    private static double discountAmount =50000 ;
+    private static double discountPrecentage;
     //SubTotal
     private static double subTotal;
 
@@ -48,7 +48,6 @@ public class Calculations {
 
         }else if (discountPrecentage >0 && discountAmount<=0){
             discountAmount = (discountPrecentage/100)*lineTotal;
-
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             discount = formatter.format(discountAmount);
             return discount;
