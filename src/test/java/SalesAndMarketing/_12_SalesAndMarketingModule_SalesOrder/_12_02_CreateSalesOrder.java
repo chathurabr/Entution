@@ -32,6 +32,8 @@ public class _12_02_CreateSalesOrder {
     private WebElement lblPageHeaderNewSalesOrder;
     @FindBy(id = "cboxCurrency")
     private WebElement cboxCurrency;
+    @FindBy(id = "txtCusAcc")
+    private WebElement txtCusAcc;
     @FindBy(id = "txtBillingAdd")
     private WebElement txtBillingAdd;
     @FindBy(id = "txtShipAddress")
@@ -234,10 +236,10 @@ public class _12_02_CreateSalesOrder {
         actions.moveToElement(txtDiscountPercentage).click();
         txtDiscountPercentage.clear();
         actions.moveToElement(txtDiscountPercentage).sendKeys(percentage).build().perform();
-        wait.until(ExpectedConditions.elementToBeClickable(txtDiscountValue));
-        txtDiscountValue.click();
+        wait.until(ExpectedConditions.elementToBeClickable(txtCusAcc));
+        txtCusAcc.click();
         CommonClass.sleepTime(1000);
-        Assert.assertEquals(txtDiscountValue.getAttribute("value"),discountValue+".00");
+        Assert.assertEquals(txtDiscountValue.getAttribute("value"),discountValue);
     }
 
     /*Enter Discount value and Verify the Discount Percentage is correct*/
@@ -248,10 +250,10 @@ public class _12_02_CreateSalesOrder {
         actions.moveToElement(txtDiscountValue).click();
         txtDiscountValue.clear();
         actions.moveToElement(txtDiscountValue).sendKeys(discountValue).build().perform();
-        wait.until(ExpectedConditions.elementToBeClickable(txtDiscountValue));
-        txtDiscountPercentage.click();
+        wait.until(ExpectedConditions.elementToBeClickable(txtCusAcc));
+        txtCusAcc.click();
         CommonClass.sleepTime(1000);
-        Assert.assertEquals(txtDiscountPercentage.getAttribute("value"),percentage+".00");
+        Assert.assertEquals(txtDiscountPercentage.getAttribute("value"),percentage);
     }
 
 
@@ -281,42 +283,42 @@ public class _12_02_CreateSalesOrder {
 
     public void checkTotalBeforeDiscount(String total,String quantity){
         CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtTotal.getAttribute("value"),total+".00");  // right bottom corner
-        Assert.assertEquals(txtBannerTotal.getText(),total+".00");  // Total in the right upper cornner
-        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtTotal.getAttribute("value"),total);  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),total);  // Total in the right upper cornner
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
 
     }
     /*Verify that total display correctly.*/
     public void checkTotalBeforeDraft(String total,String totalAfterDiscount,String discountTotal,String quantity){
         CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
         System.out.println("Unit total is equl to the line total.");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount+".00");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount);
         System.out.println("Sub total is equl to (Line total - Discount amount).");
-        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount+".00");  // right bottom corner
+        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount);  // right bottom corner
         System.out.println(" Total is equl to Sub total.");
-        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount+".00");  // Total in the right upper cornner
+        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount);  // Total in the right upper cornner
         System.out.println("Total in the right upper cornner is equl to total.");
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
-        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
     }
 
 
     public void checkTotalAfterRelesed(String total,String totalAfterDiscount,String discountTotal, String quantity){
-        Assert.assertEquals(txtlineTotalRelesed.getText(),total+".00");
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
+        Assert.assertEquals(txtlineTotalRelesed.getText(),total);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
         System.out.println("Unit total is equl to the line total.");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount+".00");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount);
         System.out.println("Sub total is equl to (Line total - Discount amount).");
-        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount+".00");  // right bottom corner
+        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount);  // right bottom corner
         System.out.println(" Total is equl to Sub total.");
-        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount+".00");  // Total in the right upper cornner
+        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount);  // Total in the right upper cornner
         System.out.println("Total in the right upper cornner is equl to total.");
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal+".00");  // bottom layer
-        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity+".00");  // UNITS Total in the right upper cornner
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
     }
 }
