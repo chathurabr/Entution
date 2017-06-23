@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 /**
- * Created by chathura on 6/15/2017.
+ * Created by chathura on 6/23/2017.
  */
-public class TestCase_12_SalesOrderToSalesInvoice_Discount {
+public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
     public WebDriver driver;
 
     private String salesOrderNumber;
@@ -27,8 +27,8 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
     private String quantity;
     private String discountPercentage;
     private String discountValue;
-    private String total;;
-    private String totalAfterDiscount;
+    private String lineTotal;;
+    private String SubTotal;
 
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
@@ -48,17 +48,17 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
     public void getCalculations(){
         price = Calculations.getPrice();
         quantity = Calculations.getquantity();
-        total = Calculations.lineTotalCalculation();
+        lineTotal = Calculations.lineTotalCalculation();
         discountPercentage = Calculations.discountPercentageCalculation();
         discountValue = Calculations.discountAmountCalculation();
-        totalAfterDiscount = Calculations.subTotalCalculation();
+        SubTotal = Calculations.subTotalCalculation();
 
         System.out.println("price: "+price);
         System.out.println("quantity: "+quantity);
-        System.out.println("total: "+total);
+        System.out.println("lineTotal: "+lineTotal);
         System.out.println("discountPercentage: "+discountPercentage);
         System.out.println("discountValue: "+discountValue);
-        System.out.println("totalAfterDiscount: "+totalAfterDiscount);
+        System.out.println("SubTotal: "+SubTotal);
 
 
     }
@@ -87,15 +87,17 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
         createSalesOrder.selectWareHouse("1310-1 [1310-ProductIn]"); /* Select a warehouse from the warehouse dropdown.*/
         createSalesOrder.enterQtyAndPrice(quantity,price); /*Enter Qty & Unit Price*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
-        createSalesOrder.checkTotalBeforeDiscount(total,quantity);
+        createSalesOrder.checkTotalBeforeDiscount(lineTotal,quantity);
+   //     createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group
+        createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
-        createSalesOrder.checkTotalBeforeDraft(total,totalAfterDiscount,discountValue,quantity);  // verify total balace of the available fields
+        createSalesOrder.checkTotalBeforeDraft(lineTotal,SubTotal,discountValue,quantity);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");
         CommonClass.sleepTime(2000);
-        createSalesOrder.checkTotalAfterRelesed(total,totalAfterDiscount,discountValue,quantity); // verify total balace of the available fields after Released
+        createSalesOrder.checkTotalAfterRelesed(lineTotal,SubTotal,discountValue,quantity); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
         //System.out.println(salesOrderNumber);
 
@@ -122,7 +124,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
         pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
         pendingSalesInvoice.searchOrderNumber(OutBoundShipmentOrderNumber); // search using Outbound Shipment Order Number
         pendingSalesInvoice.sales_Invoice(OutBoundShipmentOrderNumber);
-        pendingSalesInvoice.checkTotal(total,totalAfterDiscount,discountValue,quantity);  // verify total balace of the available fields
+        pendingSalesInvoice.checkTotal(lineTotal,SubTotal,discountValue,quantity);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
     }

@@ -10,12 +10,12 @@ import java.text.DecimalFormat;
 public class Calculations {
     public static WebDriver driver;
     //LineTotal
-    public static double price = 10000;
+    public static double price = 100.50;
     public static double quantity =100;
     public static double lineTotal; //Unit total = Line Total
     //Discount
-    public static double discountAmount= 50000 ;
-    public static double discountPrecentage = 0 ;
+    public static double discountAmount ;
+    public static double discountPrecentage = 5 ;
     //SubTotal
     public static double subTotal;
 
@@ -25,12 +25,9 @@ public class Calculations {
 
     public static String lineTotalCalculation(){
         String SlineTotal;
-
         lineTotal = price*quantity;
-
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         SlineTotal =  formatter.format(lineTotal);
-
         return SlineTotal;
     }
 
@@ -46,9 +43,7 @@ public class Calculations {
         } else {
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             return formatter.format(discountPrecentage);
-
         }
-
     }
 
     public static String discountAmountCalculation(){
@@ -63,7 +58,6 @@ public class Calculations {
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             return formatter.format(discountAmount);
         }
-
     }
 
 
@@ -110,7 +104,6 @@ public class Calculations {
 
     public static String subTotalCalculation(){
         String subTotalValue = null;
-
         double lineTot;
         double subT;
 
@@ -118,21 +111,16 @@ public class Calculations {
 
             lineTot = price*quantity;
             subT = lineTot - discountAmount;
-
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             subTotalValue =  formatter.format(subT);
-
             return subTotalValue;
 
         }else if (discountPrecentage >0 && discountAmount<=0){
-
             lineTot = price*quantity;
             double discAmtByPrecentage =(discountPrecentage/100)*lineTot;
             subT = lineTot - discAmtByPrecentage;
-
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             subTotalValue =  formatter.format(subT);
-
             return subTotalValue;
 
         }else if(discountAmount>0 && discountPrecentage >0){
@@ -156,7 +144,6 @@ public class Calculations {
         //Sub Total Calculation
         String subtott = Calculations.subTotalCalculation();
         System.out.println("SubTotal is "+subtott);
-
 
     }
 }
