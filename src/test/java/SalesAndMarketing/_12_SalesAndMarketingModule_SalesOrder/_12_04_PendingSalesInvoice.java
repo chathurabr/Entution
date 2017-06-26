@@ -111,16 +111,16 @@ public class _12_04_PendingSalesInvoice {
 
 
     /*Verify that total display correctly. Sales to Invoice*/
-    public void checkTotal(String total,String totalAfterDiscount,String discountTotal, String quantity){
+    public void checkTotal(String lineTotal,String SubTotal,String discountTotal, String quantity){
         CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal.getAttribute("value"),total);
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total);
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),lineTotal);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
         System.out.println(" Unit total is equl to the line total.");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),totalAfterDiscount);
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),SubTotal);
         System.out.println("Sub total is equl to (Line total - Discount amount)."); /////////////////
-        Assert.assertEquals(txtTotal.getAttribute("value"),totalAfterDiscount);  // right bottom corner
+        Assert.assertEquals(txtTotal.getAttribute("value"),SubTotal);  // right bottom corner
         System.out.println(" Total is equl to Sub total.");
-        Assert.assertEquals(txtBannerTotal.getText(),totalAfterDiscount);  // Total in the right upper cornner
+        Assert.assertEquals(txtBannerTotal.getText(),SubTotal);  // Total in the right upper cornner
         System.out.println("Total in the right upper cornner is equl to total.");
         Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
