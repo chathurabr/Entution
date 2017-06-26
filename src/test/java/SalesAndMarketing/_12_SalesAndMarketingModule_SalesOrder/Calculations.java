@@ -16,8 +16,14 @@ public class Calculations {
     //Discount
     public static double discountAmount= 50000 ;
     public static double discountPrecentage = 0 ;
+    //Tax
+    public static double taxPrecentage = 15;
+    public static double taxAmount;
     //SubTotal
     public static double subTotal;
+    public static double taxValue;
+    public static double bannerTotal;
+
 
     public Calculations(){
         this.driver = driver;
@@ -65,9 +71,6 @@ public class Calculations {
         }
 
     }
-
-
-
 /*    public static String discountCalculation(){
         String discount = null;
 
@@ -142,6 +145,30 @@ public class Calculations {
         return subTotalValue;
     }
 
+    public static String taxCalculation(){
+        String taxVal = null;
+        String subTot =Calculations.subTotalCalculation();
+        double subT = Double.parseDouble(subTot);
+
+        if(taxPrecentage > 0){
+            taxValue = subT*taxPrecentage;
+            return taxVal;
+        }else{
+            taxValue = subT;
+        }
+        return taxVal;
+    }
+    public static String bannerTotalCalculation(){
+        String bannerTotCal = null;
+        if(taxValue>0){
+            bannerTotal = taxValue+lineTotal;
+            return bannerTotCal;
+        }else{
+            bannerTotal = lineTotal;
+            return bannerTotCal;
+        }
+    }
+
 
     public static void main(String args[]){
         String lineTotal = Calculations.lineTotalCalculation();
@@ -156,7 +183,9 @@ public class Calculations {
         //Sub Total Calculation
         String subtott = Calculations.subTotalCalculation();
         System.out.println("SubTotal is "+subtott);
-
+        System.out.println("*******************");
+        String taxValue = Calculations.taxCalculation();
+        System.out.println("Tax amount is "+taxValue);
 
     }
 }

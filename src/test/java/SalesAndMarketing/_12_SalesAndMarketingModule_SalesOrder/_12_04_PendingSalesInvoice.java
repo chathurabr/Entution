@@ -93,7 +93,6 @@ public class _12_04_PendingSalesInvoice {
         }
 
     }
-
     public void sales_Invoice(String orderNumber){
         // Perform the actions on new window
         WebDriverWait wait = new WebDriverWait(driver, 60);
