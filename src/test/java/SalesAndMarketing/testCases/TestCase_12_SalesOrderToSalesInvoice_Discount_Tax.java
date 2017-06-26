@@ -29,6 +29,8 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
     private String discountValue;
     private String lineTotal;;
     private String SubTotal;
+    private String bannerTotal;
+    private String taxValue;
 
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
@@ -93,7 +95,8 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
-        createSalesOrder.checkTotalBeforeDraft(lineTotal,SubTotal,discountValue,quantity);  // verify total balace of the available fields
+        createSalesOrder.checkTotalBeforeDraftWithTax(lineTotal,SubTotal,bannerTotal, discountValue,quantity);  // verify total balace of the available fields
+        Assert.assertEquals(createSalesOrder.checkTaxValue(),taxValue); //---------------------------
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");
         CommonClass.sleepTime(2000);

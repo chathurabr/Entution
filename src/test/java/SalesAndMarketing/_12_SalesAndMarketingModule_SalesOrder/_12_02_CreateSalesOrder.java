@@ -14,9 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 
 public class _12_02_CreateSalesOrder {
@@ -310,6 +307,26 @@ public class _12_02_CreateSalesOrder {
         System.out.println("Total in the right upper cornner is equl to total.");
         Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
+    }
+
+    /*Verify that total display correctly. With Discount And Tax*/
+    public void checkTotalBeforeDraftWithTax(String lineTotal,String subTotal,String bannerTotal, String discountTotal,String quantity){
+        CommonClass.sleepTime(2000);
+        Assert.assertEquals(txtlineTotal.getAttribute("value"),lineTotal);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
+        System.out.println("Unit total is equl to the line total.");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
+        System.out.println("Sub total is equl to (Line total - Discount amount).");
+        Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
+   //     System.out.println(" Total is equl to Sub total.");  ----------- change
+        Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
+        System.out.println("Total in the right upper cornner is equl to total.");
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
+    }
+
+    public String checkTaxValue(){
+        return txtTaxTot.getAttribute("value");
     }
 
 

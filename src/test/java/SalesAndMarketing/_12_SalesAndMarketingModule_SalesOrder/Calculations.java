@@ -131,6 +131,8 @@ public class Calculations {
     }
 
 
+
+
     public static void main(String args[]){
         String lineTotal = Calculations.lineTotalCalculation();
         System.out.println("Price is     "+price);
