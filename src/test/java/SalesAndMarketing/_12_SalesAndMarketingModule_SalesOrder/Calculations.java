@@ -147,14 +147,14 @@ public class Calculations {
 
     public static String taxCalculation(){
         String taxVal = null;
-        String subTot =Calculations.subTotalCalculation();
-        double subT = Double.parseDouble(subTot);
+        double subTot = Double.parseDouble(Calculations.subTotalCalculation());
+       // double subT = Double.parseDouble(subTot);
 
         if(taxPrecentage > 0){
-            taxValue = subT*taxPrecentage;
+            taxValue = subTot*taxPrecentage;
             return taxVal;
         }else{
-            taxValue = subT;
+            taxValue = subTot;
         }
         return taxVal;
     }
