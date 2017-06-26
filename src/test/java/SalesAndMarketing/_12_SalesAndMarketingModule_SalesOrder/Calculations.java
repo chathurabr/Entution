@@ -145,21 +145,56 @@ public class Calculations {
         return subTotalValue;
     }
 
-    public static String taxCalculation(){
-        String taxVal = null;
-        double subTot = Double.parseDouble(Calculations.subTotalCalculation());
-       // double subT = Double.parseDouble(subTot);
+    public static double subTotalCalculationDouble(){
+        double subTotalValueDouble = 0;
+        //double subT;
+
+        if(discountAmount>0) {
+
+           // lineTot = price*quantity;
+            subTotalValueDouble = lineTotal - discountAmount;
+
+
+            return subTotalValueDouble;
+
+        }else if (discountPrecentage >0 && discountAmount<=0){
+
+            lineTotal = price*quantity;
+            double discAmtByPrecentage =(discountPrecentage/100)*lineTotal;
+            subTotalValueDouble = lineTotal - discAmtByPrecentage;
+
+            return subTotalValueDouble;
+
+        }else if(discountAmount>0 && discountPrecentage >0){
+            System.out.println("Else");
+            return subTotalValueDouble;
+        }else {
+            return subTotalValueDouble;
+        }
+    }
+
+    public static double taxCalculation(){
+        double taxVal = 0.0;
+        //double tV;
+        double subTot =Calculations.subTotalCalculationDouble();
+        System.out.println("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"+subTot);
 
         if(taxPrecentage > 0){
-            taxValue = subTot*taxPrecentage;
+            taxVal = (subTot*taxPrecentage)/100;
+            System.out.println("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"+taxVal);
+
             return taxVal;
-        }else{
-            taxValue = subTot;
+        }else if (taxPrecentage<=0){
+            taxVal = subTot;
+            return taxVal;
+        }else {
+            return taxVal;
         }
-        return taxVal;
     }
+
     public static String bannerTotalCalculation(){
         String bannerTotCal = null;
+
         if(taxValue>0){
             bannerTotal = taxValue+lineTotal;
             return bannerTotCal;
@@ -184,8 +219,12 @@ public class Calculations {
         String subtott = Calculations.subTotalCalculation();
         System.out.println("SubTotal is "+subtott);
         System.out.println("*******************");
-        String taxValue = Calculations.taxCalculation();
+        double taxValue = Calculations.taxCalculation();
+        double doubleSubTotal = Calculations.subTotalCalculationDouble();
         System.out.println("Tax amount is "+taxValue);
+        System.out.println("Double subtotal amount is "+doubleSubTotal);
+        String bannerTot = Calculations.bannerTotalCalculation();
+        System.out.println("Banner total amount is "+bannerTot);
 
     }
 }
