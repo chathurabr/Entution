@@ -53,8 +53,8 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         lineTotal = Calculations.lineTotalCalculation();
         discountPercentage = Calculations.discountPercentageCalculation();
         discountValue = Calculations.discountAmountCalculation();
-        SubTotal = Calculations.subTotalCalculation();
-        taxValue =Calculations.taxCalculation();
+      //  SubTotal = Calculations.subTotalCalculation22();
+      //  taxValue =Calculations.taxCalculation();
         bannerTotal = Calculations.bannerTotalCalculation();
 
         System.out.println("price: "+price);
