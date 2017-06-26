@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 /**
- * Created by chathura on 6/23/2017.
+ * Created by chathura on 6/26/2017.
  */
-public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
+public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
     public WebDriver driver;
 
     private String salesOrderNumber;

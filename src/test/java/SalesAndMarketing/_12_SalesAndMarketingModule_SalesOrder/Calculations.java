@@ -9,19 +9,21 @@ import java.text.DecimalFormat;
  */
 public class Calculations {
     public static WebDriver driver;
-    //LineTotal
+
     public static double price = 10000;
     public static double quantity =100;
-    public static double lineTotal; //Unit total = Line Total
+
     //Discount
     public static double discountAmount ;
-    public static double discountPrecentage = 5 ;
+    public static double discountPercentage= 10;
+
     //Tax
-    public static double taxPrecentage = 15;
-    public static double taxAmount;
-    //SubTotal
+    public static double taxPercentage = 15;   // give tax percentage here
+    public static double taxValue;  // auto calculate only
+
+    //Total
     public static double subTotal;
-    public static double taxValue;
+    public static double lineTotal; //Unit total = Line Total
     public static double bannerTotal;
 
 
@@ -41,33 +43,40 @@ public class Calculations {
     }
 
     public static String discountPercentageCalculation() {
-        String discountP = null;
+        String discountP = "0.00";
 
-        if (discountAmount > 0 && discountPrecentage <= 0) {
-            discountPrecentage = (discountAmount / lineTotal) * 100;
-            DecimalFormat formatter = new DecimalFormat("#,###.00");
-            discountP = formatter.format(discountPrecentage);
+        if (discountAmount > 0 && discountPercentage <= 0) {
+            discountPercentage = (discountAmount / lineTotal) * 100;
+            DecimalFormat formatter = new DecimalFormat("#,##0.00");
+            discountP = formatter.format(discountPercentage);
             return discountP;
 
+        }
+        else if (discountPercentage > 0){
+            DecimalFormat formatter = new DecimalFormat("#,##0.00");
+            return formatter.format(discountPercentage);
+
         } else {
-            DecimalFormat formatter = new DecimalFormat("#,###.00");
-            return formatter.format(discountPrecentage);
+            return discountP;
 
         }
 
     }
 
     public static String discountAmountCalculation(){
-        String discountA = null;
-        if (discountPrecentage >0 && discountAmount<=0){
-            discountAmount = (discountPrecentage/100)*lineTotal;
+        String discountA = "0.00";
+        if (discountPercentage >0 && discountAmount<=0){
+            discountAmount = (discountPercentage/100)*lineTotal;
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             discountA = formatter.format(discountAmount);
             return discountA;
         }
-        else {
+        else if (discountAmount > 0){
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             return formatter.format(discountAmount);
+        }
+        else {
+            return discountA;
         }
 
     }
@@ -113,25 +122,32 @@ public class Calculations {
 
     public static String subTotalCalculation(){
         String subTotalValue = null;
-        if(discountAmount>0) {
 
+        if(discountAmount>0) {
             subTotal = lineTotal - discountAmount;
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             subTotalValue =  formatter.format(subTotal);
             return subTotalValue;
 
-        }else if (discountPrecentage >0 && discountAmount<=0){
-            double discAmtByPrecentage =(discountPrecentage/100)*lineTotal;
+        }else if (discountPercentage >0 && discountAmount<=0){
+            double discAmtByPrecentage =(discountPercentage/100)*lineTotal;
             subTotal = lineTotal - discAmtByPrecentage;
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             subTotalValue =  formatter.format(subTotal);
             return subTotalValue;
 
-        }else if(discountAmount>0 && discountPrecentage >0){
+        }else if(discountAmount>0 && discountPercentage >0){
             System.out.println("Pala pala");
             return subTotalValue;
         }
-        return subTotalValue;
+
+        else {
+            subTotal = lineTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            subTotalValue =  formatter.format(subTotal);
+            return subTotalValue;
+        }
+
     }
 
     public static double subTotalCalculationDouble(){
@@ -146,15 +162,15 @@ public class Calculations {
 
             return subTotalValueDouble;
 
-        }else if (discountPrecentage >0 && discountAmount<=0){
+        }else if (discountPercentage >0 && discountAmount<=0){
 
             lineTotal = price*quantity;
-            double discAmtByPrecentage =(discountPrecentage/100)*lineTotal;
+            double discAmtByPrecentage =(discountPercentage/100)*lineTotal;
             subTotalValueDouble = lineTotal - discAmtByPrecentage;
 
             return subTotalValueDouble;
 
-        }else if(discountAmount>0 && discountPrecentage >0){
+        }else if(discountAmount>0 && discountPercentage >0){
             System.out.println("Else");
             return subTotalValueDouble;
         }else {
@@ -165,17 +181,11 @@ public class Calculations {
     public static String taxCalculation(){
         String taxVal = "0.00";
 
-        if(taxPrecentage > 0) {
-            taxValue = subTotal * (taxPrecentage / 100);
+        if(taxPercentage > 0) {
+            taxValue = subTotal * (taxPercentage / 100);
 
-            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            DecimalFormat formatter = new DecimalFormat("#,##0.00");
             taxVal = formatter.format(taxValue);
-            return taxVal;
-
-        }else if(taxPrecentage<0){
-            taxValue = subTotal;
-            DecimalFormat formatter = new DecimalFormat("#,###.00");
-            taxVal =  formatter.format(taxValue);
             return taxVal;
 
         }else
