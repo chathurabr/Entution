@@ -53,8 +53,8 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         lineTotal = Calculations.lineTotalCalculation();
         discountPercentage = Calculations.discountPercentageCalculation();
         discountValue = Calculations.discountAmountCalculation();
-      //  SubTotal = Calculations.subTotalCalculation22();
-      //  taxValue =Calculations.taxCalculation();
+        SubTotal = Calculations.subTotalCalculation();
+        taxValue =Calculations.taxCalculation();
         bannerTotal = Calculations.bannerTotalCalculation();
 
         System.out.println("price: "+price);
@@ -63,6 +63,9 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         System.out.println("discountPercentage: "+discountPercentage);
         System.out.println("discountValue: "+discountValue);
         System.out.println("SubTotal: "+SubTotal);
+        System.out.println("taxValue: "+taxValue);
+        System.out.println("bannerTotal: "+bannerTotal);
+
 
 
     }
@@ -92,17 +95,16 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         createSalesOrder.enterQtyAndPrice(quantity,price); /*Enter Qty & Unit Price*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.checkTotalBeforeDiscount(lineTotal,quantity);
-   //     createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group
+        createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
-        createSalesOrder.checkTotalBeforeDraftWithTax(lineTotal,SubTotal,bannerTotal, discountValue,quantity);  // verify total balace of the available fields
-        Assert.assertEquals(createSalesOrder.checkTaxValue(),taxValue); //---------------------------
+        createSalesOrder.checkTotalBeforeDraftWithTax(lineTotal,SubTotal,bannerTotal, discountValue,quantity,taxValue);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");
         CommonClass.sleepTime(2000);
-        createSalesOrder.checkTotalAfterRelesed(lineTotal,SubTotal,discountValue,quantity); // verify total balace of the available fields after Released
+        createSalesOrder.checkTotalAfterRelesedWithTax(lineTotal,SubTotal,bannerTotal,discountValue,quantity,taxValue); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
         //System.out.println(salesOrderNumber);
 
@@ -129,7 +131,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
         pendingSalesInvoice.searchOrderNumber(OutBoundShipmentOrderNumber); // search using Outbound Shipment Order Number
         pendingSalesInvoice.sales_Invoice(OutBoundShipmentOrderNumber);
-        pendingSalesInvoice.checkTotal(lineTotal,SubTotal,discountValue,quantity);  // verify total balace of the available fields
+        pendingSalesInvoice.checkTotal(lineTotal,SubTotal,bannerTotal,discountValue,quantity,taxValue);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
     }

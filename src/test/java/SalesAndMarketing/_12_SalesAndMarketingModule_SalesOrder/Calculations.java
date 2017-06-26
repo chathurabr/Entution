@@ -14,8 +14,8 @@ public class Calculations {
     public static double quantity =100;
     public static double lineTotal; //Unit total = Line Total
     //Discount
-    public static double discountAmount= 50000 ;
-    public static double discountPrecentage = 0 ;
+    public static double discountAmount ;
+    public static double discountPrecentage = 5 ;
     //Tax
     public static double taxPrecentage = 15;
     public static double taxAmount;
@@ -113,29 +113,18 @@ public class Calculations {
 
     public static String subTotalCalculation(){
         String subTotalValue = null;
-
-        double lineTot;
-        double subT;
-
         if(discountAmount>0) {
 
-            lineTot = price*quantity;
-            subT = lineTot - discountAmount;
-
+            subTotal = lineTotal - discountAmount;
             DecimalFormat formatter = new DecimalFormat("#,###.00");
-            subTotalValue =  formatter.format(subT);
-
+            subTotalValue =  formatter.format(subTotal);
             return subTotalValue;
 
         }else if (discountPrecentage >0 && discountAmount<=0){
-
-            lineTot = price*quantity;
-            double discAmtByPrecentage =(discountPrecentage/100)*lineTot;
-            subT = lineTot - discAmtByPrecentage;
-
+            double discAmtByPrecentage =(discountPrecentage/100)*lineTotal;
+            subTotal = lineTotal - discAmtByPrecentage;
             DecimalFormat formatter = new DecimalFormat("#,###.00");
-            subTotalValue =  formatter.format(subT);
-
+            subTotalValue =  formatter.format(subTotal);
             return subTotalValue;
 
         }else if(discountAmount>0 && discountPrecentage >0){
@@ -173,33 +162,38 @@ public class Calculations {
         }
     }
 
-    public static double taxCalculation(){
-        double taxVal = 0.0;
-        //double tV;
-        double subTot =Calculations.subTotalCalculationDouble();
-        System.out.println("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"+subTot);
+    public static String taxCalculation(){
+        String taxVal = "0.00";
 
-        if(taxPrecentage > 0){
-            taxVal = (subTot*taxPrecentage)/100;
-            System.out.println("}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}"+taxVal);
+        if(taxPrecentage > 0) {
+            taxValue = subTotal * (taxPrecentage / 100);
 
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            taxVal = formatter.format(taxValue);
             return taxVal;
-        }else if (taxPrecentage<=0){
-            taxVal = subTot;
+
+        }else if(taxPrecentage<0){
+            taxValue = subTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            taxVal =  formatter.format(taxValue);
             return taxVal;
-        }else {
+
+        }else
             return taxVal;
-        }
     }
 
     public static String bannerTotalCalculation(){
         String bannerTotCal = null;
 
         if(taxValue>0){
-            bannerTotal = taxValue+lineTotal;
+            bannerTotal = taxValue+subTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            bannerTotCal =  formatter.format(bannerTotal);
             return bannerTotCal;
         }else{
-            bannerTotal = lineTotal;
+            bannerTotal = subTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            bannerTotCal =  formatter.format(bannerTotal);
             return bannerTotCal;
         }
     }
@@ -219,7 +213,7 @@ public class Calculations {
         String subtott = Calculations.subTotalCalculation();
         System.out.println("SubTotal is "+subtott);
         System.out.println("*******************");
-        double taxValue = Calculations.taxCalculation();
+       // double taxValue = Calculations.taxCalculation();
         double doubleSubTotal = Calculations.subTotalCalculationDouble();
         System.out.println("Tax amount is "+taxValue);
         System.out.println("Double subtotal amount is "+doubleSubTotal);

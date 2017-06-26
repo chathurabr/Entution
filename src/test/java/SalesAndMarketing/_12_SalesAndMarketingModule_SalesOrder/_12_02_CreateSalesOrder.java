@@ -238,6 +238,7 @@ public class _12_02_CreateSalesOrder {
         actions.moveToElement(txtDiscountPercentage).click();
         txtDiscountPercentage.clear();
         actions.moveToElement(txtDiscountPercentage).sendKeys(percentage).build().perform();
+        CommonClass.sleepTime(1000);
         wait.until(ExpectedConditions.elementToBeClickable(txtCusAcc));
         txtCusAcc.click();
         CommonClass.sleepTime(1000);
@@ -310,19 +311,35 @@ public class _12_02_CreateSalesOrder {
     }
 
     /*Verify that total display correctly. With Discount And Tax*/
-    public void checkTotalBeforeDraftWithTax(String lineTotal,String subTotal,String bannerTotal, String discountTotal,String quantity){
+    public void checkTotalBeforeDraftWithTax(String lineTotal,String subTotal,String bannerTotal, String discountTotal,String quantity,String taxValue){
         CommonClass.sleepTime(2000);
         Assert.assertEquals(txtlineTotal.getAttribute("value"),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
+        Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
+        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);  // tax amout verification
+    }
+
+    /*Verify that total display correctly. After Relesed With Discount And Tax*/
+    public void checkTotalAfterRelesedWithTax(String lineTotal,String subTotal,String bannerTotal, String discountTotal,String quantity,String taxValue){
+        CommonClass.sleepTime(2000);
+        Assert.assertEquals(txtlineTotalRelesed.getText(),lineTotal);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
         System.out.println("Unit total is equl to the line total.");
         Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
-        System.out.println("Sub total is equl to (Line total - Discount amount).");
+        System.out.println("Sub total - verified (Line total - Discount amount).");
         Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
-   //     System.out.println(" Total is equl to Sub total.");  ----------- change
         Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
         System.out.println("Total in the right upper cornner is equl to total.");
         Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        System.out.println("discount value - verified");
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
+        System.out.println("UNITS Total in the right upper cornner - verified");
+        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);  // tax amout verification
+        System.out.println("taxValue - Verified");
     }
 
     public String checkTaxValue(){
@@ -330,12 +347,13 @@ public class _12_02_CreateSalesOrder {
     }
 
 
+    /*Verify that total - withougt TAX*/
     public void checkTotalAfterRelesed(String lineTotal,String SubTotal,String discountTotal, String quantity){
         Assert.assertEquals(txtlineTotalRelesed.getText(),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
         System.out.println("Unit total is equl to the line total.");
         Assert.assertEquals(txtSubTotal.getAttribute("value"),SubTotal);
-        System.out.println("Sub total is equl to (Line total - Discount amount).");
+        System.out.println("Sub total - verified (Line total - Discount amount).");
         Assert.assertEquals(txtTotal.getAttribute("value"),SubTotal);  // right bottom corner
         System.out.println(" Total is equl to Sub total.");
         Assert.assertEquals(txtBannerTotal.getText(),SubTotal);  // Total in the right upper cornner
