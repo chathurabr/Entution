@@ -15,7 +15,7 @@ public class Calculations {
 
     //Discount
     public static double discountAmount ;
-    public static double discountPercentage;
+    public static double discountPercentage= 10;
 
     //Tax
     public static double taxPercentage = 15;   // give tax percentage here

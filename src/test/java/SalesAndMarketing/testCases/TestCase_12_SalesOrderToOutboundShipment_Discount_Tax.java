@@ -138,5 +138,4 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
     }
 
-
 }
