@@ -23,6 +23,8 @@ public class _12_02_CreateSalesOrder {
     private WebElement btnNewSalesOrser;
     @FindBy(xpath = "//span[text()='Sales Order to Sales Invoice']")
     private WebElement btnSalesOrderToSalesInvoice;
+    @FindBy(xpath = "//span[text()='Sales Order to Sales Invoice (Service)']")
+    private WebElement btnSalesOrderToSalesInvoiceService;
     @FindBy(xpath = "//span[text()='Sales Order to Outbound Shipment']")
     private WebElement btnSalesOrderToOutboundShipment;
     @FindBy(xpath = "//*[@id='lbldocstatus'][text()='New']")
@@ -117,9 +119,19 @@ public class _12_02_CreateSalesOrder {
         System.out.println("Clicked on New Sales Order");;
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoice));
         btnSalesOrderToSalesInvoice.click();   //Select Sales Order to Sales Invoice (Option One)
-        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
+        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \" 1 - Sales Order to Sales Invoice jurney\"");
     }
 
+    /*New Sales Order - Select Sales Order to Sales Invoice - Service */
+    public void CreateSalesOrder_SalesOrderToSalesInvoice_Service(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
+        btnNewSalesOrser.click();   // Click on New Sales Order button
+        System.out.println("Clicked on New Sales Order");;
+        wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoiceService));
+        btnSalesOrderToSalesInvoiceService.click();   //Select Sales Order to Sales Invoice (Option One)
+        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \" 2 - Sales Order to Sales Invoice (Service) jurney\"");
+    }
     /*New Sales Order - Select Sales Order to Outbound Shipment*/
     public void CreateSalesOrder_SalesOrderToOutboundShipment(){
         WebDriverWait wait = new WebDriverWait(driver, 40);

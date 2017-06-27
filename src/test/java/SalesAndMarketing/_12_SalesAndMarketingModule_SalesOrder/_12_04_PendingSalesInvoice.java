@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -56,6 +57,8 @@ public class _12_04_PendingSalesInvoice {
     private WebElement lblBannerNumberOfUnits;
     @FindBy(id = "txtTaxTot")
     private WebElement txtTaxTot;
+    @FindBy(id = "txtInvPre")
+    private WebElement txtInvPercentage;
 
 
     public _12_04_PendingSalesInvoice(WebDriver driver){
@@ -118,6 +121,24 @@ public class _12_04_PendingSalesInvoice {
         CommonClass.sleepTime(4000);
         wait.until(ExpectedConditions.elementToBeClickable(btnCheckout));
         btnCheckout.click();  // Click on Check-out button.
+    }
+
+    public void addInvoicePercentage(String invPercentage){
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        wait.until(ExpectedConditions.visibilityOf(txtInvPercentage));
+        String selectAll = Keys.chord(Keys.CONTROL, "a");
+        txtInvPercentage.sendKeys(selectAll);
+        txtInvPercentage.sendKeys(invPercentage);
+        CommonClass.sleepTime(2000);
+        wait.until(ExpectedConditions.elementToBeClickable(btnCheckout));
+        btnCheckout.click();
+        CommonClass.sleepTime(2000);
+//        Assert.assertEquals(txtInvPercentage.getText(),invPercentage);
+    }
+
+    public String getInvoicePercentage(){
+        return txtInvPercentage.getAttribute("value");
+
     }
 
 

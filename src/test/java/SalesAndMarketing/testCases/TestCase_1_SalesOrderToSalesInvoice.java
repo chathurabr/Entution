@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Created by chathura on 6/23/2017.
  */
-public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
+public class TestCase_1_SalesOrderToSalesInvoice {
     public WebDriver driver;
 
     private String salesOrderNumber;
@@ -54,6 +54,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         SubTotal = Calculations.subTotalCalculation();
         taxValue =Calculations.taxCalculation();
         bannerTotal = Calculations.bannerTotalCalculation();
+
         System.out.println("price: "+price);
         System.out.println("quantity: "+quantity);
         System.out.println("lineTotal: "+lineTotal);
@@ -76,7 +77,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
     }
 
     @Test(priority = 2) //Create sales order (Sales order to Sales invoice)
-    public void testCase_12_02_SalesInvoice(){
+    public void sales_Order(){
         createSalesOrder = new _12_02_CreateSalesOrder(driver);
         createSalesOrder.CreateSalesOrder_SalesOrderToSalesInvoice();   /*New Sales Order - Select Sales Order to Sales Invoice */
         createSalesOrder.selectCustomerAccount();  /* Select Customer Account*/
@@ -103,7 +104,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
 
     }
     @Test(priority = 3,enabled = true)  //Search for a pending Outbound shipment from Tast List.
-    public void SOTC_002_OutboundShipment(){
+    public void outbound_Shipment(){
         outboundShipment = new _12_03_PendingOutboundShipment(driver);
         driver = CommonClass.homeScreen();  // Go to home Screen
         driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
@@ -117,7 +118,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
     }
 
     @Test(priority = 4,enabled = true) // Search for a pending Sales invoice from Tast List.
-    public void SOTC_003_SalesInvoice(){
+    public void sales_Invoice(){
         pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
         driver = CommonClass.homeScreen();  // Go to home Screen
         driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.

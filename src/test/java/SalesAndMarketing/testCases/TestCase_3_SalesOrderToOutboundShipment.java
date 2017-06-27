@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Created by chathura on 6/26/2017.
  */
-public class TestCase_2_SalesOrderToOutboundShipment {
+public class TestCase_3_SalesOrderToOutboundShipment {
     public WebDriver driver;
     private String salesOrderNumber;
     private String salesInvoiceNumber;
@@ -76,7 +76,7 @@ public class TestCase_2_SalesOrderToOutboundShipment {
     }
 
     @Test(priority = 2) //Create sales order (Sales order to Sales invoice)
-    public void testCase_12_02_SalesInvoice(){
+    public void sales_Order(){
         createSalesOrder = new _12_02_CreateSalesOrder(driver);
         createSalesOrder.CreateSalesOrder_SalesOrderToOutboundShipment();   /*New Sales Order - Sales Order to Outbound Shipment */
         createSalesOrder.selectCustomerAccount();  /* Select Customer Account*/
@@ -103,7 +103,7 @@ public class TestCase_2_SalesOrderToOutboundShipment {
     }
 
     @Test(priority = 3,enabled = true) // Search for a pending Sales invoice from Tast List.
-    public void SOTC_003_SalesInvoice(){
+    public void sales_Invoice(){
         pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
         driver = CommonClass.homeScreen();  // Go to home Screen
         driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
@@ -118,7 +118,7 @@ public class TestCase_2_SalesOrderToOutboundShipment {
     }
 
     @Test(priority = 4,enabled = true)  //Search for a pending Outbound shipment from Tast List.
-    public void SOTC_002_OutboundShipment(){
+    public void outbound_Shipment(){
         outboundShipment = new _12_03_PendingOutboundShipment(driver);
         driver = CommonClass.homeScreen();  // Go to home Screen
         driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
