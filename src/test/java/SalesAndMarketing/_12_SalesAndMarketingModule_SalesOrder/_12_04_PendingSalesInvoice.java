@@ -57,6 +57,7 @@ public class _12_04_PendingSalesInvoice {
     @FindBy(id = "txtTaxTot")
     private WebElement txtTaxTot;
 
+
     public _12_04_PendingSalesInvoice(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -95,6 +96,14 @@ public class _12_04_PendingSalesInvoice {
         }
 
     }
+
+    public String getSalesInvoiceNumber(){   // Get Invoice Order Number
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.visibilityOf(lblStatus));
+        return lblStatus.getText();
+
+    }
+
     public void sales_Invoice(String orderNumber){
         // Perform the actions on new window
         WebDriverWait wait = new WebDriverWait(driver, 60);
@@ -132,13 +141,22 @@ public class _12_04_PendingSalesInvoice {
     }
 
     /*Verify that total display correctly.  Sales To Outbound*/
-    public void checkTotal_SSO(String total){
+    public void checkTotal_SSO(String lineTotal,String subTotal,String bannerTotal, String discountTotal,String quantity,String taxValue){
         CommonClass.sleepTime(2000);
-        Assert.assertEquals(txtlineTotal_SSO.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),total+".00");
-        Assert.assertEquals(txtTotal.getAttribute("value"),total+".00");  // right bottom corner
-        Assert.assertEquals(txtBannerTotal.getText(),total+".00");  // Total in the right upper cornner
+        Assert.assertEquals(txtlineTotal_SSO.getAttribute("value"),lineTotal);
+        Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
+        System.out.println("Unit total is equl to the line total.");
+        Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
+        System.out.println("Sub total - verified (Line total - Discount amount).");
+        Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
+        Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
+        System.out.println("Total in the right upper cornner is equl to total.");
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        System.out.println("discount value - verified");
+        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
+        System.out.println("UNITS Total in the right upper cornner - verified");
+        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);
+        System.out.println("taxValue - Verified");
     }
 
 

@@ -95,7 +95,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         createSalesOrder.enterQtyAndPrice(quantity,price); /*Enter Qty & Unit Price*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.checkTotalBeforeDiscount(lineTotal,quantity);
-        createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group
+        createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group   /* comment this line for remove selecting tax group */
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/

@@ -93,7 +93,7 @@ public class _12_02_CreateSalesOrder {
     @FindBy(id = "cboxSalesUnitPerson")
     private WebElement ddSalesUnit;
     @FindBy(xpath = "//label[@id='lblTemplateFormHeader']")
-    private WebElement lblStatus;
+    private WebElement lblorderNumber;
     @FindBy(xpath = "//input[@id='txtDiscountTot']")
     private WebElement txtDisountTotalValue;
     @FindBy(xpath = "//*[@id='bannerTotQty']")
@@ -276,12 +276,10 @@ public class _12_02_CreateSalesOrder {
 
     public String getSalesOrderNumber(){   // Get sales Order Number
         WebDriverWait wait = new WebDriverWait(driver, 40);
-        wait.until(ExpectedConditions.visibilityOf(lblStatus));
-        return lblStatus.getText();
+        wait.until(ExpectedConditions.visibilityOf(lblorderNumber));
+        return lblorderNumber.getText();
 
     }
-
-
 
 
     public void checkTotalBeforeDiscount(String lineTotal,String quantity){
