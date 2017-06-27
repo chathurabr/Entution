@@ -1,4 +1,4 @@
-package Procurement._01_PurchaseOrder.ProcurementTestCases;
+package Procurement._01_PurchaseOrder.TestCases;
 
 import Procurement._01_PurchaseOrder.InitiatePurchaseOrderSubMod;
 import dataProvider.CommonClass;
