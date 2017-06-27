@@ -1,9 +1,9 @@
 package SalesAndMarketing.testCases;
 
 import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder.*;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -41,7 +41,7 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount {
         driver = CommonClass.driverInstance();
         driver = CommonClassMainButtons.loginMeth();
         driver = CommonClassMainButtons.MainMenuNav();
-        driver = CommonClass.salesAndMketMenuNav();
+        driver = CommonClass.moduleNavigation("SALES & MARKETING");
     }
 
     @BeforeClass

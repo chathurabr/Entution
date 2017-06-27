@@ -2,9 +2,9 @@ package SalesAndMarketing.testCases;
 
 import SalesAndMarketing._01_Common._01_02_SalesAndMarketingMenu;
 import SalesAndMarketing._02_salesUnits.*;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -53,7 +53,7 @@ public class TestCase_02 extends CommonClass {
 		objSalesUnits 	= new _02_01_SalesUnits (driver);
 		driver = CommonClass.MainMenuNav();
 		//objSalesAndMktMenu.mainMenuFunc();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 		//objSalesAndMktMenu.salesAndMketMenuFunc();
 		objSalesUnits.navTOsalesUnitTab();
 		objSalesUnits.verifyHeader();
@@ -98,11 +98,11 @@ public class TestCase_02 extends CommonClass {
 		String employeColUnitzCod = "AutCodEmpColUnit084";*/
 
 	driver = CommonClass.MainMenuNav();
-	driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 		
 		objSalesUnits = new _02_01_SalesUnits (driver);
 		objSalesUnits.navTOsalesUnitTab();
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("New Sales Unit");
 
 //--------------Enter Sales unit details------------------------------------------------------------------
 			objUnitLeaderAndEmpCode = new _02_03_UnitLeaderAndEmpCode(driver);

@@ -4,9 +4,9 @@ import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_01_Navigates
 import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_02_CreateSalesOrder;
 import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_03_PendingOutboundShipment;
 import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder._12_04_PendingSalesInvoice;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -39,7 +39,7 @@ public class TestCase_12_SalesOrderToSalesInvoice {
         driver = CommonClass.driverInstance();
         driver = CommonClassMainButtons.loginMeth();
         driver = CommonClassMainButtons.MainMenuNav();
-        driver = CommonClass.salesAndMketMenuNav();
+        driver = CommonClass.moduleNavigation("SALES & MARKETING");
     }
 
     @AfterMethod

@@ -1,6 +1,6 @@
 package SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder;
 
-import SalesAndMarketing.dataProvider.CommonClass;
+import dataProvider.CommonClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package SalesAndMarketing.dataProvider;
+package dataProvider;
 
 public class ConstantPaths {
 	 public static final String URL = "http://www.store.demoqa.com";

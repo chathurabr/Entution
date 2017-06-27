@@ -1,4 +1,4 @@
-package SalesAndMarketing.dataProvider;
+package dataProvider;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,10 +1,9 @@
-package SalesAndMarketing.dataProvider;
+package dataProvider;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -25,7 +24,7 @@ public class CommonClassMainButtons extends CommonClass {
 	//public static WebDriver driver;
 	static WebDriver wdd = CommonClass.driver;
 
-	public static WebDriver createNewItem(){
+	public static WebDriver createNewItem(String buttonName){
 		By ButtonUpD = By.id("btnUpdate");
 		Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
@@ -37,6 +36,7 @@ public class CommonClassMainButtons extends CommonClass {
 				for (int i = 0; i < 1000; i++) {
 					if(clickUpDButton.isDisplayed()) {
 					action.moveToElement(clickUpDButton).click().build().perform();
+					Reporter.log("Clicked on the "+buttonName+" button");
 					break;
 				}
 					}
