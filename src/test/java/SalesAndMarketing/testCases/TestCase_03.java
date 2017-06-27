@@ -1,9 +1,9 @@
 package SalesAndMarketing.testCases;
 
 import SalesAndMarketing._03_CollectionUnits.*;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +31,7 @@ public class TestCase_03 extends CommonClass {
 	driver = CommonClass.driverInstance();
 		driver = CommonClass.loginMeth();
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 
 	}
 
@@ -91,7 +91,7 @@ public class TestCase_03 extends CommonClass {
 		driver.navigate().refresh();
 		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 		//Reuse test case 3.1 functions
 		objCollectionUnit = new _03_01_CollectionUnits(driver);
 		objCollectionUnit.navToCollUnit();
@@ -113,7 +113,7 @@ public class TestCase_03 extends CommonClass {
 	public void TestCase_3_4(){
 		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 		//Reuse test case 3.1 functions
 				objCollectionUnit = new _03_01_CollectionUnits(driver);
 				objCollectionUnit.navToCollUnit();

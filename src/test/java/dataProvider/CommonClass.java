@@ -1,4 +1,4 @@
-package SalesAndMarketing.dataProvider;
+package dataProvider;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,7 +21,8 @@ import java.util.concurrent.TimeUnit;
 /***************************************************************************************
  * 										This class contains 
  *							Driver, Move Driver, Login, HomeScreen, MainMenu
- *							Sales & Mket Menu		
+ *							Module selection
+ *							Page Name Verify
  *****************************************************************************************/
 public class CommonClass {
 	 public static WebDriver driver;
@@ -100,34 +100,59 @@ public class CommonClass {
 
 		 WebElement ClickIt = driver.findElement(By.xpath("html/body/div[1]/div[1]/div[1]/span[1]/img"));
 		 action.click(ClickIt).build().perform();
+		 Reporter.log("Clicked on the Main navigation button successfully");
 		 return driver;
 		}
 	 
-	 public static WebDriver salesAndMketMenuNav(){
-		 SoftAssert soAssert = new SoftAssert();
-		//JavascriptExecutor executor = (JavascriptExecutor)driver;
+		public static WebDriver moduleNavigation(String moduleName){
+		SoftAssert soAssert = new SoftAssert();
+
 		WebDriverWait wait = new WebDriverWait(driver,40);
-		wait.pollingEvery(30, TimeUnit.SECONDS);
+		wait.pollingEvery(2, TimeUnit.SECONDS);
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.tagName("li")));
 		List<WebElement> li = driver.findElements(By.tagName("li"));
-		//li.get(3).click();
 
 		for(int i=0;i<li.size();i++){
 
 			String lala = li.get(i).getText();
-		//	System.out.print("-----------------------------------"+lala);
-				if(lala.equals("SALES & MARKETING")){
-					Actions action = new Actions(driver);
-					action.moveToElement(li.get(i)).click().build().perform();
+			//	System.out.print("-l-l-l-l-------------------------------"+lala);
+			if(lala.equals(moduleName)){
+				Actions action = new Actions(driver);
+				action.moveToElement(li.get(i)).click().build().perform();
+				Reporter.log("Successfully clicked and opened the "+ lala +" Module" );
+				//System.out.print("-----------------------------------"+lala);
 			}else{
 
 			}
+		}
+		return driver;
+	}
 
-		}
-			
-			return driver;
-		}
+	public static WebDriver pageNameVerify(String pageName){
+		Actions action = new Actions(driver);
+		By pageNameLbl = By.id("spPageName");
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		wait.pollingEvery(3, TimeUnit.SECONDS);
+		WebElement lbl = driver.findElement(pageNameLbl);
+
+		Assert.assertEquals(pageName,lbl.getText());
+		Reporter.log("Page name verified");
+		return driver;
+	}
+
+	public static WebDriver docStatusLblChk(String pageStatus){
+		Actions action = new Actions(driver);
+		By DocumentStatus = By.id("lbldocstatus");
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		wait.pollingEvery(3, TimeUnit.SECONDS);
+		WebElement DocStatuslbl = driver.findElement(DocumentStatus);
+
+		Assert.assertEquals(pageStatus,DocStatuslbl.getText());
+		Reporter.log("Page Status verified");
+
+		return driver;
+	}
 	 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 public static WebDriver draftBtnClick(){
 	 	Actions action = new Actions(driver);

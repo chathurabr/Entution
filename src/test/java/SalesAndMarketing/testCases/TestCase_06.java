@@ -4,13 +4,12 @@ import SalesAndMarketing._06_Campaigns._06_01_NavToCampaign;
 import SalesAndMarketing._06_Campaigns._06_02_VerifyFields;
 import SalesAndMarketing._06_Campaigns._06_03_CreateNewCampaign;
 import SalesAndMarketing._06_Campaigns._06_04_AddMembersToCampaign;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
@@ -35,7 +34,7 @@ public class TestCase_06 {
 		driver = CommonClass.driverInstance();
 		driver = CommonClassMainButtons.loginMeth();
 		driver = CommonClassMainButtons.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 	}
 	
 	@AfterMethod
@@ -73,7 +72,7 @@ public class TestCase_06 {
 		objNavToCampaign.navigationToCampaign();
 		objNavToCampaign.verifyPageHeading();
 		objNavToCampaign.verifyButton();
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("New Campaign");
 	}
 	
 	@Test(priority = 2)

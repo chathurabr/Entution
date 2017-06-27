@@ -1,9 +1,9 @@
 package SalesAndMarketing.testCases;
 
 import SalesAndMarketing._04_leadInformation.*;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -39,7 +39,7 @@ public class TestCase_04 {
 	@Test (priority = 1)
 	public void TestCase_4_1(){
 			driver = CommonClass.MainMenuNav();
-			driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 		objLeadInfoModule = new _04_01_LeadInfoModule(driver);
 		objLeadInfoModule.navToLeadInforModule();
 				Reporter.log(" User able to click on Lead Information");
@@ -80,7 +80,7 @@ public class TestCase_04 {
 	public void TestCase_4_4(){
 			driver = CommonClassMainButtons.homeScreen();
 			driver = CommonClassMainButtons.MainMenuNav();
-			driver = CommonClassMainButtons.salesAndMketMenuNav();
+			driver = CommonClass.moduleNavigation("SALES & MARKETING");
 			
 		objLeadInfoModule = new _04_01_LeadInfoModule(driver);
 		objLeadInfoModule.navToLeadInforModule();
@@ -147,7 +147,7 @@ public class TestCase_04 {
 			driver = CommonClass.driverInstance();
 			driver = CommonClass.loginMeth();
 			driver = CommonClass.MainMenuNav();
-			driver = CommonClass.salesAndMketMenuNav();
+			driver = CommonClass.moduleNavigation("SALES & MARKETING");
 			
 		objLeadInfoModule = new _04_01_LeadInfoModule(driver);
 			objLeadInfoModule.navToLeadInforModule();

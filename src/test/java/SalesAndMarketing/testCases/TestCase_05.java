@@ -1,9 +1,9 @@
 package SalesAndMarketing.testCases;
 
 import SalesAndMarketing._05_SalesInquiry.*;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -33,7 +33,7 @@ public class TestCase_05 {
 		driver = CommonClass.driverInstance();
 		driver = CommonClassMainButtons.loginMeth();
 		driver = CommonClassMainButtons.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 	}
 	
 	@AfterMethod
@@ -50,7 +50,7 @@ public class TestCase_05 {
 	
 	@Test(priority = 2)
 	public void TestCase_5_2(){
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("");
 		objVerifyFields = new _05_02_VerifyFields(driver);
 		objVerifyFields.VerifyFields();
 		
@@ -68,7 +68,7 @@ public class TestCase_05 {
 	public void TestCase_5_4(){
 		objCampaing = new _05_04_Campaing(driver);
 		objCampaing.clkSearchIcon();
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("New Campaign");
 		driver = CommonClass.moveDriver(1);
 		objCampaing.campaingInfo("AutoCampName0060", "AutoCampName", "Advertisements"); //Code +// Dropdown List = --None--,Advertisements,Email, Telemarketing...
 		//String campaingCodeStore = objCampaing.campaingCodeCommon;
@@ -107,11 +107,11 @@ public class TestCase_05 {
 	@Test(priority = 7)
 	public void TestCase_5_7(){
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 		
 	objSalesInquiryModule = new _05_01_SalesInquiryModule(driver);
 	objSalesInquiryModule.goToSSalesInquiryModule();
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("New Sales Inquiry");
 		
 	objTagSalesInquiryToAccount = new _05_07_TagSalesInquiryToAccount(driver);
 	objTagSalesInquiryToAccount.selectAccount("Inquiry About - An Issue", "5000", "Inquiry description comes here", "Ramitha");
@@ -124,10 +124,10 @@ public class TestCase_05 {
 	
 		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 	objSalesInquiryModule.goToSSalesInquiryModule();
 	//Insert data
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("");
 	objTagSalesInquiryToAccount.selectAccount("Inquiry About - An Issue", "5000", "Inquiry description comes here", "Ramitha");
 		driver = CommonClass.draftAndNewBtnClick();
 		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
@@ -138,7 +138,7 @@ public class TestCase_05 {
 	objSalesInquiryModule = new _05_01_SalesInquiryModule(driver);
 		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 	objSalesInquiryModule.goToSSalesInquiryModule();
 	objNewSalesInqUsingExsisting.searchForSalesInq("000142");
 	objNewSalesInqUsingExsisting.clickOnTheColumnOne();
@@ -155,9 +155,9 @@ public class TestCase_05 {
 	
 		driver = CommonClass.homeScreen();
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 	objSalesInquiryModule.goToSSalesInquiryModule();
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("New Sales Inquiry");
 		driver = CommonClassMainButtons.copyFromBtnClick();
 	objNewSalesInqUsingCopyFrom.copyFromPopUp("000140");
 	objNewSalesInqUsingCopyFrom.dblClkOnColOne();

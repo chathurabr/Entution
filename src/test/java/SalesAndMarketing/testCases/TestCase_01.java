@@ -1,9 +1,9 @@
 package SalesAndMarketing.testCases;
 
 import SalesAndMarketing._01_Common.*;
-import SalesAndMarketing.dataProvider.CommonClass;
-import SalesAndMarketing.dataProvider.CommonClassMainButtons;
-import SalesAndMarketing.dataProvider.CommonScreenshot;
+import dataProvider.CommonClass;
+import dataProvider.CommonClassMainButtons;
+import dataProvider.CommonScreenshot;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.openqa.selenium.WebDriver;
@@ -92,7 +92,7 @@ public class TestCase_01 extends CommonClass {
 	public void TestCase_1_2 (){
 		objSalesAndMktMenu = new _01_02_SalesAndMarketingMenu(driver);
 		driver = CommonClass.MainMenuNav();
-		driver = CommonClass.salesAndMketMenuNav();
+		driver = CommonClass.moduleNavigation("SALES & MARKETING");
 		objSalesAndMktMenu.salesAndMketMenuFunc();
 		//objSalesAndMktMenu.chkItems();
 	}
@@ -133,7 +133,7 @@ public class TestCase_01 extends CommonClass {
 		objCreateVendor = new _01_05_CreateVendorThroughAccLookup(driver);
 		//objSalesAndMktMenu = new _01_02_SalesAndMarketingMenu (driver);
 		objCreateVendor.openPurchaseOrder();
-		driver = CommonClassMainButtons.createNewItem();
+		driver = CommonClassMainButtons.createNewItem("");
 		objCreateVendor.newPurchaseOrder();
 		objCreateVendor.newVendor("Auto Ven Na R"+EMP_ID,"Auto Ven Na R"+EMP_ID); 	//Change +  AutoVenCo +
 		objCreateVendor.searchNSelectVedor("Auto Ven Na R"+EMP_ID);			//get the above number
