@@ -22,7 +22,6 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
 
     private String salesOrderNumber;
     private String OutBoundShipmentOrderNumber;
-
     private String price;
     private String quantity;
     private String discountPercentage;
@@ -31,7 +30,6 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
     private String SubTotal;
     private String bannerTotal;
     private String taxValue;
-
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -56,7 +54,6 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         SubTotal = Calculations.subTotalCalculation();
         taxValue =Calculations.taxCalculation();
         bannerTotal = Calculations.bannerTotalCalculation();
-
         System.out.println("price: "+price);
         System.out.println("quantity: "+quantity);
         System.out.println("lineTotal: "+lineTotal);
@@ -65,9 +62,6 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
         System.out.println("SubTotal: "+SubTotal);
         System.out.println("taxValue: "+taxValue);
         System.out.println("bannerTotal: "+bannerTotal);
-
-
-
     }
 
     @AfterMethod
@@ -79,7 +73,6 @@ public class TestCase_12_SalesOrderToSalesInvoice_Discount_Tax {
     public void testCase_12_1(){
         salesOrderScreen = new _12_01_NavigatesToSalesOrderScreen(driver);
         salesOrderScreen.clickOnSalesOrder();
-
     }
 
     @Test(priority = 2) //Create sales order (Sales order to Sales invoice)

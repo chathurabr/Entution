@@ -19,10 +19,8 @@ import java.io.IOException;
  */
 public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
     public WebDriver driver;
-
     private String salesOrderNumber;
     private String salesInvoiceNumber;
-
     private String price;
     private String quantity;
     private String discountPercentage;
@@ -31,7 +29,6 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
     private String SubTotal;
     private String bannerTotal;
     private String taxValue;
-
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -65,9 +62,6 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
         System.out.println("SubTotal: "+SubTotal);
         System.out.println("taxValue: "+taxValue);
         System.out.println("bannerTotal: "+bannerTotal);
-
-
-
     }
 
     @AfterMethod
@@ -79,7 +73,6 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
     public void testCase_12_1(){
         salesOrderScreen = new _12_01_NavigatesToSalesOrderScreen(driver);
         salesOrderScreen.clickOnSalesOrder();
-
     }
 
     @Test(priority = 2) //Create sales order (Sales order to Sales invoice)
@@ -107,7 +100,6 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
         createSalesOrder.checkTotalAfterRelesedWithTax(lineTotal,SubTotal,bannerTotal,discountValue,quantity,taxValue); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
         System.out.println(salesOrderNumber+": salesOrderNumber");
-
     }
 
     @Test(priority = 3,enabled = true) // Search for a pending Sales invoice from Tast List.
@@ -125,7 +117,6 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
       //  System.out.println(salesInvoiceNumber+"salesInvoiceNumber");
     }
 
-
     @Test(priority = 4,enabled = true)  //Search for a pending Outbound shipment from Tast List.
     public void SOTC_002_OutboundShipment(){
         outboundShipment = new _12_03_PendingOutboundShipment(driver);
@@ -137,5 +128,4 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");/*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
     }
-
 }
