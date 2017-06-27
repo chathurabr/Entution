@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount_Tax1.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount_Tax.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount_Tax.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice_Discount_Tax.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice_Discount_Tax.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,21 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount_Tax.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="129" column="5" lean-forward="false" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestCase_12_SalesOrderToSalesInvoice_Discount_Tax.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice_Discount_Tax.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-715">
-              <caret line="74" column="45" lean-forward="false" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+            <state relative-caret-position="68">
+              <caret line="19" column="68" lean-forward="true" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -274,7 +263,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestCase_12_SalesOrderToSalesInvoice_Discount_Tax">
+  <component name="RunManager" selected="TestNG.TestCase_12_SalesOrderToOutboundShipment_Discount_Tax">
     <configuration default="false" name="TestCase_12_SalesOrderToSalesInvoice_Discount" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -619,8 +608,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.TestCase_12_SalesOrderToSalesInvoice_Discount_Tax" />
-        <item index="1" class="java.lang.String" itemvalue="TestNG.TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" />
+        <item index="0" class="java.lang.String" itemvalue="TestNG.TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" />
+        <item index="1" class="java.lang.String" itemvalue="TestNG.TestCase_12_SalesOrderToSalesInvoice_Discount_Tax" />
         <item index="2" class="java.lang.String" itemvalue="TestNG.TestCase_12_SalesOrderToOutboundShipment" />
         <item index="3" class="java.lang.String" itemvalue="TestNG.TestCase_12_SalesOrderToSalesInvoice_Discount" />
       </list>
@@ -861,16 +850,17 @@
       <option name="project" value="LOCAL" />
       <updated>1498542180310</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="SOS and SSO">
+      <created>1498542244029</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1498542244029</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax - 2017.06.27 at 09h 34m 03s.xml">
-      <configuration name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax - 2017.06.27 at 09h 36m 28s.xml">
-      <configuration name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax - 2017.06.27 at 09h 38m 45s.xml">
       <configuration name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" configurationId="TestNG" />
     </history-entry>
@@ -884,6 +874,12 @@
       <configuration name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" configurationId="TestNG" />
     </history-entry>
     <history-entry file="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax - 2017.06.27 at 11h 12m 18s.xml">
+      <configuration name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax - 2017.06.27 at 11h 15m 39s.xml">
+      <configuration name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax - 2017.06.27 at 11h 17m 45s.xml">
       <configuration name="TestCase_12_SalesOrderToOutboundShipment_Discount_Tax" configurationId="TestNG" />
     </history-entry>
     <history-entry file="TestCase_12_SalesOrderToSalesInvoice_Discount_Tax - 2017.06.27 at 09h 45m 19s.xml">
@@ -908,13 +904,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16719243" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13509317" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20962733" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3416149" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39751098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39751098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1225,18 +1221,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount_Tax.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice_Discount_Tax.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="129" column="5" lean-forward="false" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
+        <state relative-caret-position="-495">
+          <caret line="74" column="45" lean-forward="false" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToSalesInvoice_Discount_Tax.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_12_SalesOrderToOutboundShipment_Discount_Tax.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-715">
-          <caret line="74" column="45" lean-forward="false" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+        <state relative-caret-position="68">
+          <caret line="19" column="68" lean-forward="true" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
           <folding />
         </state>
       </provider>
