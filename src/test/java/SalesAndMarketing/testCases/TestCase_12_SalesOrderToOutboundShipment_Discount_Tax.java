@@ -139,4 +139,17 @@ public class TestCase_12_SalesOrderToOutboundShipment_Discount_Tax {
     }
 
 
+    @Test(priority = 4,enabled = true)  //Search for a pending Outbound shipment from Tast List.
+    public void SOTC_002_OutboundShipment2(){
+        outboundShipment = new _12_03_PendingOutboundShipment(driver);
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        outboundShipment.selectOutboundShipment();  //  Click on the "Outbound Shipment" tile.
+        outboundShipment.searchSalesOrderNumber(salesInvoiceNumber); // search using salesInvoiceNumber
+        outboundShipment.outBoundShipment(salesInvoiceNumber,quantity);
+        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");/*Draft and verify order status*/
+        Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
+    }
+
+
 }
