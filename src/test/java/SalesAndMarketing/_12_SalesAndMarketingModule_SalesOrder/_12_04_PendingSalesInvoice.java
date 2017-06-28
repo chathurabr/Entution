@@ -1,10 +1,7 @@
 package SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder;
 
 import dataProvider.CommonClass;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -67,8 +64,9 @@ public class _12_04_PendingSalesInvoice {
     }
 
     public void selectSalesInvoice(){
-        CommonClass.sleepTime(2000);
+        CommonClass.sleepTime(1000);
         WebDriverWait wait = new WebDriverWait(driver, 40);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnSalesInvoice);
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesInvoice));
         btnSalesInvoice.click();
         System.out.println("clicked on \"Salese Invoice\".");
