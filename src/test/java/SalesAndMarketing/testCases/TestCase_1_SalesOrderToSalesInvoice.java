@@ -4,6 +4,7 @@ import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder.*;
 import dataProvider.CommonClass;
 import dataProvider.CommonClassMainButtons;
 import dataProvider.CommonScreenshot;
+import org.apache.commons.configuration.ConfigurationException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -37,7 +38,8 @@ public class TestCase_1_SalesOrderToSalesInvoice {
     private _12_04_PendingSalesInvoice pendingSalesInvoice;
 
     @BeforeTest
-    public void beforeTest(){
+    public void beforeTest() throws ConfigurationException {
+        Calculations.getValues();
         driver = CommonClass.driverInstance();
         driver = CommonClassMainButtons.loginMeth();
         driver = CommonClassMainButtons.MainMenuNav();

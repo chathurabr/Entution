@@ -4,6 +4,7 @@ import SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder.*;
 import dataProvider.CommonClass;
 import dataProvider.CommonClassMainButtons;
 import dataProvider.CommonScreenshot;
+import org.apache.commons.configuration.ConfigurationException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -36,7 +37,8 @@ public class TestCase_3_SalesOrderToOutboundShipment {
     private _12_04_PendingSalesInvoice pendingSalesInvoice;
 
     @BeforeTest
-    public void beforeTest(){
+    public void beforeTest() throws ConfigurationException {
+        Calculations.getValues();
         driver = CommonClass.driverInstance();
         driver = CommonClassMainButtons.loginMeth();
         driver = CommonClassMainButtons.MainMenuNav();
@@ -99,7 +101,7 @@ public class TestCase_3_SalesOrderToOutboundShipment {
         CommonClass.sleepTime(2000);
         createSalesOrder.checkTotalAfterRelesedWithTax(lineTotal,SubTotal,bannerTotal,discountValue,quantity,taxValue); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
-        System.out.println(salesOrderNumber+": salesOrderNumber");
+        System.out.println("Sales Order Number is :"+salesOrderNumber);
     }
 
     @Test(priority = 3,enabled = true) // Search for a pending Sales invoice from Tast List.
@@ -114,7 +116,7 @@ public class TestCase_3_SalesOrderToOutboundShipment {
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
         salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();
-      //  System.out.println(salesInvoiceNumber+"salesInvoiceNumber");
+        System.out.println("Sales Invoice Number is :"+salesInvoiceNumber);
     }
 
     @Test(priority = 4,enabled = true)  //Search for a pending Outbound shipment from Tast List.

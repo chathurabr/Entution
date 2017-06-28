@@ -137,10 +137,10 @@ public class _12_02_CreateSalesOrder {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
         btnNewSalesOrser.click();   // Click on New Sales Order button
-        System.out.println(" Clicked on New Sales Order");
+        System.out.println("Clicked on New Sales Order");
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToOutboundShipment));
         btnSalesOrderToOutboundShipment.click();   //Select Sales Order to Sales Invoice (Option One)
-        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
+        System.out.println("'Start New Jurney' window poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
     }
 
     /* Select Customer Account*/
@@ -205,7 +205,6 @@ public class _12_02_CreateSalesOrder {
         iconProductSearch.click();
         wait.until(ExpectedConditions.elementToBeClickable(lblHeaderProduct_info_popup));
         System.out.println("'Product\" window should pop-up. - Verified");
-        //System.out.println(lblHeaderProduct_info_popup.getText());
         action.moveToElement(txtSearchProduct2).sendKeys(productName).sendKeys(Keys.ENTER).build().perform();
         CommonClass.sleepTime(2000);
         wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
@@ -213,6 +212,7 @@ public class _12_02_CreateSalesOrder {
         if (lblHeaderProduct_info_popup.isDisplayed()) {
             wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
             action.doubleClick(firstSearchedProduct).perform();
+            System.out.println("product :"+productName +"selected");
         }
     }
 
@@ -220,6 +220,7 @@ public class _12_02_CreateSalesOrder {
     public void selectWareHouse(String wareHouseName){
         Select selectSalesUnit = new Select(ddWareHouse);
         selectSalesUnit.selectByVisibleText(wareHouseName);
+        System.out.println("warehouse :"+wareHouseName +"selected");
     }
 
     /*Enter Qty & Unit Price*/
@@ -380,5 +381,6 @@ public class _12_02_CreateSalesOrder {
        // List<WebElement> e = selectSalesUnit.getOptions();
        // String unit = e.get(2).getText().trim();
         taxGroup.selectByVisibleText(taxGroupName);
+        System.out.println("Tax group:"+taxGroupName+ "selected");
     }
 }
