@@ -33,9 +33,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
     private String bannerTotal_SI;
     private String discountValue_SI;
     private String taxValue_SI;
-
-
-    private String invoicePercentage = String.valueOf(Calculations.InvoicePercentage);
+    private String invoicePercentage;
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -61,6 +59,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         taxValue =Calculations.taxCalculation();
         bannerTotal = Calculations.bannerTotalCalculation();
 
+        invoicePercentage = Calculations.getInvoicePercentage();
         lineTotal_SI =Calculations.lineTotalCalculationWithInvoicePercentage();
         SubTotal_SI = Calculations.subTotalCalculationWithInvoicePercentage();
         bannerTotal_SI = Calculations.bannerTotalCalculationWithInvoicePercentage();
@@ -102,8 +101,8 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         createSalesOrder.checkTotalBeforeDiscount(lineTotal,quantity);
         createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group   /* comment this line for remove selecting tax group */
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
-        createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/
+        createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.checkTotalBeforeDraftWithTax(lineTotal,SubTotal,bannerTotal, discountValue,quantity,taxValue);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");
@@ -124,7 +123,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         pendingSalesInvoice.sales_Invoice(salesOrderNumber);
         pendingSalesInvoice.addInvoicePercentage(invoicePercentage);
         /*invoicePercentage = Double.parseDouble(pendingSalesInvoice.getInvoicePercentage());*/
-        System.out.println(invoicePercentage+"invoicePercentage");
+        System.out.println("invoicePercentage :"+invoicePercentage);
         pendingSalesInvoice.checkTotal(lineTotal_SI,SubTotal_SI,bannerTotal_SI,discountValue_SI,quantity,taxValue_SI);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/

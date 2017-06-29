@@ -93,8 +93,8 @@ public class TestCase_1_SalesOrderToSalesInvoice {
         createSalesOrder.checkTotalBeforeDiscount(lineTotal,quantity);
         createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group   /* comment this line for remove selecting tax group */
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
-        createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/
+        createSalesOrder.enterDiscountPercentageAndVerifyValue(discountPercentage,discountValue);  /*Enter Discont Percentage and Verify the Discount value is correct*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.checkTotalBeforeDraftWithTax(lineTotal,SubTotal,bannerTotal, discountValue,quantity,taxValue);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");

@@ -106,6 +106,12 @@ public class Calculations {
 
     }
 
+    public static String getInvoicePercentage(){
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        return  formatter.format(InvoicePercentage);
+
+    }
+
     public static String getquantity(){
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         return  formatter.format(quantity);
@@ -176,50 +182,90 @@ public class Calculations {
         String SlineTotal = null;
         double lineTotalAfterInvoicePercentage;
 
-        lineTotalAfterInvoicePercentage = lineTotal*(InvoicePercentage/100);
-        DecimalFormat formatter = new DecimalFormat("#,###.00");
-        SlineTotal =  formatter.format(lineTotalAfterInvoicePercentage);
-        return SlineTotal;
+        if (InvoicePercentage>0) {
+            lineTotalAfterInvoicePercentage = lineTotal * (InvoicePercentage / 100);
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SlineTotal = formatter.format(lineTotalAfterInvoicePercentage);
+            return SlineTotal;
+        }else {
+            lineTotalAfterInvoicePercentage = lineTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SlineTotal =  formatter.format(lineTotalAfterInvoicePercentage);
+            return SlineTotal;
+
+        }
 
     }
 
     public static String subTotalCalculationWithInvoicePercentage (){
         String SsubTotal = null;
         double subTotalAfterInvoicePercentage;
+        if (InvoicePercentage>0) {
         subTotalAfterInvoicePercentage = subTotal*(InvoicePercentage/100);
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         SsubTotal =  formatter.format(subTotalAfterInvoicePercentage);
-        return SsubTotal;
+        return SsubTotal;}
+        else {
+            subTotalAfterInvoicePercentage = subTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SsubTotal =  formatter.format(subTotalAfterInvoicePercentage);
+            return SsubTotal;
+        }
 
     }
 
     public static String bannerTotalCalculationWithInvoicePercentage (){
         String SbannerTotal = null;
         double bannerTotalAfterInvoicePercentage;
+        if (InvoicePercentage>0) {
         bannerTotalAfterInvoicePercentage = bannerTotal*(InvoicePercentage/100);
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         SbannerTotal =  formatter.format(bannerTotalAfterInvoicePercentage);
-        return SbannerTotal;
+        return SbannerTotal;}
+        else {
+            bannerTotalAfterInvoicePercentage = bannerTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SbannerTotal =  formatter.format(bannerTotalAfterInvoicePercentage);
+            return SbannerTotal;
+
+        }
 
     }
 
     public static String discountValueCalculationWithInvoicePercentage (){
         String discountVal = null;
         double discountValAfterInvoicePercentage;
+
+        if (InvoicePercentage>0){
         discountValAfterInvoicePercentage = discountAmount*(InvoicePercentage/100);
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         discountVal =  formatter.format(discountValAfterInvoicePercentage);
-        return discountVal;
+        return discountVal;}
+
+        else { discountValAfterInvoicePercentage = discountAmount;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            discountVal =  formatter.format(discountValAfterInvoicePercentage);
+            return discountVal;
+
+        }
 
     }
 
     public static String taxValueCalculationWithInvoicePercentage (){
         String taxVal = null;
         double taxValueAfterInvoicePercentage;
+        if (InvoicePercentage>0) {
         taxValueAfterInvoicePercentage = taxValue*(InvoicePercentage/100);
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         taxVal =  formatter.format(taxValueAfterInvoicePercentage);
-        return taxVal;
+        return taxVal;}
+        else {
+            taxValueAfterInvoicePercentage = taxValue;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            taxVal =  formatter.format(taxValueAfterInvoicePercentage);
+            return taxVal;
+
+        }
 
     }
 }

@@ -13,7 +13,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 
 public class _12_02_CreateSalesOrder {
@@ -204,15 +207,15 @@ public class _12_02_CreateSalesOrder {
         wait.until(ExpectedConditions.elementToBeClickable(iconProductSearch));
         iconProductSearch.click();
         wait.until(ExpectedConditions.elementToBeClickable(lblHeaderProduct_info_popup));
-        System.out.println("'Product\" window should pop-up. - Verified");
+        System.out.println("'Product\" window should poped-up. - Verified");
         action.moveToElement(txtSearchProduct2).sendKeys(productName).sendKeys(Keys.ENTER).build().perform();
-        CommonClass.sleepTime(2000);
+        CommonClass.sleepTime(3000);
         wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
         action.doubleClick(firstSearchedProduct).perform();
+        System.out.println("product :"+productName +"selected");
         if (lblHeaderProduct_info_popup.isDisplayed()) {
             wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
             action.doubleClick(firstSearchedProduct).perform();
-            System.out.println("product :"+productName +"selected");
         }
     }
 
@@ -272,8 +275,6 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(txtDiscountPercentage.getAttribute("value"),percentage);
     }
 
-
-
     /*Release and verify sales order status*/
     public String releaseAndCheckStatus(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
@@ -286,12 +287,10 @@ public class _12_02_CreateSalesOrder {
 
     }
 
-
     public String getSalesOrderNumber(){   // Get sales Order Number
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.visibilityOf(lblorderNumber));
         return lblorderNumber.getText();
-
     }
 
 
@@ -303,8 +302,8 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(txtTotal.getAttribute("value"),lineTotal);  // right bottom corner
         Assert.assertEquals(txtBannerTotal.getText(),lineTotal);  // Total in the right upper cornner
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
-
     }
+
     /*Verify that total display correctly.*/
     public void checkTotalBeforeDraft(String lineTotal,String subTotal,String discountTotal,String quantity){
         CommonClass.sleepTime(2000);
@@ -375,12 +374,27 @@ public class _12_02_CreateSalesOrder {
 
     /*add tax for the sales order (Tax = subTotal*taxPercentage)*/
     public void selectTaxGroup(String taxGroupName){
-        WebDriverWait wait = new WebDriverWait(driver, 40);
-        wait.until(ExpectedConditions.elementToBeClickable(ddTax));
-        Select taxGroup = new Select(ddTax);
-       // List<WebElement> e = selectSalesUnit.getOptions();
-       // String unit = e.get(2).getText().trim();
-        taxGroup.selectByVisibleText(taxGroupName);
-        System.out.println("Tax group:"+taxGroupName+ "selected");
+        Properties properties =new Properties();
+        try {
+            String filePath = System.getProperty("user.dir");
+            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            int Tax = Integer.parseInt(properties.getProperty("taxPercentage"));
+
+            if (Tax>0){
+                WebDriverWait wait = new WebDriverWait(driver, 40);
+                wait.until(ExpectedConditions.elementToBeClickable(ddTax));
+                Select taxGroup = new Select(ddTax);
+                // List<WebElement> e = selectSalesUnit.getOptions();
+                // String unit = e.get(2).getText().trim();
+                taxGroup.selectByVisibleText(taxGroupName);
+                System.out.println("Tax group:n"+taxGroupName+ "selected");
+            }else {
+                System.out.println("Tax group Not selected");
+            }
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
