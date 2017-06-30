@@ -131,7 +131,7 @@ public class _12_03_PendingOutboundShipment {
 
     }
 
-    public String getSalesOrderNumber(){   // Get sales Order Number
+    public String getOutboundShipmentNumber(){   // Get Outbound Shipment Number
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.visibilityOf(lblStatus));
         return lblStatus.getText();

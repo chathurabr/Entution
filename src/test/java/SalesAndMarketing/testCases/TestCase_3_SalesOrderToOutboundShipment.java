@@ -30,6 +30,7 @@ public class TestCase_3_SalesOrderToOutboundShipment {
     private String SubTotal;
     private String bannerTotal;
     private String taxValue;
+    private String OutBoundShipmentOrderNumber;
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -129,5 +130,7 @@ public class TestCase_3_SalesOrderToOutboundShipment {
         outboundShipment.outBoundShipment(salesInvoiceNumber,quantity);
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");/*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
+        OutBoundShipmentOrderNumber = outboundShipment.getOutboundShipmentNumber();  // Get Outbound Shipment Order Number
+        System.out.println("OutBound Shipment Number: "+OutBoundShipmentOrderNumber);
     }
 }

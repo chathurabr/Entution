@@ -34,6 +34,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
     private String discountValue_SI;
     private String taxValue_SI;
     private String invoicePercentage;
+    private String salesInvoiceNumber;
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -110,7 +111,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         CommonClass.sleepTime(2000);
         createSalesOrder.checkTotalAfterRelesedWithTax(lineTotal,SubTotal,bannerTotal,discountValue,quantity,taxValue); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
-        //System.out.println(salesOrderNumber);
+        System.out.println("salesOrderNumber: "+salesOrderNumber);
     }
 
     @Test(priority = 3,enabled = true) // Search for a pending Sales invoice from Tast List.
@@ -127,6 +128,9 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         pendingSalesInvoice.checkTotal(lineTotal_SI,SubTotal_SI,bannerTotal_SI,discountValue_SI,quantity,taxValue_SI);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
+        salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();  // Get sales Order Number
+        System.out.println("salesInvoiceNumber: "+salesInvoiceNumber);
+
 
     }
 }

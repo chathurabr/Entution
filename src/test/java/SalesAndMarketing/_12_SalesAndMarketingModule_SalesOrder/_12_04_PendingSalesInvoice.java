@@ -56,6 +56,8 @@ public class _12_04_PendingSalesInvoice {
     private WebElement txtTaxTot;
     @FindBy(id = "txtInvPre")
     private WebElement txtInvPercentage;
+    @FindBy(xpath = "//label[@id='lblTemplateFormHeader']")
+    private WebElement lblorderNumber;
 
 
     public _12_04_PendingSalesInvoice(WebDriver driver){
@@ -177,6 +179,7 @@ public class _12_04_PendingSalesInvoice {
         Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);
         System.out.println("taxValue - Verified");
     }
+
 
 
 }
