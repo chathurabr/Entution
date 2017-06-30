@@ -122,7 +122,7 @@ public class _12_02_CreateSalesOrder {
         System.out.println("Clicked on New Sales Order");;
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoice));
         btnSalesOrderToSalesInvoice.click();   //Select Sales Order to Sales Invoice (Option One)
-        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \" 1 - Sales Order to Sales Invoice jurney\"");
+        System.out.println("\"Start New Jurney\" window poped-up and Click on the \" 1 - Sales Order to Sales Invoice jurney\"");
     }
 
     /*New Sales Order - Select Sales Order to Sales Invoice - Service */
@@ -207,12 +207,12 @@ public class _12_02_CreateSalesOrder {
         wait.until(ExpectedConditions.elementToBeClickable(iconProductSearch));
         iconProductSearch.click();
         wait.until(ExpectedConditions.elementToBeClickable(lblHeaderProduct_info_popup));
-        System.out.println("'Product\" window should poped-up. - Verified");
+        System.out.println("'Product\" window poped-up. - Verified");
         action.moveToElement(txtSearchProduct2).sendKeys(productName).sendKeys(Keys.ENTER).build().perform();
         CommonClass.sleepTime(3000);
         wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
         action.doubleClick(firstSearchedProduct).perform();
-        System.out.println("product :"+productName +"selected");
+        System.out.println("product :"+productName +"  selected");
         if (lblHeaderProduct_info_popup.isDisplayed()) {
             wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
             action.doubleClick(firstSearchedProduct).perform();
@@ -223,7 +223,7 @@ public class _12_02_CreateSalesOrder {
     public void selectWareHouse(String wareHouseName){
         Select selectSalesUnit = new Select(ddWareHouse);
         selectSalesUnit.selectByVisibleText(wareHouseName);
-        System.out.println("warehouse :"+wareHouseName +"selected");
+        System.out.println("warehouse :"+wareHouseName +"  selected");
     }
 
     /*Enter Qty & Unit Price*/
@@ -338,18 +338,18 @@ public class _12_02_CreateSalesOrder {
         CommonClass.sleepTime(2000);
         Assert.assertEquals(txtlineTotalRelesed.getText(),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
-        System.out.println("Unit total is equl to the line total.");
+        System.out.println("Unit total "+lineTotal+" is equl to the line total "+lineTotal);
         Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
-        System.out.println("Sub total - verified (Line total - Discount amount).");
+        System.out.println("Sub total "+subTotal+" - verified (Line total["+lineTotal+"] - Discount amount ["+discountTotal+"]).");
         Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
         Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
-        System.out.println("Total in the right upper cornner is equl to total.");
+        System.out.println("Total in the right upper cornner "+bannerTotal+" is equl to total. "+bannerTotal);
         Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
-        System.out.println("discount value - verified");
+        System.out.println("discount value "+discountTotal+" - verified");
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
-        System.out.println("UNITS Total in the right upper cornner - verified");
+        System.out.println("UNITS Total in the right upper cornner "+quantity+" - verified");
         Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);  // tax amout verification
-        System.out.println("taxValue - Verified");
+        System.out.println("taxValue "+taxValue+" - Verified");
     }
 
     public String checkTaxValue(){
@@ -387,7 +387,7 @@ public class _12_02_CreateSalesOrder {
                 // List<WebElement> e = selectSalesUnit.getOptions();
                 // String unit = e.get(2).getText().trim();
                 taxGroup.selectByVisibleText(taxGroupName);
-                System.out.println("Tax group:n"+taxGroupName+ "selected");
+                System.out.println("Tax group: "+taxGroupName+ " selected");
             }else {
                 System.out.println("Tax group Not selected");
             }
