@@ -49,7 +49,7 @@ public class _01_02_SalesAndMarketingMenu {
 					Reporter.log("Main Navigation Menu Available and clicked on the Main Navigation Menu ");
 				} else {
 					soAssertion.assertTrue(bool1);
-					Reporter.log("<fnt color='red'>Main Navigation menu not available</font>");
+					Reporter.log("<font color='red'>Main Navigation menu not available</font>");
 					soAssertion.assertAll();
 				}
 			}catch (Exception e){

@@ -47,7 +47,6 @@ public class TestCase_03 extends CommonClass {
 		driver = CommonScreenshot.takeSnapshot(testResult);
 	}
 
-
 	@BeforeMethod
 	public void getEmpID() throws org.apache.commons.configuration.ConfigurationException {
 
@@ -82,8 +81,6 @@ public class TestCase_03 extends CommonClass {
 		driver = CommonClassMainButtons.releaseBtnClick();
 		driver = CommonClassMainButtons.chkLblStatusReleased();
 		objCreateNewCollectionUnit.verifyHeader();
-
-		
 	}
 	
 	@Test(priority = 3)
