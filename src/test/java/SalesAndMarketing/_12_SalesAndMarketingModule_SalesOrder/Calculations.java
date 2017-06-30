@@ -1,8 +1,13 @@
 package SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder;
 
+import SalesAndMarketing.testCases.TestCase_2_SalesOrderToSalesInvoice_Service;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeClass;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Properties;
 
 /**
  * Created by Ramitha on 6/22/2017.
@@ -10,35 +15,51 @@ import java.text.DecimalFormat;
 public class Calculations {
     public static WebDriver driver;
 
-    public static double price = 10000;
-    public static double quantity =100;
-
+    public static double price;
+    public static double quantity;
     //Discount
     public static double discountAmount ;
-    public static double discountPercentage= 10;
-
+    public static double discountPercentage;
     //Tax
-    public static double taxPercentage = 15;   // give tax percentage here
-    public static double taxValue;  // auto calculate only
-
+    public static double taxPercentage;
+    public static double taxValue;
     //Total
     public static double subTotal;
-    public static double lineTotal; //Unit total = Line Total
+    public static double lineTotal;
     public static double bannerTotal;
+
+    /*Invoice Percentage Calculation SalesOrderToSalesInvoice - Service */
+    public static double InvoicePercentage;
 
 
     public Calculations(){
         this.driver = driver;
     }
 
+    public static void getValues() throws org.apache.commons.configuration.ConfigurationException {
+
+        Properties properties =new Properties();
+        try {
+            String filePath = System.getProperty("user.dir");
+            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            price = Integer.parseInt(properties.getProperty("price"));
+            quantity = Integer.parseInt(properties.getProperty("quantity"));
+            discountPercentage = Integer.parseInt(properties.getProperty("discountPercentage"));
+            discountAmount= Integer.parseInt(properties.getProperty("discountAmount"));
+            taxPercentage = Integer.parseInt(properties.getProperty("taxPercentage"));
+            InvoicePercentage = Integer.parseInt(properties.getProperty("InvoicePercentage"));
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static String lineTotalCalculation(){
-        String SlineTotal;
-
+        String SlineTotal = null;
         lineTotal = price*quantity;
-
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         SlineTotal =  formatter.format(lineTotal);
-
         return SlineTotal;
     }
 
@@ -58,9 +79,7 @@ public class Calculations {
 
         } else {
             return discountP;
-
         }
-
     }
 
     public static String discountAmountCalculation(){
@@ -78,39 +97,18 @@ public class Calculations {
         else {
             return discountA;
         }
-
     }
-/*    public static String discountCalculation(){
-        String discount = null;
 
-
-        if(discountAmount>0 && discountPrecentage <= 0) {
-            discountPrecentage = (discountAmount / lineTotal) * 100;
-
-            DecimalFormat formatter = new DecimalFormat("#,###.00");
-            discount = formatter.format(discountPrecentage);
-           // discount = discountPrecentage;
-            return discount;
-
-        }else if (discountPrecentage >0 && discountAmount<=0){
-            discountAmount = (discountPrecentage/100)*lineTotal;
-
-            DecimalFormat formatter = new DecimalFormat("#,###.00");
-            discount = formatter.format(discountAmount);
-            return discount;
-        }else if(discountAmount>0 && discountPrecentage >0){
-            System.out.println("Pala pala");
-            return discount;
-        }
-        else {
-            return discount;
-        }
-
-    }*/
 
     public static String getPrice(){
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         return  formatter.format(price);
+
+    }
+
+    public static String getInvoicePercentage(){
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        return  formatter.format(InvoicePercentage);
 
     }
 
@@ -147,35 +145,6 @@ public class Calculations {
             subTotalValue =  formatter.format(subTotal);
             return subTotalValue;
         }
-
-    }
-
-    public static double subTotalCalculationDouble(){
-        double subTotalValueDouble = 0;
-        //double subT;
-
-        if(discountAmount>0) {
-
-           // lineTot = price*quantity;
-            subTotalValueDouble = lineTotal - discountAmount;
-
-
-            return subTotalValueDouble;
-
-        }else if (discountPercentage >0 && discountAmount<=0){
-
-            lineTotal = price*quantity;
-            double discAmtByPrecentage =(discountPercentage/100)*lineTotal;
-            subTotalValueDouble = lineTotal - discAmtByPrecentage;
-
-            return subTotalValueDouble;
-
-        }else if(discountAmount>0 && discountPercentage >0){
-            System.out.println("Else");
-            return subTotalValueDouble;
-        }else {
-            return subTotalValueDouble;
-        }
     }
 
     public static String taxCalculation(){
@@ -209,26 +178,94 @@ public class Calculations {
     }
 
 
-    public static void main(String args[]){
-        String lineTotal = Calculations.lineTotalCalculation();
-        System.out.println("Price is     "+price);
-        System.out.println("QTY is       "+quantity);
-        System.out.println("------------------");
-        System.out.println("LineTotal is "+lineTotal);
-        System.out.println("------------------");
-      //  String dicPrecentage = Calculations.discountCalculation();
-     //   System.out.println("Discount precentage Is "+dicPrecentage+"%");
-        System.out.println("*******************");
-        //Sub Total Calculation
-        String subtott = Calculations.subTotalCalculation();
-        System.out.println("SubTotal is "+subtott);
-        System.out.println("*******************");
-       // double taxValue = Calculations.taxCalculation();
-        double doubleSubTotal = Calculations.subTotalCalculationDouble();
-        System.out.println("Tax amount is "+taxValue);
-        System.out.println("Double subtotal amount is "+doubleSubTotal);
-        String bannerTot = Calculations.bannerTotalCalculation();
-        System.out.println("Banner total amount is "+bannerTot);
+    public static String lineTotalCalculationWithInvoicePercentage (){
+        String SlineTotal = null;
+        double lineTotalAfterInvoicePercentage;
+
+        if (InvoicePercentage>0) {
+            lineTotalAfterInvoicePercentage = lineTotal * (InvoicePercentage / 100);
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SlineTotal = formatter.format(lineTotalAfterInvoicePercentage);
+            return SlineTotal;
+        }else {
+            lineTotalAfterInvoicePercentage = lineTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SlineTotal =  formatter.format(lineTotalAfterInvoicePercentage);
+            return SlineTotal;
+
+        }
+
+    }
+
+    public static String subTotalCalculationWithInvoicePercentage (){
+        String SsubTotal = null;
+        double subTotalAfterInvoicePercentage;
+        if (InvoicePercentage>0) {
+        subTotalAfterInvoicePercentage = subTotal*(InvoicePercentage/100);
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        SsubTotal =  formatter.format(subTotalAfterInvoicePercentage);
+        return SsubTotal;}
+        else {
+            subTotalAfterInvoicePercentage = subTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SsubTotal =  formatter.format(subTotalAfterInvoicePercentage);
+            return SsubTotal;
+        }
+
+    }
+
+    public static String bannerTotalCalculationWithInvoicePercentage (){
+        String SbannerTotal = null;
+        double bannerTotalAfterInvoicePercentage;
+        if (InvoicePercentage>0) {
+        bannerTotalAfterInvoicePercentage = bannerTotal*(InvoicePercentage/100);
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        SbannerTotal =  formatter.format(bannerTotalAfterInvoicePercentage);
+        return SbannerTotal;}
+        else {
+            bannerTotalAfterInvoicePercentage = bannerTotal;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            SbannerTotal =  formatter.format(bannerTotalAfterInvoicePercentage);
+            return SbannerTotal;
+
+        }
+
+    }
+
+    public static String discountValueCalculationWithInvoicePercentage (){
+        String discountVal = null;
+        double discountValAfterInvoicePercentage;
+
+        if (InvoicePercentage>0){
+        discountValAfterInvoicePercentage = discountAmount*(InvoicePercentage/100);
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        discountVal =  formatter.format(discountValAfterInvoicePercentage);
+        return discountVal;}
+
+        else { discountValAfterInvoicePercentage = discountAmount;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            discountVal =  formatter.format(discountValAfterInvoicePercentage);
+            return discountVal;
+
+        }
+
+    }
+
+    public static String taxValueCalculationWithInvoicePercentage (){
+        String taxVal = null;
+        double taxValueAfterInvoicePercentage;
+        if (InvoicePercentage>0) {
+        taxValueAfterInvoicePercentage = taxValue*(InvoicePercentage/100);
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        taxVal =  formatter.format(taxValueAfterInvoicePercentage);
+        return taxVal;}
+        else {
+            taxValueAfterInvoicePercentage = taxValue;
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            taxVal =  formatter.format(taxValueAfterInvoicePercentage);
+            return taxVal;
+
+        }
 
     }
 }

@@ -13,7 +13,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 
 public class _12_02_CreateSalesOrder {
@@ -23,6 +26,8 @@ public class _12_02_CreateSalesOrder {
     private WebElement btnNewSalesOrser;
     @FindBy(xpath = "//span[text()='Sales Order to Sales Invoice']")
     private WebElement btnSalesOrderToSalesInvoice;
+    @FindBy(xpath = "//span[text()='Sales Order to Sales Invoice (Service)']")
+    private WebElement btnSalesOrderToSalesInvoiceService;
     @FindBy(xpath = "//span[text()='Sales Order to Outbound Shipment']")
     private WebElement btnSalesOrderToOutboundShipment;
     @FindBy(xpath = "//*[@id='lbldocstatus'][text()='New']")
@@ -117,18 +122,28 @@ public class _12_02_CreateSalesOrder {
         System.out.println("Clicked on New Sales Order");;
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoice));
         btnSalesOrderToSalesInvoice.click();   //Select Sales Order to Sales Invoice (Option One)
-        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
+        System.out.println("\"Start New Jurney\" window poped-up and Click on the \" 1 - Sales Order to Sales Invoice jurney\"");
     }
 
+    /*New Sales Order - Select Sales Order to Sales Invoice - Service */
+    public void CreateSalesOrder_SalesOrderToSalesInvoice_Service(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
+        btnNewSalesOrser.click();   // Click on New Sales Order button
+        System.out.println("Clicked on New Sales Order");;
+        wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToSalesInvoiceService));
+        btnSalesOrderToSalesInvoiceService.click();   //Select Sales Order to Sales Invoice (Option One)
+        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \" 2 - Sales Order to Sales Invoice (Service) jurney\"");
+    }
     /*New Sales Order - Select Sales Order to Outbound Shipment*/
     public void CreateSalesOrder_SalesOrderToOutboundShipment(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.elementToBeClickable(btnNewSalesOrser));
         btnNewSalesOrser.click();   // Click on New Sales Order button
-        System.out.println(" Clicked on New Sales Order");
+        System.out.println("Clicked on New Sales Order");
         wait.until(ExpectedConditions.elementToBeClickable(btnSalesOrderToOutboundShipment));
         btnSalesOrderToOutboundShipment.click();   //Select Sales Order to Sales Invoice (Option One)
-        System.out.println("\"Start New Jurney\" window should  poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
+        System.out.println("'Start New Jurney' window poped-up and Click on the \"Sales Order to Sales Invoice jurney\"");
     }
 
     /* Select Customer Account*/
@@ -192,12 +207,12 @@ public class _12_02_CreateSalesOrder {
         wait.until(ExpectedConditions.elementToBeClickable(iconProductSearch));
         iconProductSearch.click();
         wait.until(ExpectedConditions.elementToBeClickable(lblHeaderProduct_info_popup));
-        System.out.println("'Product\" window should pop-up. - Verified");
-        //System.out.println(lblHeaderProduct_info_popup.getText());
+        System.out.println("'Product\" window poped-up. - Verified");
         action.moveToElement(txtSearchProduct2).sendKeys(productName).sendKeys(Keys.ENTER).build().perform();
-        CommonClass.sleepTime(2000);
+        CommonClass.sleepTime(3000);
         wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
         action.doubleClick(firstSearchedProduct).perform();
+        System.out.println("product :"+productName +"  selected");
         if (lblHeaderProduct_info_popup.isDisplayed()) {
             wait.until(ExpectedConditions.elementToBeClickable(firstSearchedProduct));
             action.doubleClick(firstSearchedProduct).perform();
@@ -208,6 +223,7 @@ public class _12_02_CreateSalesOrder {
     public void selectWareHouse(String wareHouseName){
         Select selectSalesUnit = new Select(ddWareHouse);
         selectSalesUnit.selectByVisibleText(wareHouseName);
+        System.out.println("warehouse :"+wareHouseName +"  selected");
     }
 
     /*Enter Qty & Unit Price*/
@@ -259,8 +275,6 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(txtDiscountPercentage.getAttribute("value"),percentage);
     }
 
-
-
     /*Release and verify sales order status*/
     public String releaseAndCheckStatus(){
         WebDriverWait wait = new WebDriverWait(driver, 40);
@@ -273,12 +287,10 @@ public class _12_02_CreateSalesOrder {
 
     }
 
-
     public String getSalesOrderNumber(){   // Get sales Order Number
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.visibilityOf(lblorderNumber));
         return lblorderNumber.getText();
-
     }
 
 
@@ -290,8 +302,8 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(txtTotal.getAttribute("value"),lineTotal);  // right bottom corner
         Assert.assertEquals(txtBannerTotal.getText(),lineTotal);  // Total in the right upper cornner
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
-
     }
+
     /*Verify that total display correctly.*/
     public void checkTotalBeforeDraft(String lineTotal,String subTotal,String discountTotal,String quantity){
         CommonClass.sleepTime(2000);
@@ -326,18 +338,18 @@ public class _12_02_CreateSalesOrder {
         CommonClass.sleepTime(2000);
         Assert.assertEquals(txtlineTotalRelesed.getText(),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
-        System.out.println("Unit total is equl to the line total.");
+        System.out.println("Unit total "+lineTotal+" is equl to the line total "+lineTotal);
         Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
-        System.out.println("Sub total - verified (Line total - Discount amount).");
+        System.out.println("Sub total "+subTotal+" - verified (Line total["+lineTotal+"] - Discount amount ["+discountTotal+"]).");
         Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
         Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
-        System.out.println("Total in the right upper cornner is equl to total.");
+        System.out.println("Total in the right upper cornner "+bannerTotal+" is equl to total. "+bannerTotal);
         Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
-        System.out.println("discount value - verified");
+        System.out.println("discount value "+discountTotal+" - verified");
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
-        System.out.println("UNITS Total in the right upper cornner - verified");
+        System.out.println("UNITS Total in the right upper cornner "+quantity+" - verified");
         Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);  // tax amout verification
-        System.out.println("taxValue - Verified");
+        System.out.println("taxValue "+taxValue+" - Verified");
     }
 
     public String checkTaxValue(){
@@ -362,11 +374,27 @@ public class _12_02_CreateSalesOrder {
 
     /*add tax for the sales order (Tax = subTotal*taxPercentage)*/
     public void selectTaxGroup(String taxGroupName){
-        WebDriverWait wait = new WebDriverWait(driver, 40);
-        wait.until(ExpectedConditions.elementToBeClickable(ddTax));
-        Select taxGroup = new Select(ddTax);
-       // List<WebElement> e = selectSalesUnit.getOptions();
-       // String unit = e.get(2).getText().trim();
-        taxGroup.selectByVisibleText(taxGroupName);
+        Properties properties =new Properties();
+        try {
+            String filePath = System.getProperty("user.dir");
+            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            int Tax = Integer.parseInt(properties.getProperty("taxPercentage"));
+
+            if (Tax>0){
+                WebDriverWait wait = new WebDriverWait(driver, 40);
+                wait.until(ExpectedConditions.elementToBeClickable(ddTax));
+                Select taxGroup = new Select(ddTax);
+                // List<WebElement> e = selectSalesUnit.getOptions();
+                // String unit = e.get(2).getText().trim();
+                taxGroup.selectByVisibleText(taxGroupName);
+                System.out.println("Tax group: "+taxGroupName+ " selected");
+            }else {
+                System.out.println("Tax group Not selected");
+            }
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

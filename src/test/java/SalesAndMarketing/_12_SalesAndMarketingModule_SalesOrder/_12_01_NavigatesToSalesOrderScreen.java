@@ -29,7 +29,7 @@ public class _12_01_NavigatesToSalesOrderScreen {
         btnSalesOrder.click();   // Click on Sales Order button
         wait.until(ExpectedConditions.visibilityOfElementLocated(lblPageHeadingSalesOrder)); // Verify Page Header Of Sales Order Page
         Assert.assertEquals(driver.findElement(lblPageHeadingSalesOrder).getText(),"Sales Order");
-        System.out.println("Page Header Of Sales Order Page verified");
+        System.out.println("Page Header Of Sales Order - New - verified");
     }
 
 

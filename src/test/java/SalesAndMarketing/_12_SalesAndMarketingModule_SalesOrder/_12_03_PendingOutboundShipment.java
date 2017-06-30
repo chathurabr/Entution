@@ -1,6 +1,7 @@
 package SalesAndMarketing._12_SalesAndMarketingModule_SalesOrder;
 
 import dataProvider.CommonClass;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -54,8 +55,9 @@ public class _12_03_PendingOutboundShipment {
 
     /*Search for a pending Outbound shipment from Tast List.*/
     public void selectOutboundShipment() {
-        CommonClass.sleepTime(5000);
+        CommonClass.sleepTime(1000);
         WebDriverWait wait = new WebDriverWait(driver, 40);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnOutboundShipment);
         wait.until(ExpectedConditions.elementToBeClickable(btnOutboundShipment));
         btnOutboundShipment.click();  //  Click on the "Outbound Shipment" tile.
         System.out.println("opened the outbound shipment window.");
