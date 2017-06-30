@@ -23,6 +23,8 @@ import java.util.concurrent.TimeUnit;
  *							Driver, Move Driver, Login, HomeScreen, MainMenu
  *							Module selection
  *							Page Name Verify
+ *							docStatusLblChk
+ *							goToPageLinkClick
  *****************************************************************************************/
 public class CommonClass {
 	 public static WebDriver driver;
@@ -62,7 +64,7 @@ public class CommonClass {
 	 public static WebDriver loginMeth(){
 				
 		 WebDriverWait wait = new WebDriverWait(driver, 40);
-		 wait.pollingEvery(30, TimeUnit.SECONDS);
+		 wait.pollingEvery(2, TimeUnit.SECONDS);
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtUserName")));
 				
 		 //Assert.assertEquals("UserName", driver.findElement(txtBoxUsername).getText());
@@ -89,6 +91,8 @@ public class CommonClass {
 		 sleepTime(3000);
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("homelink")));
 		 driver.findElement(By.id("homelink")).click();
+		 Reporter.log("Home screen loaded");
+		 System.out.println("Home screen loaded");
 		 return driver;
 	 }
 	 
@@ -142,17 +146,45 @@ public class CommonClass {
 	}
 
 	public static WebDriver docStatusLblChk(String pageStatus){
+		CommonClass.sleepTime(3000);
 		Actions action = new Actions(driver);
 		By DocumentStatus = By.id("lbldocstatus");
 		WebDriverWait wait = new WebDriverWait(driver,40);
 		wait.pollingEvery(3, TimeUnit.SECONDS);
 		WebElement DocStatuslbl = driver.findElement(DocumentStatus);
 
-		Assert.assertEquals(pageStatus,DocStatuslbl.getText());
+			Assert.assertEquals(pageStatus,DocStatuslbl.getText());
 		Reporter.log("Page Status verified");
 
 		return driver;
 	}
+
+	public static WebDriver goToPageLinkClick(){
+		Actions action = new Actions (driver);
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.pollingEvery(2, TimeUnit.SECONDS);
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='dlgAutoGenNotifications']/a")));
+		WebElement gotoL = driver.findElement(By.xpath("//div[@id='dlgAutoGenNotifications']/a"));
+		action.moveToElement(gotoL).click().build().perform();
+
+		return driver;
+	}
+
+	public static WebDriver taskEventTileClick(){
+		CommonClass.sleepTime(3000);
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.pollingEvery(2, TimeUnit.SECONDS);
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='tiles-header'][text()='Task/Event']")));
+		WebElement taskTile = driver.findElement(By.xpath("//p[@class='tiles-header'][text()='Task/Event']"));
+		taskTile.click();
+
+		System.out.println("Task/Event Tile clicked");
+		Reporter.log("Task/Event Tile clicked");
+		return driver;
+	}
+
 	 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 public static WebDriver draftBtnClick(){
 	 	Actions action = new Actions(driver);

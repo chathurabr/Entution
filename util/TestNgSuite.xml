@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Entution v1.1">
+
+    <test name="Purchase Order Form">
+        <classes>
+            <class name="Procurement._01_PurchaseOrder.TestCases.TestCase_13_Procurement" />
+        </classes>
+    </test>
+
+    <test name="Inbound Shipment Form">
+        <classes>
+            <class name="Procurement._01_PurchaseOrder.TestCases.TestCase_13_Procurement_InboundShipment" />
+        </classes>
+    </test>
+
+</suite>  	

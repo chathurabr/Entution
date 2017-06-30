@@ -46,6 +46,7 @@ public class CommonClassMainButtons extends CommonClass {
 	}
 	 
 	 public static WebDriver draftBtnClick(){
+		CommonClass.sleepTime(3000);
 		 SoftAssert soAssert = new SoftAssert();
 		 Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
@@ -65,11 +66,7 @@ public class CommonClassMainButtons extends CommonClass {
 	 
 	 public static WebDriver releaseBtnClick(){
 
-		 try {
-			 Thread.sleep(5000);
-		 } catch (InterruptedException e) {
-			 e.printStackTrace();
-		 }
+		 CommonClass.sleepTime(5000);
 		 SoftAssert soAssert = new SoftAssert();
 		 Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
@@ -271,4 +268,27 @@ public class CommonClassMainButtons extends CommonClass {
 			return wdd;
 			
 		}
+
+	public static WebDriver taskEventTileClick(){
+		CommonClass.sleepTime(3000);
+		By heading = By.xpath("//div[@class='col-sm-12']/h2");
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.pollingEvery(2, TimeUnit.SECONDS);
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[@class='tiles-header'][text()='Task/Event']")));
+		WebElement taskTile = driver.findElement(By.xpath("//p[@class='tiles-header'][text()='Task/Event']"));
+		taskTile.click();
+
+		System.out.println("Task/Event Tile clicked");
+		Reporter.log("Task/Event Tile clicked");
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(heading));
+		WebElement head = driver.findElement(heading);
+		Assert.assertEquals(head.getText(),"Task Schedule");
+
+		System.out.println("System moved to the Task Schedule Page");
+		Reporter.log("System moved to the Task Schedule Page");
+
+		return driver;
+	}
 }
