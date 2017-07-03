@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.awt.*;
 import java.io.IOException;
 
 /**
@@ -17,6 +18,7 @@ import java.io.IOException;
  */
 public class TestCase_2_SalesOrderToSalesInvoice_Service {
     public WebDriver driver;
+    Robot rb;
 
     private String salesOrderNumber;
     private String price;
@@ -99,7 +101,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         createSalesOrder.addProduct("Service-Pro-1310");  /*Click on Product Search icon and add a product*/
         createSalesOrder.enterQtyAndPrice(quantity,price); /*Enter Qty & Unit Price*/
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
-        createSalesOrder.checkTotalBeforeDiscount(lineTotal,quantity);
+//        createSalesOrder.checkTotalBeforeDiscount(lineTotal,quantity);
         createSalesOrder.selectTaxGroup("VAT15%");    //  Add tax Group   /* comment this line for remove selecting tax group */
         createSalesOrder.clickButtonCheckout(); /*click ckheckout button*/
         createSalesOrder.enterDiscountValueAndVerifyPercentage(discountPercentage,discountValue); /*Enter Discount value and Verify the Discount Percentage is correct*/
@@ -123,6 +125,88 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         pendingSalesInvoice.searchOrderNumber(salesOrderNumber); // search using sales Order Number
         pendingSalesInvoice.sales_Invoice(salesOrderNumber);
         pendingSalesInvoice.addInvoicePercentage(invoicePercentage);
+        Assert.assertEquals(pendingSalesInvoice.getInvoicePercentage(),invoicePercentage);
+        System.out.println("invoicePercentage :"+invoicePercentage);
+        pendingSalesInvoice.checkTotal(lineTotal_SI,SubTotal_SI,bannerTotal_SI,discountValue_SI,quantity,taxValue_SI);  // verify total balace of the available fields
+        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
+        Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
+        salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();  // Get sales Order Number
+        System.out.println("salesInvoiceNumber: "+salesInvoiceNumber);
+
+    }
+
+
+    @Test(priority = 4,enabled = true) // Search for a pending Sales invoice from Tast List.
+    public void sales_Invoice2(){
+        pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
+
+        invoicePercentage = Calculations.getInvoicePercentage();
+        lineTotal_SI =Calculations.lineTotalCalculationWithInvoicePercentage();
+        SubTotal_SI = Calculations.subTotalCalculationWithInvoicePercentage();
+        bannerTotal_SI = Calculations.bannerTotalCalculationWithInvoicePercentage();
+        discountValue_SI = Calculations.discountValueCalculationWithInvoicePercentage();
+        taxValue_SI = Calculations.taxValueCalculationWithInvoicePercentage();
+
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
+        pendingSalesInvoice.searchOrderNumber(salesOrderNumber); // search using sales Order Number
+        pendingSalesInvoice.sales_Invoice(salesOrderNumber);
+        pendingSalesInvoice.addInvoicePercentage(invoicePercentage);
+        Assert.assertEquals(pendingSalesInvoice.getInvoicePercentage(),invoicePercentage);
+        System.out.println("invoicePercentage :"+invoicePercentage);
+        pendingSalesInvoice.checkTotal(lineTotal_SI,SubTotal_SI,bannerTotal_SI,discountValue_SI,quantity,taxValue_SI);  // verify total balace of the available fields
+        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
+        Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
+        salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();  // Get sales Order Number
+        System.out.println("salesInvoiceNumber: "+salesInvoiceNumber);
+
+    }
+
+    @Test(priority = 5,enabled = true) // Search for a pending Sales invoice from Tast List.
+    public void sales_Invoice3(){
+        pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
+
+        invoicePercentage = Calculations.getInvoicePercentage();
+        lineTotal_SI =Calculations.lineTotalCalculationWithInvoicePercentage();
+        SubTotal_SI = Calculations.subTotalCalculationWithInvoicePercentage();
+        bannerTotal_SI = Calculations.bannerTotalCalculationWithInvoicePercentage();
+        discountValue_SI = Calculations.discountValueCalculationWithInvoicePercentage();
+        taxValue_SI = Calculations.taxValueCalculationWithInvoicePercentage();
+
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
+        pendingSalesInvoice.searchOrderNumber(salesOrderNumber); // search using sales Order Number
+        pendingSalesInvoice.sales_Invoice(salesOrderNumber);
+        pendingSalesInvoice.addInvoicePercentage(invoicePercentage);
+        Assert.assertEquals(pendingSalesInvoice.getInvoicePercentage(),invoicePercentage);
+        System.out.println("invoicePercentage :"+invoicePercentage);
+        pendingSalesInvoice.checkTotal(lineTotal_SI,SubTotal_SI,bannerTotal_SI,discountValue_SI,quantity,taxValue_SI);  // verify total balace of the available fields
+        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
+        Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
+        salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();  // Get sales Order Number
+        System.out.println("salesInvoiceNumber: "+salesInvoiceNumber);
+
+    }
+
+    @Test(priority = 6,enabled = true) // Search for a pending Sales invoice from Tast List.
+    public void sales_Invoice4(){
+        pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
+
+        invoicePercentage = Calculations.getInvoicePercentage();
+        lineTotal_SI =Calculations.lineTotalCalculationWithInvoicePercentage();
+        SubTotal_SI = Calculations.subTotalCalculationWithInvoicePercentage();
+        bannerTotal_SI = Calculations.bannerTotalCalculationWithInvoicePercentage();
+        discountValue_SI = Calculations.discountValueCalculationWithInvoicePercentage();
+        taxValue_SI = Calculations.taxValueCalculationWithInvoicePercentage();
+
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
+        pendingSalesInvoice.searchOrderNumber(salesOrderNumber); // search using sales Order Number
+        pendingSalesInvoice.sales_Invoice(salesOrderNumber);
+        pendingSalesInvoice.addInvoicePercentage(invoicePercentage);
         /*invoicePercentage = Double.parseDouble(pendingSalesInvoice.getInvoicePercentage());*/
         System.out.println("invoicePercentage :"+invoicePercentage);
         pendingSalesInvoice.checkTotal(lineTotal_SI,SubTotal_SI,bannerTotal_SI,discountValue_SI,quantity,taxValue_SI);  // verify total balace of the available fields
@@ -131,6 +215,37 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();  // Get sales Order Number
         System.out.println("salesInvoiceNumber: "+salesInvoiceNumber);
 
+    }
+
+
+    @Test(priority = 5,enabled = false) // Search for a pending Sales invoice from Tast List.
+    public void sales_Invoice_Second(){
+        pendingSalesInvoice = new _12_04_PendingSalesInvoice(driver);
+
+        invoicePercentage = Calculations.restOfInvoicePercentageCalculation();
+        lineTotal_SI =Calculations.lineTotalCalculationRestOfInvoicePercentage();
+        SubTotal_SI = Calculations.subTotalCalculationRestOfInvoicePercentage();
+        bannerTotal_SI = Calculations.bannerTotalCalculationRestOfInvoicePercentage();
+        discountValue_SI = Calculations.discountValCalculationRestOfInvoicePercentage();
+        taxValue_SI = Calculations.taxValueCalculationRestOfInvoicePercentage();
+
+        driver = CommonClass.homeScreen();  // Go to home Screen
+        driver = CommonClass.HomePgeTiles_TaskEvent();  // Click on Task/Event tile And Verify the page header.
+        pendingSalesInvoice.selectSalesInvoice(); //  Click on the "Sales Invoice" tile.
+        pendingSalesInvoice.searchOrderNumber(salesOrderNumber); // search using salesOrderNumber
+        pendingSalesInvoice.sales_Invoice(salesOrderNumber);
+        System.out.println("invoicePercentage :"+invoicePercentage);
+     //   Assert.assertEquals(pendingSalesInvoice.getInvoicePercentage(),invoicePercentage);
+        pendingSalesInvoice.checkTotal(lineTotal_SI,SubTotal_SI,bannerTotal_SI,discountValue_SI,quantity,taxValue_SI);  // verify total balace of the available fields
+        Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
+        Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
+        salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();  // Get sales Order Number
+        System.out.println("salesInvoiceNumber: "+salesInvoiceNumber);
 
     }
+
+
+
+
+
 }

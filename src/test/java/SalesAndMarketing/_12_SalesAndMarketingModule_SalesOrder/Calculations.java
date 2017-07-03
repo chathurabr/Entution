@@ -31,6 +31,12 @@ public class Calculations {
     /*Invoice Percentage Calculation SalesOrderToSalesInvoice - Service */
     public static double InvoicePercentage;
 
+    public static double lineTotalAfterInvoicePercentage;
+    public static double subTotalAfterInvoicePercentage;
+    public static double bannerTotalAfterInvoicePercentage;
+    public static double discountValAfterInvoicePercentage;
+    public static double taxValueAfterInvoicePercentage;
+
 
     public Calculations(){
         this.driver = driver;
@@ -180,7 +186,7 @@ public class Calculations {
 
     public static String lineTotalCalculationWithInvoicePercentage (){
         String SlineTotal = null;
-        double lineTotalAfterInvoicePercentage;
+
 
         if (InvoicePercentage>0) {
             lineTotalAfterInvoicePercentage = lineTotal * (InvoicePercentage / 100);
@@ -199,7 +205,7 @@ public class Calculations {
 
     public static String subTotalCalculationWithInvoicePercentage (){
         String SsubTotal = null;
-        double subTotalAfterInvoicePercentage;
+
         if (InvoicePercentage>0) {
         subTotalAfterInvoicePercentage = subTotal*(InvoicePercentage/100);
         DecimalFormat formatter = new DecimalFormat("#,###.00");
@@ -216,7 +222,7 @@ public class Calculations {
 
     public static String bannerTotalCalculationWithInvoicePercentage (){
         String SbannerTotal = null;
-        double bannerTotalAfterInvoicePercentage;
+
         if (InvoicePercentage>0) {
         bannerTotalAfterInvoicePercentage = bannerTotal*(InvoicePercentage/100);
         DecimalFormat formatter = new DecimalFormat("#,###.00");
@@ -234,7 +240,7 @@ public class Calculations {
 
     public static String discountValueCalculationWithInvoicePercentage (){
         String discountVal = null;
-        double discountValAfterInvoicePercentage;
+
 
         if (InvoicePercentage>0){
         discountValAfterInvoicePercentage = discountAmount*(InvoicePercentage/100);
@@ -253,7 +259,7 @@ public class Calculations {
 
     public static String taxValueCalculationWithInvoicePercentage (){
         String taxVal = null;
-        double taxValueAfterInvoicePercentage;
+
         if (InvoicePercentage>0) {
         taxValueAfterInvoicePercentage = taxValue*(InvoicePercentage/100);
         DecimalFormat formatter = new DecimalFormat("#,###.00");
@@ -264,8 +270,75 @@ public class Calculations {
             DecimalFormat formatter = new DecimalFormat("#,###.00");
             taxVal =  formatter.format(taxValueAfterInvoicePercentage);
             return taxVal;
-
         }
+    }
+
+
+    public static String restOfInvoicePercentageCalculation (){
+        String SrestOfInvoicePercentage = null;
+        double restOfInvoicePercentage;
+
+        restOfInvoicePercentage = 100 - InvoicePercentage;
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        SrestOfInvoicePercentage =  formatter.format(restOfInvoicePercentage);
+        return SrestOfInvoicePercentage;
 
     }
+
+
+    public static String lineTotalCalculationRestOfInvoicePercentage (){
+        String SlineTotal = null;
+        double restOfLineTotal;
+
+        lineTotal = lineTotal - lineTotalAfterInvoicePercentage;
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        SlineTotal =  formatter.format(lineTotal);
+        return SlineTotal;
+
+    }
+
+    public static String subTotalCalculationRestOfInvoicePercentage (){
+        String SsubTotal = null;
+        double restOfsubTotal;
+
+        subTotal = subTotal - subTotalAfterInvoicePercentage;
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        SsubTotal =  formatter.format(subTotal);
+        return SsubTotal;
+
+    }
+
+    public static String bannerTotalCalculationRestOfInvoicePercentage (){
+        String SbannerTotal = null;
+        double restOfbannerTotal;
+
+        bannerTotal = bannerTotal - bannerTotalAfterInvoicePercentage;
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        SbannerTotal =  formatter.format(bannerTotal);
+        return SbannerTotal;
+
+    }
+
+    public static String discountValCalculationRestOfInvoicePercentage (){
+        String SdiscountVal = null;
+        double restOfdiscountVal;
+
+        discountAmount = discountAmount - discountValAfterInvoicePercentage;
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        SdiscountVal =  formatter.format(discountAmount);
+        return SdiscountVal;
+
+    }
+
+    public static String taxValueCalculationRestOfInvoicePercentage (){
+        String StaxValue = null;
+        double restOftaxValue;
+
+        taxValue = taxValue - taxValueAfterInvoicePercentage;
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        StaxValue =  formatter.format(taxValue);
+        return StaxValue;
+
+    }
+
 }

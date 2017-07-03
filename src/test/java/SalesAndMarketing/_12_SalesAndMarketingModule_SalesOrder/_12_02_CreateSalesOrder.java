@@ -295,7 +295,7 @@ public class _12_02_CreateSalesOrder {
 
 
     public void checkTotalBeforeDiscount(String lineTotal,String quantity){
-        CommonClass.sleepTime(2000);
+        CommonClass.sleepTime(3000);
         Assert.assertEquals(txtlineTotal.getAttribute("value"),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
         Assert.assertEquals(txtSubTotal.getAttribute("value"),lineTotal);
@@ -356,21 +356,6 @@ public class _12_02_CreateSalesOrder {
         return txtTaxTot.getAttribute("value");
     }
 
-
-    /*Verify that total - withougt TAX*/
-    public void checkTotalAfterRelesed(String lineTotal,String SubTotal,String discountTotal, String quantity){
-        Assert.assertEquals(txtlineTotalRelesed.getText(),lineTotal);
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
-        System.out.println("Unit total is equl to the line total.");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),SubTotal);
-        System.out.println("Sub total - verified (Line total - Discount amount).");
-        Assert.assertEquals(txtTotal.getAttribute("value"),SubTotal);  // right bottom corner
-        System.out.println(" Total is equl to Sub total.");
-        Assert.assertEquals(txtBannerTotal.getText(),SubTotal);  // Total in the right upper cornner
-        System.out.println("Total in the right upper cornner is equl to total.");
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
-        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
-    }
 
     /*add tax for the sales order (Tax = subTotal*taxPercentage)*/
     public void selectTaxGroup(String taxGroupName){
