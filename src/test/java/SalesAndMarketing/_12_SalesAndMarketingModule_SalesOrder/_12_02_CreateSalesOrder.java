@@ -107,6 +107,11 @@ public class _12_02_CreateSalesOrder {
     @FindBy(xpath = "//select[@class='el-resize20'] ")
     private WebElement ddTax;
 
+    @FindBy(xpath = "//h3[@class='color-selectedborder activities'][text()='Posts']")
+    private WebElement btnPosts;
+    @FindBy(xpath = "//*[@id='divActivityandCommetns']/div[1]/div[5]/h3[@class='postCount']")
+    private WebElement txtCompletedValue;
+
 
 
     public _12_02_CreateSalesOrder(WebDriver driver){
@@ -381,5 +386,12 @@ public class _12_02_CreateSalesOrder {
             e.printStackTrace();
         }
 
+    }
+
+    public String verifySalesInvoiceCompletion(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(btnPosts));
+        btnPosts.click();
+        return txtCompletedValue.getText();
     }
 }

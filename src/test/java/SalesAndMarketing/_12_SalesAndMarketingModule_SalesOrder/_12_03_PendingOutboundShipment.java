@@ -45,6 +45,8 @@ public class _12_03_PendingOutboundShipment {
     @FindBy(xpath = "//*[@id='divTaskTiles']/div/div[1]/a[5]/div/div[@class='begin-selected-tile-arrow color-selectedborder']")
     private WebElement selectedOutboundTile;
 
+    private String winHandleBefore;
+
 
 
     public _12_03_PendingOutboundShipment(WebDriver driver){
@@ -81,7 +83,7 @@ public class _12_03_PendingOutboundShipment {
         wait.until(ExpectedConditions.elementToBeClickable(ddAutosearch));
         ddAutosearch.click();
         // Store the current window handle
-        String winHandleBefore = driver.getWindowHandle();
+        winHandleBefore = driver.getWindowHandle();
         CommonClass.sleepTime(3000);
         wait.until(ExpectedConditions.elementToBeClickable(btnErrorSign));
         btnErrorSign.click();
@@ -114,7 +116,7 @@ public class _12_03_PendingOutboundShipment {
         Assert.assertEquals(lblPageHeaderOutboundShipment.getText(), "Outbound Shipment");  // Verify the by page header.
         System.out.println(" Header \"Outbound Shipment\" - verified");
         Assert.assertEquals(lblStatus.getText(), "New"); //  Verify the outbound shipment's status.
-        System.out.println("erify the outbound shipment's status as 'New'");
+        System.out.println("Verify the outbound shipment's status as 'New'");
         wait.until(ExpectedConditions.visibilityOf(txtRefDocNo));
         Assert.assertEquals(txtRefDocNo.getText(), orderNumber);
         System.out.println("Ref Doc No is equal to Sales Order Number - verified");
@@ -136,6 +138,11 @@ public class _12_03_PendingOutboundShipment {
         wait.until(ExpectedConditions.visibilityOf(lblStatus));
         return lblStatus.getText();
 
+    }
+
+    public void backToOldBrowserTab(){
+        // Switch back to original browser (first window)
+               driver.switchTo().window(winHandleBefore);
     }
 
 

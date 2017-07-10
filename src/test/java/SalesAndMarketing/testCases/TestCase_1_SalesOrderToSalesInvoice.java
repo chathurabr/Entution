@@ -119,6 +119,7 @@ public class TestCase_1_SalesOrderToSalesInvoice {
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
         OutBoundShipmentOrderNumber = outboundShipment.getOutboundShipmentNumber();  // Get Outbound Shipment Order Number
         System.out.println("OutBound Shipment Number: "+OutBoundShipmentOrderNumber);
+     //   outboundShipment.backToOldBrowserTab();
     }
 
     @Test(priority = 4,enabled = true) // Search for a pending Sales invoice from Tast List.

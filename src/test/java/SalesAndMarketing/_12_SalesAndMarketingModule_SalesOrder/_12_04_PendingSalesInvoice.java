@@ -139,6 +139,8 @@ public class _12_04_PendingSalesInvoice {
     }
 
     public String getInvoicePercentage(){
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        wait.until(ExpectedConditions.visibilityOf(txtInvPercentage));
         return txtInvPercentage.getAttribute("value");
 
     }

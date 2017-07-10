@@ -1,6 +1,7 @@
 package dataProvider;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,6 +29,9 @@ import java.util.concurrent.TimeUnit;
  *****************************************************************************************/
 public class CommonClass {
 	 public static WebDriver driver;
+
+	 public static String winHandleBefore;
+	public static String winHandleHome;
 
 	public static WebDriver driverInstance(){
 		
@@ -89,12 +93,37 @@ public class CommonClass {
 		 WebDriverWait wait = new WebDriverWait(driver, 40);
 		 wait.pollingEvery(5, TimeUnit.SECONDS);
 		 sleepTime(3000);
+		 // Store the current window handle
+		 winHandleBefore = driver.getWindowHandle();
+		 WebElement homeLink = driver.findElement(By.id("homelink"));
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("homelink")));
-		 driver.findElement(By.id("homelink")).click();
-		 Reporter.log("Home screen loaded");
+		 Actions actions = new Actions(driver);
+		 actions.keyDown(Keys.LEFT_CONTROL).click(homeLink).keyUp(Keys.LEFT_CONTROL).build().perform();
 		 System.out.println("Home screen loaded");
+		 // Switch to new window opened
+		 for (String winHandle : driver.getWindowHandles()) {
+			 driver.switchTo().window(winHandle);
+			 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			 winHandleHome = driver.getWindowHandle();
+		 }
 		 return driver;
 	 }
+
+	public static void backToOldBrowserTab(){
+		// Switch back to original browser (first window)
+		driver.switchTo().window(winHandleHome);
+		driver.close();
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		}
+	}
+
+	public static void backToSalesOrderTab(){
+		// Switch back to original browser (first window)
+		driver.switchTo().window(winHandleBefore);
+		driver.navigate().refresh();
+	}
 	 
 	 public static WebDriver MainMenuNav(){
 		 Actions action = new Actions(driver);
