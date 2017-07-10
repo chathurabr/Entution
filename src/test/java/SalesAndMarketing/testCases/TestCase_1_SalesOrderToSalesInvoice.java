@@ -31,6 +31,7 @@ public class TestCase_1_SalesOrderToSalesInvoice {
     private String SubTotal;
     private String bannerTotal;
     private String taxValue;
+    private String salesInvoiceNumber;
 
     private _12_01_NavigatesToSalesOrderScreen salesOrderScreen;
     private _12_02_CreateSalesOrder createSalesOrder;
@@ -102,7 +103,7 @@ public class TestCase_1_SalesOrderToSalesInvoice {
         CommonClass.sleepTime(2000);
         createSalesOrder.checkTotalAfterRelesedWithTax(lineTotal,SubTotal,bannerTotal,discountValue,quantity,taxValue); // verify total balace of the available fields after Released
         salesOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get sales Order Number
-        //System.out.println(salesOrderNumber);
+        System.out.println("salesOrderNumber: "+salesOrderNumber);
 
     }
     @Test(priority = 3,enabled = true)  //Search for a pending Outbound shipment from Tast List.
@@ -116,7 +117,9 @@ public class TestCase_1_SalesOrderToSalesInvoice {
         outboundShipment.outBoundShipment(salesOrderNumber,quantity);
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)");/*Draft and verify order status*/
         Assert.assertEquals(CommonClass.release_Ok_AndCheckStatus(),"(Released)");/*Release and Outbound shipment status*/
-        OutBoundShipmentOrderNumber = createSalesOrder.getSalesOrderNumber();  // Get Outbound Shipment Order Number
+        OutBoundShipmentOrderNumber = outboundShipment.getOutboundShipmentNumber();  // Get Outbound Shipment Order Number
+        System.out.println("OutBound Shipment Number: "+OutBoundShipmentOrderNumber);
+     //   outboundShipment.backToOldBrowserTab();
     }
 
     @Test(priority = 4,enabled = true) // Search for a pending Sales invoice from Tast List.
@@ -130,5 +133,7 @@ public class TestCase_1_SalesOrderToSalesInvoice {
         pendingSalesInvoice.checkTotal(lineTotal,SubTotal,bannerTotal,discountValue,quantity,taxValue);  // verify total balace of the available fields
         Assert.assertEquals(CommonClass.draftAndCheckStatus(),"(Draft)"); /*Draft and verify order status*/
         Assert.assertEquals(CommonClass.releaseAndCheckStatus(),"(Released)");/*Release and Sales invoice status*/
+        salesInvoiceNumber = pendingSalesInvoice.getSalesInvoiceNumber();  // Get sales Order Number
+        System.out.println("salesInvoiceNumber: "+salesInvoiceNumber);
     }
 }

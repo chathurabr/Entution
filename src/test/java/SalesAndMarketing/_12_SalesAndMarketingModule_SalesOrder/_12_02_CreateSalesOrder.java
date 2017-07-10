@@ -107,6 +107,11 @@ public class _12_02_CreateSalesOrder {
     @FindBy(xpath = "//select[@class='el-resize20'] ")
     private WebElement ddTax;
 
+    @FindBy(xpath = "//h3[@class='color-selectedborder activities'][text()='Posts']")
+    private WebElement btnPosts;
+    @FindBy(xpath = "//*[@id='divActivityandCommetns']/div[1]/div[5]/h3[@class='postCount']")
+    private WebElement txtCompletedValue;
+
 
 
     public _12_02_CreateSalesOrder(WebDriver driver){
@@ -295,7 +300,7 @@ public class _12_02_CreateSalesOrder {
 
 
     public void checkTotalBeforeDiscount(String lineTotal,String quantity){
-        CommonClass.sleepTime(2000);
+        CommonClass.sleepTime(3000);
         Assert.assertEquals(txtlineTotal.getAttribute("value"),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
         Assert.assertEquals(txtSubTotal.getAttribute("value"),lineTotal);
@@ -357,21 +362,6 @@ public class _12_02_CreateSalesOrder {
     }
 
 
-    /*Verify that total - withougt TAX*/
-    public void checkTotalAfterRelesed(String lineTotal,String SubTotal,String discountTotal, String quantity){
-        Assert.assertEquals(txtlineTotalRelesed.getText(),lineTotal);
-        Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
-        System.out.println("Unit total is equl to the line total.");
-        Assert.assertEquals(txtSubTotal.getAttribute("value"),SubTotal);
-        System.out.println("Sub total - verified (Line total - Discount amount).");
-        Assert.assertEquals(txtTotal.getAttribute("value"),SubTotal);  // right bottom corner
-        System.out.println(" Total is equl to Sub total.");
-        Assert.assertEquals(txtBannerTotal.getText(),SubTotal);  // Total in the right upper cornner
-        System.out.println("Total in the right upper cornner is equl to total.");
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
-        Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
-    }
-
     /*add tax for the sales order (Tax = subTotal*taxPercentage)*/
     public void selectTaxGroup(String taxGroupName){
         Properties properties =new Properties();
@@ -396,5 +386,12 @@ public class _12_02_CreateSalesOrder {
             e.printStackTrace();
         }
 
+    }
+
+    public String verifySalesInvoiceCompletion(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.elementToBeClickable(btnPosts));
+        btnPosts.click();
+        return txtCompletedValue.getText();
     }
 }
