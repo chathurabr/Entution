@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
  * 					New Item 
  *					Draft, Release, Edit, Update, Draft & New, Copy From, Duplicate
  *					Release Status Label
+ *					checkoutButtonClick
  *											Buttons			
  *****************************************************************************************/
 public class CommonClassMainButtons extends CommonClass {
@@ -90,6 +91,33 @@ public class CommonClassMainButtons extends CommonClass {
 
 		 return wdd;
 	 }
+
+	public static WebDriver serialBatchButtonClick(){
+
+		CommonClass.sleepTime(5000);
+		SoftAssert soAssert = new SoftAssert();
+		Actions action = new Actions(wdd);
+		WebDriverWait wait = new WebDriverWait(wdd,60);
+		wait.pollingEvery(30, TimeUnit.SECONDS);
+		//release Button
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class='pic16 pic16-retweet']")));
+
+		List <WebElement> serialBatchButton = driver.findElements(By.xpath("//span[@class='pic16 pic16-retweet']"));
+		for(int i=0;i<serialBatchButton.size();i++){
+
+			if(serialBatchButton.get(i).getText().equals("Serial Batch")){
+
+				action.moveToElement(serialBatchButton.get(i)).click().build().perform();
+				Reporter.log("Serial Batch button clicked successfully");
+			}else{
+
+				action.moveToElement(serialBatchButton.get(i)).click().build().perform();
+			}
+
+		}
+
+		return wdd;
+	}
 	 
 	 public static WebDriver editBtnClick(){
 		 
@@ -156,12 +184,7 @@ public class CommonClassMainButtons extends CommonClass {
 		 Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
-		 try {
-			 Thread.sleep(2000);
-		 } catch (InterruptedException e) {
-			 e.printStackTrace();
-		 }
-
+		 CommonClass.sleepTime(4000);
 		 WebElement drftNew = driver.findElement(By.xpath("//*[@id='permissionBar']/a[contains(text(),'Draft & New')]"));
 			wait.until(ExpectedConditions.elementToBeClickable(drftNew));
 			
@@ -181,12 +204,7 @@ public class CommonClassMainButtons extends CommonClass {
 	 
  public static WebDriver copyFromBtnClick(){
 		 
-		 try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
+		 CommonClass.sleepTime(5000);
 		 SoftAssert soAssert = new SoftAssert();
 		 Actions action = new Actions(wdd);
 		 WebDriverWait wait = new WebDriverWait(wdd,60);
@@ -206,12 +224,7 @@ public class CommonClassMainButtons extends CommonClass {
  }
  
  public static WebDriver duplicateBtnClick(){ 
-	 try {
-		Thread.sleep(5000);
-	} catch (InterruptedException e) {
-		
-		e.printStackTrace();
-	}
+	 CommonClass.sleepTime(5000);
 	 SoftAssert soAssert = new SoftAssert();
 	 Actions action = new Actions(wdd);
 	 WebDriverWait wait = new WebDriverWait(wdd,60);
@@ -231,11 +244,7 @@ public class CommonClassMainButtons extends CommonClass {
 	 return wdd;
 }
 		public static WebDriver chkLblStatusReleased(){
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			CommonClass.sleepTime(5000);
 
 			By checkLabelStatus = By.xpath("//label[@id='lbldocstatus']");
 			By loadingScreen = By.xpath("//div[@class='waitbox-container']");
@@ -258,16 +267,41 @@ public class CommonClassMainButtons extends CommonClass {
 			}
 			String lbl = wait.until(ExpectedConditions.presenceOfElementLocated(checkLabelStatus)).getText();
 
-//			if(lbl.isDisplayed()){
-//				Assert.assertEquals(lblStat,"(Released)");
 				Assert.assertEquals(lbl,"(Released)");
-//			}
-//			else{
-//				System.out.println("Release Label cannot find");
-//			}
 			return wdd;
 			
 		}
+
+	public static WebDriver chkLblStatusDrafted(){
+		CommonClass.sleepTime(5000);
+
+		By checkLabelStatus = By.xpath("//label[@id='lbldocstatus']");
+		By loadingScreen = By.xpath("//div[@class='waitbox-container']");
+
+
+		SoftAssert soAssert = new SoftAssert();
+		WebDriverWait wait = new WebDriverWait(wdd, 60);
+		wait.pollingEvery(30, TimeUnit.SECONDS);
+
+		try {
+
+			WebElement loadingScr = driver.findElement(loadingScreen);
+			if (loadingScr.isDisplayed() || loadingScr.isEnabled()) {
+				wait.until(ExpectedConditions.invisibilityOf(loadingScr));
+			} else {
+				System.out.println("Loading screen not displayed :3");
+			}
+		}catch(Exception e){
+			System.out.println("Exception occurred: "+e);
+		}
+		String lbl = wait.until(ExpectedConditions.presenceOfElementLocated(checkLabelStatus)).getText();
+
+		Assert.assertEquals(lbl,"(Draft)");
+		return wdd;
+
+	}
+
+
 
 	public static WebDriver taskEventTileClick(){
 		CommonClass.sleepTime(3000);
@@ -288,6 +322,19 @@ public class CommonClassMainButtons extends CommonClass {
 
 		System.out.println("System moved to the Task Schedule Page");
 		Reporter.log("System moved to the Task Schedule Page");
+
+		return driver;
+	}
+
+	//20. Click on Check-out button.
+	public static WebDriver checkoutButtonClick(){
+		Actions action = new Actions(driver);
+		WebDriverWait wait = new WebDriverWait(driver, 40);
+		wait.pollingEvery(2, TimeUnit.SECONDS);
+
+		WebElement chkOutBtn = driver.findElement(By.id("btnCalc2"));
+		wait.until(ExpectedConditions.elementToBeClickable(chkOutBtn));
+		action.moveToElement(chkOutBtn).click().build().perform();
 
 		return driver;
 	}
