@@ -125,6 +125,11 @@ public class serialBatchCapture {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.pollingEvery(2, TimeUnit.SECONDS);
 
+
+
+
+
+
         WebElement greenListNumberIconEle = driver.findElement(greenListNumberIcon);
         WebElement plsWaitPopEle = driver.findElement(plsWaitPop);
 
