@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c7dc3d9-874d-4447-9af1-d01128a48be4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jenkins_ci_main_jenkins_core_2_68.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/Calculations/serialBatchCapture.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/dataProvider/CommonJourny.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Entution.iml" afterPath="$PROJECT_DIR$/Entution.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/Calculations/ProcurementCalculationClass.java" afterPath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/Calculations/ProcurementCalculationClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/InboundShipment.java" afterPath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/InboundShipment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/PurchaseOrderForm.java" afterPath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/PurchaseOrderForm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/TestCases/TestCase_13_Procurement.java" afterPath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/TestCases/TestCase_13_Procurement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/TestCases/TestCase_13_Procurement_InboundShipment.java" afterPath="$PROJECT_DIR$/src/test/java/Procurement/_01_PurchaseOrder/TestCases/TestCase_13_Procurement_InboundShipment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/dataProvider/CommonClass.java" afterPath="$PROJECT_DIR$/src/test/java/dataProvider/CommonClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/dataProvider/CommonClassMainButtons.java" afterPath="$PROJECT_DIR$/src/test/java/dataProvider/CommonClassMainButtons.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Procurement.properties" afterPath="$PROJECT_DIR$/util/Procurement.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/util/Sales.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/Calculations.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/Calculations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_2_SalesOrderToSalesInvoice_Service.java" afterPath="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_2_SalesOrderToSalesInvoice_Service.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/Test.properties" afterPath="$PROJECT_DIR$/util/Test.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,18 +34,18 @@
       <file leaf-file-name="TestCase_2_SalesOrderToSalesInvoice_Service.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_2_SalesOrderToSalesInvoice_Service.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4573">
-              <caret line="282" column="46" lean-forward="false" selection-start-line="282" selection-start-column="46" selection-end-line="282" selection-end-column="46" />
+            <state relative-caret-position="2674">
+              <caret line="254" column="76" lean-forward="false" selection-start-line="254" selection-start-column="76" selection-end-line="254" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommonClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/dataProvider/CommonClass.java">
+      <file leaf-file-name="TestCase_1_SalesOrderToSalesInvoice.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_1_SalesOrderToSalesInvoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="121" column="6" lean-forward="false" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="6" />
+            <state relative-caret-position="287">
+              <caret line="99" column="48" lean-forward="false" selection-start-line="99" selection-start-column="48" selection-end-line="99" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -60,18 +54,18 @@
       <file leaf-file-name="_12_02_CreateSalesOrder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6290">
-              <caret line="390" column="37" lean-forward="false" selection-start-line="390" selection-start-column="37" selection-end-line="390" selection-end-column="37" />
+            <state relative-caret-position="271">
+              <caret line="312" column="16" lean-forward="false" selection-start-line="312" selection-start-column="16" selection-end-line="312" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test.properties" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/util/Test.properties">
+      <file leaf-file-name="_12_04_PendingSalesInvoice.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="783">
+              <caret line="169" column="28" lean-forward="false" selection-start-line="169" selection-start-column="28" selection-end-line="169" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -144,12 +138,13 @@
         <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_3_SalesOrderToOutboundShipment.java" />
         <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_03_PendingOutboundShipment.java" />
         <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_1_SalesOrderToSalesInvoice.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/Calculations.java" />
         <option value="$PROJECT_DIR$/src/test/java/dataProvider/CommonClass.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java" />
+        <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/Calculations.java" />
         <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_2_SalesOrderToSalesInvoice_Service.java" />
         <option value="$PROJECT_DIR$/util/Test.properties" />
+        <option value="$PROJECT_DIR$/util/Sales.properties" />
+        <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java" />
+        <option value="$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java" />
       </list>
     </option>
   </component>
@@ -286,62 +281,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_01_PurchaseOrder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entution_6_21" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entution_6_21" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_01_PurchaseOrder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Calculations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entution_6_21" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entution_6_21" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -358,8 +297,14 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Chathura\IdeaProjects\entution_6_21\util" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="SalesAndMarketing.testCases" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Chathura\IdeaProjects\entution_6_21" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -374,7 +319,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestCase_2_SalesOrderToSalesInvoice_Service">
+  <component name="RunManager" selected="TestNG.TestCase_1_SalesOrderToSalesInvoice">
     <configuration default="false" name="TestCase_1_SalesOrderToSalesInvoice" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -825,9 +770,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="TestNG.TestCase_2_SalesOrderToSalesInvoice_Service" />
+        <item index="0" class="java.lang.String" itemvalue="TestNG.TestCase_1_SalesOrderToSalesInvoice" />
         <item index="1" class="java.lang.String" itemvalue="TestNG.TestCase_3_SalesOrderToOutboundShipment" />
-        <item index="2" class="java.lang.String" itemvalue="TestNG.TestCase_1_SalesOrderToSalesInvoice" />
+        <item index="2" class="java.lang.String" itemvalue="TestNG.TestCase_2_SalesOrderToSalesInvoice_Service" />
         <item index="3" class="java.lang.String" itemvalue="TestNG.TestCase_13_Procurement" />
         <item index="4" class="java.lang.String" itemvalue="TestNG.TestCase_12_SalesOrderToOutboundShipment" />
       </list>
@@ -1145,39 +1090,46 @@
       <option name="project" value="LOCAL" />
       <updated>1499745170682</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Merge branch 'master' of https://bitbucket.org/bileetaautomation/entution&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1499745545494</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1499745545494</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 17h 49m 34s.xml">
+    <history-entry file="TestCase_1_SalesOrderToSalesInvoice - 2017.07.11 at 10h 39m 49s.xml">
+      <configuration name="TestCase_1_SalesOrderToSalesInvoice" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestCase_1_SalesOrderToSalesInvoice - 2017.07.11 at 11h 14m 53s.xml">
+      <configuration name="TestCase_1_SalesOrderToSalesInvoice" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestCase_1_SalesOrderToSalesInvoice - 2017.07.11 at 11h 23m 46s.xml">
+      <configuration name="TestCase_1_SalesOrderToSalesInvoice" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.11 at 10h 29m 38s.xml">
       <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 17h 54m 26s.xml">
+    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.11 at 10h 32m 16s.xml">
       <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 17h 59m 43s.xml">
+    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.11 at 10h 35m 31s.xml">
       <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 18h 03m 02s.xml">
+    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.11 at 10h 44m 49s.xml">
       <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 18h 07m 49s.xml">
+    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.11 at 10h 47m 36s.xml">
       <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 18h 11m 28s.xml">
-      <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
+    <history-entry file="TestCase_3_SalesOrderToOutboundShipment - 2017.07.11 at 10h 51m 45s.xml">
+      <configuration name="TestCase_3_SalesOrderToOutboundShipment" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 18h 13m 56s.xml">
-      <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 18h 19m 29s.xml">
-      <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 18h 27m 03s.xml">
-      <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="TestCase_2_SalesOrderToSalesInvoice_Service - 2017.07.10 at 18h 32m 40s.xml">
-      <configuration name="TestCase_2_SalesOrderToSalesInvoice_Service" configurationId="TestNG" />
+    <history-entry file="TestCase_3_SalesOrderToOutboundShipment - 2017.07.11 at 11h 00m 02s.xml">
+      <configuration name="TestCase_3_SalesOrderToOutboundShipment" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -1186,18 +1138,19 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36215335" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16719243" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29690048" sideWeight="0.49707174" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34910277" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19738989" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34040996" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2796486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23133236" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1208,7 +1161,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36215335" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1231,7 +1183,6 @@
     <MESSAGE value="sales invoice" />
     <MESSAGE value="testCase6" />
     <MESSAGE value="SOS with discount" />
-    <MESSAGE value="Merge branch 'master' of https://bitbucket.org/bileetaautomation/entution&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="discount with so to si" />
     <MESSAGE value="tax" />
     <MESSAGE value="tax complete" />
@@ -1243,7 +1194,8 @@
     <MESSAGE value="sales journey completed update" />
     <MESSAGE value="sales journey completed update for invoicePercenatge -service journey" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Merge branch 'master' of https://bitbucket.org/bileetaautomation/entution&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://bitbucket.org/bileetaautomation/entution&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1256,13 +1208,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_03_CollectionUnits/_03_05_ModifyCopyFromDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.11/testng-6.11.jar!/org/testng/asserts/SoftAssert.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1407,6 +1352,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1450,42 +1398,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_3_SalesOrderToOutboundShipment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="130" column="106" lean-forward="true" selection-start-line="130" selection-start-column="106" selection-end-line="130" selection-end-column="106" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_03_PendingOutboundShipment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2006">
           <caret line="129" column="32" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_1_SalesOrderToSalesInvoice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="85" column="36" lean-forward="true" selection-start-line="85" selection-start-column="36" selection-end-line="85" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/Calculations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="348" column="55" lean-forward="false" selection-start-line="348" selection-start-column="55" selection-end-line="348" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -1498,26 +1414,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java">
+    <entry file="file://$PROJECT_DIR$/util/Test.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6290">
-          <caret line="390" column="37" lean-forward="false" selection-start-line="390" selection-start-column="37" selection-end-line="390" selection-end-column="37" />
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/Calculations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5537">
+          <caret line="362" column="58" lean-forward="false" selection-start-line="362" selection-start-column="58" selection-end-line="362" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/Sales.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_04_PendingSalesInvoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="169" column="28" lean-forward="false" selection-start-line="169" selection-start-column="28" selection-end-line="169" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_3_SalesOrderToOutboundShipment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="115" column="28" lean-forward="false" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_2_SalesOrderToSalesInvoice_Service.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4573">
-          <caret line="282" column="46" lean-forward="false" selection-start-line="282" selection-start-column="46" selection-end-line="282" selection-end-column="46" />
+        <state relative-caret-position="2674">
+          <caret line="254" column="76" lean-forward="false" selection-start-line="254" selection-start-column="76" selection-end-line="254" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/Test.properties">
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/_12_SalesAndMarketingModule_SalesOrder/_12_02_CreateSalesOrder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        <state relative-caret-position="271">
+          <caret line="312" column="16" lean-forward="false" selection-start-line="312" selection-start-column="16" selection-end-line="312" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SalesAndMarketing/testCases/TestCase_1_SalesOrderToSalesInvoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="99" column="48" lean-forward="false" selection-start-line="99" selection-start-column="48" selection-end-line="99" selection-end-column="48" />
           <folding />
         </state>
       </provider>

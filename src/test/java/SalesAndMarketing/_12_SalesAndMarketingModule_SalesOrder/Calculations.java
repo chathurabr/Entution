@@ -47,7 +47,7 @@ public class Calculations {
         Properties properties =new Properties();
         try {
             String filePath = System.getProperty("user.dir");
-            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            properties.load(new FileInputStream(filePath+"\\util\\Sales.properties"));
             price = Integer.parseInt(properties.getProperty("price"));
             quantity = Integer.parseInt(properties.getProperty("quantity"));
             discountPercentage = Integer.parseInt(properties.getProperty("discountPercentage"));
@@ -356,7 +356,7 @@ public class Calculations {
         String completionVal;
         try {
             String filePath = System.getProperty("user.dir");
-            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            properties.load(new FileInputStream(filePath+"\\util\\Sales.properties"));
             I1 = Integer.parseInt(properties.getProperty("InvoicePercentage"));
             I2 = Integer.parseInt(properties.getProperty("InvoicePercentage2"));
             I3 = Integer.parseInt(properties.getProperty("InvoicePercentage3"));

@@ -152,17 +152,18 @@ public class _12_04_PendingSalesInvoice {
         Assert.assertEquals(txtlineTotal.getAttribute("value"),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
         System.out.println("Unit total "+lineTotal+" is equl to the line total "+lineTotal);
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        System.out.println("discount value "+discountTotal+" - verified");
         Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
         System.out.println("Sub total "+subTotal+" - verified (Line total["+lineTotal+"] - Discount amount ["+discountTotal+"]).");
+        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);
+        System.out.println("taxValue "+taxValue+" - Verified");
         Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
         Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
         System.out.println("Total in the right upper cornner "+bannerTotal+" is equl to total. "+bannerTotal);
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
-        System.out.println("discount value "+discountTotal+" - verified");
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
         System.out.println("UNITS Total in the right upper cornner "+quantity+" - verified");
-        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);
-        System.out.println("taxValue "+taxValue+" - Verified");
+
     }
 
     /*Verify that total display correctly.  Sales To Outbound*/
@@ -170,18 +171,19 @@ public class _12_04_PendingSalesInvoice {
         CommonClass.sleepTime(2000);
         Assert.assertEquals(txtlineTotal_SSO.getAttribute("value"),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
-        System.out.println("Unit total is equl to the line total.");
+        System.out.println("Unit total "+lineTotal+" is equl to the line total "+lineTotal);
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        System.out.println("discount value "+discountTotal+" - verified");
         Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
-        System.out.println("Sub total - verified (Line total - Discount amount).");
+        System.out.println("Sub total "+subTotal+" - verified (Line total["+lineTotal+"] - Discount amount ["+discountTotal+"]).");
+        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);
+        System.out.println("taxValue "+taxValue+" - Verified");
         Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
         Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
-        System.out.println("Total in the right upper cornner is equl to total.");
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
-        System.out.println("discount value - verified");
+        System.out.println("Total in the right upper cornner "+bannerTotal+" is equl to total. "+bannerTotal);
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
-        System.out.println("UNITS Total in the right upper cornner - verified");
-        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);
-        System.out.println("taxValue - Verified");
+        System.out.println("UNITS Total in the right upper cornner "+quantity+" - verified");
+
     }
 
 

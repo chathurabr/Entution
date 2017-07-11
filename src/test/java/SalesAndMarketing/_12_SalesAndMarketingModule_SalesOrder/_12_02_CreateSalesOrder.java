@@ -344,17 +344,18 @@ public class _12_02_CreateSalesOrder {
         Assert.assertEquals(txtlineTotalRelesed.getText(),lineTotal);
         Assert.assertEquals(txtUnitTotal.getAttribute("value"),lineTotal);
         System.out.println("Unit total "+lineTotal+" is equl to the line total "+lineTotal);
+        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
+        System.out.println("discount value "+discountTotal+" - verified");
         Assert.assertEquals(txtSubTotal.getAttribute("value"),subTotal);
         System.out.println("Sub total "+subTotal+" - verified (Line total["+lineTotal+"] - Discount amount ["+discountTotal+"]).");
+        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);  // tax amout verification
+        System.out.println("taxValue "+taxValue+" - Verified");
         Assert.assertEquals(txtTotal.getAttribute("value"),bannerTotal);  // right bottom corner
         Assert.assertEquals(txtBannerTotal.getText(),bannerTotal);  // Total in the right upper cornner
         System.out.println("Total in the right upper cornner "+bannerTotal+" is equl to total. "+bannerTotal);
-        Assert.assertEquals(txtDisountTotalValue.getAttribute("value"),discountTotal);  // bottom layer
-        System.out.println("discount value "+discountTotal+" - verified");
         Assert.assertEquals(lblBannerNumberOfUnits.getText(),quantity);  // UNITS Total in the right upper cornner
         System.out.println("UNITS Total in the right upper cornner "+quantity+" - verified");
-        Assert.assertEquals(txtTaxTot.getAttribute("value"),taxValue);  // tax amout verification
-        System.out.println("taxValue "+taxValue+" - Verified");
+
     }
 
     public String checkTaxValue(){
@@ -367,7 +368,7 @@ public class _12_02_CreateSalesOrder {
         Properties properties =new Properties();
         try {
             String filePath = System.getProperty("user.dir");
-            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            properties.load(new FileInputStream(filePath+"\\util\\Sales.properties"));
             int Tax = Integer.parseInt(properties.getProperty("taxPercentage"));
 
             if (Tax>0){

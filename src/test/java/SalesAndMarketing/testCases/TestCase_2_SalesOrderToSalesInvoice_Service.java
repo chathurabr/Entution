@@ -150,7 +150,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         Properties properties =new Properties();
         try {
             String filePath = System.getProperty("user.dir");
-            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            properties.load(new FileInputStream(filePath+"\\util\\Sales.properties"));
             setInvoicePercentage = Integer.parseInt(properties.getProperty("InvoicePercentage2"));
 
         } catch (IOException e) {
@@ -203,7 +203,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         Properties properties =new Properties();
         try {
             String filePath = System.getProperty("user.dir");
-            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            properties.load(new FileInputStream(filePath+"\\util\\Sales.properties"));
             setInvoicePercentage = Integer.parseInt(properties.getProperty("InvoicePercentage3"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -251,7 +251,7 @@ public class TestCase_2_SalesOrderToSalesInvoice_Service {
         Properties properties =new Properties();
         try {
             String filePath = System.getProperty("user.dir");
-            properties.load(new FileInputStream(filePath+"\\util\\Test.properties"));
+            properties.load(new FileInputStream(filePath+"\\util\\Sales.properties"));
             setInvoicePercentage = Integer.parseInt(properties.getProperty("InvoicePercentage4"));
         } catch (IOException e) {
             e.printStackTrace();
