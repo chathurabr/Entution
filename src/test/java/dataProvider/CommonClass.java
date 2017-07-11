@@ -45,8 +45,10 @@ public class CommonClass {
 		
 		driver = new ChromeDriver(capabilities);
 		Reporter.log("Browser opened");
+		System.out.println("Browser opened");
 		driver.manage().window().maximize();
 		Reporter.log("Browser Maximized");
+		System.out.println("Browser Maximized");
 		//Wait
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		driver.get("http://192.168.80.26/Web/guest/login.aspx?returnUrl=http://192.168.80.26/Web/guest/home/default.aspx");
@@ -64,6 +66,13 @@ public class CommonClass {
 			
 			return driver;
 		}
+
+	public static WebDriver shiftWindows(){
+		for(String handle:driver.getWindowHandles()) {
+			driver.switchTo().window(handle); //Shift to window
+		}
+			return driver;
+		}
 	 
 	 public static WebDriver loginMeth(){
 				
@@ -76,15 +85,18 @@ public class CommonClass {
 		 driver.findElement(By.id("txtUserName")).sendKeys("aaa@123.com");
 		 //driver.findElement(By.id("txtUserName")).sendKeys("ann@abs1.com");
 		 Reporter.log("Username Entered successfully");
+		 System.out.println("Username Entered successfully");
 				
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtPassword")));
 		 driver.findElement(By.id("txtPassword")).sendKeys("kQF5Es");
 		 //driver.findElement(By.id("txtPassword")).sendKeys("ScbUL3");
 		 Reporter.log("Password Entered Successfully");
+		 System.out.println("Password Entered Successfully");
 				
 		 wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnLogin")));
 		 driver.findElement(By.id("btnLogin")).click();
 		 Reporter.log("Login button clicked");
+		 System.out.println("Login button clicked");
 		 
 		 return driver;
 	 }
@@ -134,6 +146,8 @@ public class CommonClass {
 		 WebElement ClickIt = driver.findElement(By.xpath("html/body/div[1]/div[1]/div[1]/span[1]/img"));
 		 action.click(ClickIt).build().perform();
 		 Reporter.log("Clicked on the Main navigation button successfully");
+		 System.out.println("Clicked on the Main navigation button successfully");
+
 		 return driver;
 		}
 	 
@@ -154,6 +168,7 @@ public class CommonClass {
 				Actions action = new Actions(driver);
 				action.moveToElement(li.get(i)).click().build().perform();
 				Reporter.log("Successfully clicked and opened the "+ lala +" Module" );
+				System.out.println("Successfully clicked and opened the "+ lala +" Module");
 				//System.out.print("-----------------------------------"+lala);
 			}else{
 
@@ -162,7 +177,7 @@ public class CommonClass {
 		return driver;
 	}
 
-	public static WebDriver pageNameVerify(String pageName){
+	public static WebDriver pageNameVerifyChk(String pageName){
 		Actions action = new Actions(driver);
 		By pageNameLbl = By.id("spPageName");
 		WebDriverWait wait = new WebDriverWait(driver,40);
@@ -171,20 +186,51 @@ public class CommonClass {
 
 		Assert.assertEquals(pageName,lbl.getText());
 		Reporter.log("Page name verified");
+		System.out.println("Page name verified");
+		return driver;
+	}
+	public static WebDriver pageHeaderWithLinkChk(String pageName){
+		Actions action = new Actions(driver);
+		By pageNameLbl = By.xpath("//*[@id='trnpageheader']/a");
+
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		wait.pollingEvery(3, TimeUnit.SECONDS);
+		WebElement lbl = driver.findElement(pageNameLbl);
+		Assert.assertEquals(pageName,lbl.getText());
+		Reporter.log("Page header verified");
+		System.out.println("Page header verified");
 		return driver;
 	}
 
 	public static WebDriver docStatusLblChk(String pageStatus){
 		CommonClass.sleepTime(3000);
 		Actions action = new Actions(driver);
+
 		By DocumentStatus = By.id("lbldocstatus");
+
 		WebDriverWait wait = new WebDriverWait(driver,40);
 		wait.pollingEvery(3, TimeUnit.SECONDS);
 		WebElement DocStatuslbl = driver.findElement(DocumentStatus);
 
 			Assert.assertEquals(pageStatus,DocStatuslbl.getText());
 		Reporter.log("Page Status verified");
+		System.out.println("Page Status verified");
 
+		return driver;
+	}
+
+	public static WebDriver lblTemplateFormHeader(String pageHeading){
+		By HeadingLnk = By.id("lblTemplateFormHeader");
+
+		WebDriverWait wait = new WebDriverWait(driver,40);
+		wait.pollingEvery(2, TimeUnit.SECONDS);
+
+		wait.until(ExpectedConditions.presenceOfElementLocated(HeadingLnk));
+		WebElement HeadingLnkEle = driver.findElement(HeadingLnk);
+
+		Assert.assertEquals(pageHeading,HeadingLnkEle.getText());
+		Reporter.log("Header verified");
+		System.out.println("Header verified");
 		return driver;
 	}
 
@@ -211,6 +257,7 @@ public class CommonClass {
 
 		System.out.println("Task/Event Tile clicked");
 		Reporter.log("Task/Event Tile clicked");
+		System.out.println("Task/Event Tile clicked");
 		return driver;
 	}
 
@@ -224,16 +271,12 @@ public class CommonClass {
 		WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[1]"));
 		action.moveToElement(clickIt).click().build().perform();
 		Reporter.log("Draft button clicked successfully");
+		 System.out.println("Draft button clicked successfully");
 		return driver;
 	 }
 	 
 	 public static WebDriver releaseBtnClick(){
-		 try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 CommonClass.sleepTime(5000);
 		 Actions action = new Actions(driver);
 		 WebDriverWait wait = new WebDriverWait(driver,40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -242,17 +285,12 @@ public class CommonClass {
 			WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
 			action.moveToElement(clickIt).click().build().perform();
 				Reporter.log("Release button clicked successfully");
+		 		System.out.println("Release button clicked successfully");
 		 return driver;
 	 }
 	 
 	 public static WebDriver editBtnClick(){
-		 
-		 try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 CommonClass.sleepTime(5000);
 		 Actions action = new Actions(driver);
 		 WebDriverWait wait = new WebDriverWait(driver,40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -261,6 +299,7 @@ public class CommonClass {
 			WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[1]"));
 			action.moveToElement(clickIt).click().build().perform();
 				Reporter.log("Edit button clicked successfully");
+		 		System.out.println("Edit button clicked successfully");
 			
 		 return driver;
 	 }
@@ -273,17 +312,12 @@ public class CommonClass {
 			WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[1]"));
 			action.moveToElement(clickIt).click().build().perform();
 			Reporter.log("Update button clicked successfully");
+		 System.out.println("Update button clicked successfully");
 		 return driver;
 	 }
 	 
 	 public static WebDriver draftAndNewBtnClick(){
-		 
-		 try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 CommonClass.sleepTime(5000);
 		 Actions action = new Actions(driver);
 		 WebDriverWait wait = new WebDriverWait(driver,40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -292,17 +326,13 @@ public class CommonClass {
 			WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
 			action.moveToElement(clickIt).click().build().perform();
 				Reporter.log("Draft and New button clicked successfully");
+		 		System.out.println("Draft and New button clicked successfully");
 		 return driver;
 	 }
 	 
  public static WebDriver copyFromBtnClick(){
 		 
-		 try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		 sleepTime(5000);
 		 Actions action = new Actions(driver);
 		 WebDriverWait wait = new WebDriverWait(driver,40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -312,17 +342,13 @@ public class CommonClass {
 			action.moveToElement(clickIt).click().build().perform();
 			
 			Reporter.log("Copy From button clicked successfully");
+	 		System.out.println("Copy From button clicked successfully");
 			
 		 return driver;
  }
  
  public static WebDriver duplicateBtnClick(){ 
-	 try {
-		Thread.sleep(5000);
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	 sleepTime(5000);
 	 Actions action = new Actions(driver);
 	 WebDriverWait wait = new WebDriverWait(driver,40);
 		wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -331,18 +357,14 @@ public class CommonClass {
 		WebElement clickIt = driver.findElement(By.xpath("//*[@id='permissionBar']/a[2]"));
 		action.moveToElement(clickIt).click().build().perform();
 			Reporter.log("Duplicate button clicked successfully");
+	 		System.out.println("Duplicate button clicked successfully");
 		
 	 return driver;
 }
 	 
 	 
 		public static WebDriver chkLblStatusReleased(){
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			sleepTime(5000);
 			SoftAssert soAssert = new SoftAssert();
 			WebDriverWait wait = new WebDriverWait(driver, 40);
 			wait.pollingEvery(30, TimeUnit.SECONDS);
@@ -350,6 +372,7 @@ public class CommonClass {
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.id("lbldocstatus")));
 			soAssert.assertEquals("(Released)", driver.findElement(By.id("lbldocstatus")).getText());
 				Reporter.log("Header changed as Released");
+				System.out.println("Header changed as Released");
 			return driver;
 			
 		}
@@ -368,6 +391,7 @@ public class CommonClass {
 				WebElement clkTwo = driver.findElement(By.xpath("//*[@id='permissionBar']/div/div/a[1]"));
 				action.moveToElement(clkTwo).click().build().perform();
 					Reporter.log("History option available");
+					System.out.println("History option available");
 			//activities
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='permissionBar']/div/div/a[2]")));
 			return driver;
@@ -383,9 +407,8 @@ public class CommonClass {
 			wait.until(ExpectedConditions.elementToBeClickable(By.className("spltbtnitm")));
 			driver.findElement(By.className("spltbtnitm")).click();
 			Reporter.log("Convert to account option available");
-			
-			
-				
+			System.out.println("Convert to account option available");
+
 			return driver;
 		}
 		
@@ -446,12 +469,17 @@ public class CommonClass {
 
 
 	public static void sleepTime(int time) {
+
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
+
 	}
+
+
 
 	/*Draft and verify order status*/
 	public static String draftAndCheckStatus(){

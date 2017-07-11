@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -50,8 +51,6 @@ public class PurchaseOrderForm {
     //Enter qty
     By qtyTextBox = By.xpath("//*[@id='tblPurchaseOrder']/tbody/tr/td[17]/input");
     By unitPriceTextBox = By.xpath("//*[@id='tblPurchaseOrder']/tbody/tr/td[19]/input");
-    //Checkout
-    By checkoutButton = By.id("btnCalc2");
     //Calculated values
     By lineTotal = By.xpath("//*[@id='tblPurchaseOrder']/tbody/tr/td[23]/input");
     //Banner values
@@ -62,11 +61,7 @@ public class PurchaseOrderForm {
     By gotoPageLnk = By.xpath("//div[@id='dlgAutoGenNotifications']/a");
     By okButton = By.xpath("//div[@class='dialogbox-buttonarea']/a");
     //Purchase order number
-    @FindBy(id ="lblTemplateFormHeader")
-    private WebElement PONUmber;
-    public static By purchaseOrderNumb = By.id("lblTemplateFormHeader");
-
-
+    By purchaseOrderNumb = By.id("lblTemplateFormHeader");
 
     public PurchaseOrderForm(WebDriver driver){
         this.driver=driver;
@@ -84,11 +79,11 @@ public class PurchaseOrderForm {
         this.productLookup(productName);
         this.selectWarehouse(productWarehouseName);
         this.qtyAndUnitPrice(qty,UnitPrice);
-        this.checkout();
         this.getLineTotal();
         this.getUnitsInBanner();
         this.getUnitsFromLine();
         this.okbtnAction();
+        this.purchaseOrderNumberExtract();
 
     }
     public void vendorLookUpButton(){
@@ -267,18 +262,7 @@ public class PurchaseOrderForm {
     }
 
     //20. Click on Check-out button.
-    public void checkout(){
-        Actions action = new Actions(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 40);
-        wait.pollingEvery(2, TimeUnit.SECONDS);
 
-        WebElement chkOutBtn = driver.findElement(checkoutButton);
-        wait.until(ExpectedConditions.elementToBeClickable(chkOutBtn));
-        action.moveToElement(chkOutBtn).click().build().perform();
-
-
-
-    }
 
     //Get lineTotal amount
     public String getLineTotal(){
@@ -300,6 +284,7 @@ public class PurchaseOrderForm {
 
         return banner.getText();
     }
+
     public String getUnitsInBanner(){
         CommonClass.sleepTime(3000);
         WebDriverWait wait = new WebDriverWait(driver, 40);
@@ -328,12 +313,17 @@ public class PurchaseOrderForm {
     }
 
     public String purchaseOrderNumberExtract(){
-
+        CommonClass.sleepTime(3000);
         WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.pollingEvery(2, TimeUnit.SECONDS);
+        WebElement poNumbLbl = driver.findElement(purchaseOrderNumb);
 
-        wait.until(ExpectedConditions.visibilityOf(PONUmber));
-        return PONUmber.getText();
+        //wait.until(ExpectedConditions.presenceOfElementLocated(purchaseOrderNumb));
+        wait.until(ExpectedConditions.visibilityOf(poNumbLbl));
+        return poNumbLbl.getText();
     }
+
+
+
 
 }

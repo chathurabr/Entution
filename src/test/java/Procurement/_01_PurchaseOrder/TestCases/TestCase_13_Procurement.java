@@ -1,6 +1,7 @@
 package Procurement._01_PurchaseOrder.TestCases;
 
 import Procurement._01_PurchaseOrder.Calculations.ProcurementCalculationClass;
+import Procurement._01_PurchaseOrder.InboundShipment;
 import Procurement._01_PurchaseOrder.InitiatePurchaseOrderSubMod;
 import Procurement._01_PurchaseOrder.PurchaseOrderForm;
 import dataProvider.CommonClass;
@@ -20,16 +21,24 @@ public class TestCase_13_Procurement {
     public WebDriver driver;
     InitiatePurchaseOrderSubMod objSelectPurchaseOrderSubModule;
     PurchaseOrderForm objPurchaseOrderForm;
+    InboundShipment objInboundShipment;
     public String qty = "100.00";
     public String unitPrice ="150.00";
-    public String poNumber = "";
+    public static String poNumber;
+    public static String poBannerUnitValue;
 
-   // private int venReferanceNumb;
+/*
+    public TestCase_13_Procurement(WebDriver driver) {
+        this.poNumber=poNumber;
+    }
+*/
+
+    // private int venReferanceNumb;
 
     @BeforeClass
     public void beforeTest() {
-        driver = CommonClass.driverInstance();
-        driver = CommonClassMainButtons.loginMeth();
+       CommonClass.driverInstance();
+       CommonClassMainButtons.loginMeth();
 
     }
     @BeforeClass
@@ -65,7 +74,7 @@ public class TestCase_13_Procurement {
     //1. Click on Navegation Menu
     @Test(priority = 1)
     public void mainMenu(){
-        driver = CommonClassMainButtons.MainMenuNav();
+        CommonClassMainButtons.MainMenuNav();
     }
     //2. Click on Procurement
     @Test(priority = 2)
@@ -83,7 +92,7 @@ public class TestCase_13_Procurement {
     public void pageHeaderVerify(){
         objSelectPurchaseOrderSubModule = new InitiatePurchaseOrderSubMod(driver);
         objSelectPurchaseOrderSubModule.isPurchaseOrderLblDisplays();
-        driver = CommonClass.pageNameVerify("Purchase Order");
+        driver = CommonClass.pageNameVerifyChk("Purchase Order");
     }
     //5. Click on Purchase Order.
     @Test(priority = 5)
@@ -158,8 +167,7 @@ public class TestCase_13_Procurement {
     //20. Click on Check-out button.
     @Test(priority = 16)
     public void checkout(){
-        objPurchaseOrderForm = new PurchaseOrderForm(driver);
-        objPurchaseOrderForm.checkout();
+        CommonClassMainButtons.checkoutButtonClick();
     }
     //21. Verify that line total displayed  correctly.
     //29. Verify the Total in the right upper cornner of the page(Banner total)
@@ -170,19 +178,40 @@ public class TestCase_13_Procurement {
 
         Assert.assertEquals(ProcurementCalculationClass.lineTotal(qty,unitPrice),objPurchaseOrderForm.getTotalBannerValue());
 
-        Assert.assertEquals(qty,objPurchaseOrderForm.getUnitsInBanner());
+        Assert.assertEquals(poBannerUnitValue = qty,objPurchaseOrderForm.getUnitsInBanner());
+    }
+    @Test(priority = 18)
+    public void draftIt(){
+        CommonClassMainButtons.draftBtnClick();
+        CommonClassMainButtons.releaseBtnClick();
+        objPurchaseOrderForm = new PurchaseOrderForm(driver);
+        objPurchaseOrderForm.okbtnAction();
+
+    }
+    @Test(priority = 19)
+    public void getPONumber(){
+        objPurchaseOrderForm = new PurchaseOrderForm(driver);
+        poNumber = objPurchaseOrderForm.purchaseOrderNumberExtract();
     }
 
-    @Test(priority = 18)
+    @Test(priority = 20)
+    public void draftAndRelease() {
+
+        System.out.println("Purchase Order number is : "+poNumber);
+//        CommonClass.docStatusLblChk("(Draft)");
+    }
+
+
+    /*@Test(priority = 18)
     public void draftAndRelease() {
 
         CommonClassMainButtons.draftBtnClick();
         objPurchaseOrderForm = new PurchaseOrderForm(driver);
-      //  objPurchaseOrderForm.purchaseOrderNumberExtract();
+        objPurchaseOrderForm.purchaseOrderNumberExtract();
         poNumber = objPurchaseOrderForm.purchaseOrderNumberExtract();
         System.out.println("Purchase Order number is : "+poNumber);
-//        CommonClass.docStatusLblChk("(Draft)");
-    }
+        CommonClass.docStatusLblChk("(Draft)");
+    }*/
       /*  CommonClassMainButtons.releaseBtnClick();
         CommonClass.docStatusLblChk("Release");
     }
